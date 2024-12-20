@@ -63,7 +63,7 @@ orcid_id: https://orcid.org/0000-0003-0347-7165 # your ORCID ID
 research_gate_profile: Sarah-Smith-Tripp # your profile on ResearchGate
 
 contact_note: >
-  please send me an email at ssmithtr@wellesley.edu
+  please send me an email at sarahsmith.tripp@gmail.com
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -81,7 +81,7 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 
 blog_name: Smith-Tripp # blog_name will be displayed in your blog page
 blog_nav_title: Blog # your blog must have a title for it to be displayed in the nav bar
-blog_description: A place where a blog might live one day
+blog_description: Welcome to the Roadshow!
 permalink: /blog/:year/:title/
 
 # Pagination
