@@ -1,4 +1,4 @@
-_site
+#_site
 .bundle
 .sass-cache
 .jekyll-cache
@@ -7,9 +7,9 @@ _site
 .ruby-version
 .tweet-cache
 #_posts/
-_Archive_Post/
-_news/
-_pages/dropdown.md
+#_Archive_Post/
+#_news/
+#_pages/dropdown.md
 #_blog/
 #_blog/index.html
 Gemfile.lock
