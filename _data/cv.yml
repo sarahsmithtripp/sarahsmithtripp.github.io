@@ -4,9 +4,9 @@
     - name: Full Name
       value: Sarah Smith-Tripp
     - name: Current Position
-      value: PhD CAndidate in the [Integrated Remote Sensing Studio](https://irsslab.forestry.ubc.ca/)
+      value: PhD Student in the [Integrated Remote Sensing Studio](https://irsslab.forestry.ubc.ca/)
     - name: Interests
-      value: Community Resilience,  Disturbance Ecology
+      value: Ecosystem Succession, Disturbance Ecology
 
 - title: Education
   type: time_table
@@ -18,12 +18,6 @@
         - collaborative project with [Silva21](https://www.silva21.com/)
         - Structural forest regeneration after stand replacing disturbance
         - Satellite monitoring of structural forest composition
-    - title: Visiting Scholar
-      institution: ETH Zurich
-      year: 2024
-      description:
-        - Tools for monitoring non-monetary forest values 
-        - Assisting drone data acquisition throughout Switzerland
     - title: MSc in Geography
       institution: University of British Columbia
       year: 2021
@@ -83,9 +77,8 @@
   contents:
   - title: University of British Columbia
     items: 
-      - Land Information Acquisition and Analysis (FRST 556); Term 1 2024
-      - Remote Sensing of the Environment (FRST 443); Term 2 2021, Term 2 2022, Term 2 2023, Term 2 2024
-      - Advanced Geomatics for Natural Resource Management (FRST 538); Term 1 2021, Term 2 2022
+      - Remote Sensing of the Environment (FRST 443); Term 2 2021, Term 2 2022
+      - Advanced Geomatics for Natural Resource Management (FRST 538); Term 1 2021
       - Atmospheric Environments (GEOB 200); Term 1 2020 
       - Environmental Impact Analyses (GEOB 314); Term 2 2020
   - title: Wellesley College
