@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Louise E. Sinks">
 <meta name="dcterms.date" content="2023-03-24">
 <meta name="description" content="TidyTuesday: Polishing">
 
-<title>Louise E. Sinks - TidyTuesday Week 12: Programming Languages Revisited</title>
+<title>TidyTuesday Week 12: Programming Languages Revisited – Louise E. Sinks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -73,17 +74,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -118,6 +126,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -125,7 +135,7 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Louise E. Sinks - TidyTuesday Week 12: Programming Languages Revisited">
+<meta name="twitter:title" content="TidyTuesday Week 12: Programming Languages Revisited – Louise E. Sinks">
 <meta name="twitter:description" content="TidyTuesday: Polishing">
 <meta name="twitter:image" content="https://lsinks.github.io/posts/2023-03-24-tidytuesday-figure-polishing/thumbnail.png">
 <meta name="twitter:creator" content="@LouiseSinks">
@@ -138,52 +148,52 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Louise E. Sinks</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../portfolio.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me/ CV</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me/ CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Blog Entries</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Blog Entries</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../currentprojects.html" rel="" target="">
- <span class="menu-text">Current Projects</span></a>
+    <a class="nav-link" href="../../currentprojects.html"> 
+<span class="menu-text">Current Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogroll.html" rel="" target="">
- <span class="menu-text">Blog Roll</span></a>
+    <a class="nav-link" href="../../blogroll.html"> 
+<span class="menu-text">Blog Roll</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../posts.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -214,7 +224,7 @@ cookieconsent.run({
 <h1 class="title">TidyTuesday Week 12: Programming Languages Revisited</h1>
   <div class="quarto-categories">
     <div class="quarto-category">R</div>
-    <div class="quarto-category">TidyTuesday</div>
+    <div class="quarto-category">tidyTuesday</div>
     <div class="quarto-category">R-code</div>
     <div class="quarto-category">code-along</div>
     <div class="quarto-category">data visualization</div>
@@ -248,14 +258,16 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 3, 2023</p>
+      <p class="date-modified">December 21, 2024</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <p>This week, <a href="https://lsinks.github.io/posts/2023-03-21-tidytuesday-programming-languages/">I participated</a> in my first #TidyTuesday challenge. My goal was to get something out on the day of the challenge rather than perfection. I did notice that the skimr output wasn’t formatted nicely on the webpage. Today, I’m going to delve into the <a href="https://cran.r-project.org/web/packages/skimr/index.html">skimr</a> and <a href="https://quarto.org/docs/output-formats/page-layout.html">Quarto</a> documentation and make a nicer version of the output. Secondly, I’m going to fix up my final figure, which is the one I shared on social media:</p>
 <blockquote class="twitter-tweet blockquote">
@@ -299,7 +311,7 @@ cookieconsent.run({
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">my_skim</span>(languages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display column-page">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
@@ -345,7 +357,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: character</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 35%">
 <col style="width: 10%">
@@ -582,7 +594,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: logical</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 41%">
 <col style="width: 12%">
@@ -631,7 +643,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 32%">
 <col style="width: 9%">
@@ -921,7 +933,6 @@ cookieconsent.run({
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Summary of Numerical Variables in Languages"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display column-page">
-
 <div id="hrttkpdjxu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#hrttkpdjxu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1362,220 +1373,267 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Summary of Numerical Variables in Languages</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="skim_variable">skim_variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# Missing"># Missing</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Completeness">Completeness</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean">Mean</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standard Deviation">Standard Deviation</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Min">Min</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Max">Max</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Histogram">Histogram</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="skim_variable" class="gt_row gt_left">appeared</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.991105e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">1.114434e+02</td>
-<td headers="numeric.p0" class="gt_row gt_right">-2000</td>
-<td headers="numeric.p100" class="gt_row gt_right">2023</td>
-<td headers="numeric.hist" class="gt_row gt_left">▁▁▁▁▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">domain_name_registered</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">3801</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.1166628</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">2.011333e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">7.021132e+00</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">1990</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">2023</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▁▃▃▇▆</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">isbndb</td>
-<td headers="n_missing" class="gt_row gt_right">3217</td>
-<td headers="complete_rate" class="gt_row gt_right">0.2523821</td>
-<td headers="numeric.mean" class="gt_row gt_right">7.706262e+00</td>
-<td headers="numeric.sd" class="gt_row gt_right">3.316421e+01</td>
-<td headers="numeric.p0" class="gt_row gt_right">0</td>
-<td headers="numeric.p100" class="gt_row gt_right">400</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">book_count</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">2.079479e+00</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">1.734465e+01</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">401</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">semantic_scholar</td>
-<td headers="n_missing" class="gt_row gt_right">3545</td>
-<td headers="complete_rate" class="gt_row gt_right">0.1761562</td>
-<td headers="numeric.mean" class="gt_row gt_right">3.794195e+00</td>
-<td headers="numeric.sd" class="gt_row gt_right">8.316231e+00</td>
-<td headers="numeric.p0" class="gt_row gt_right">0</td>
-<td headers="numeric.p100" class="gt_row gt_right">52</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">language_rank</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">2.151000e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">1.242313e+03</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">4302</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▇▇▇▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">github_repo_stars</td>
-<td headers="n_missing" class="gt_row gt_right">3414</td>
-<td headers="complete_rate" class="gt_row gt_right">0.2066000</td>
-<td headers="numeric.mean" class="gt_row gt_right">2.127403e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">7.554016e+03</td>
-<td headers="numeric.p0" class="gt_row gt_right">0</td>
-<td headers="numeric.p100" class="gt_row gt_right">88526</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">github_repo_forks</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">3417</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.2059029</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">2.612867e+02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">1.203003e+03</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">23732</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">github_repo_updated</td>
-<td headers="n_missing" class="gt_row gt_right">3418</td>
-<td headers="complete_rate" class="gt_row gt_right">0.2056705</td>
-<td headers="numeric.mean" class="gt_row gt_right">2.021390e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">1.763285e+00</td>
-<td headers="numeric.p0" class="gt_row gt_right">2012</td>
-<td headers="numeric.p100" class="gt_row gt_right">2023</td>
-<td headers="numeric.hist" class="gt_row gt_left">▁▁▁▁▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">github_repo_subscribers</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">3418</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.2056705</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">6.234237e+01</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">2.008820e+02</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">2910</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">github_repo_created</td>
-<td headers="n_missing" class="gt_row gt_right">3425</td>
-<td headers="complete_rate" class="gt_row gt_right">0.2040437</td>
-<td headers="numeric.mean" class="gt_row gt_right">2.015843e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">3.479589e+00</td>
-<td headers="numeric.p0" class="gt_row gt_right">2006</td>
-<td headers="numeric.p100" class="gt_row gt_right">2022</td>
-<td headers="numeric.hist" class="gt_row gt_left">▁▅▇▇▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">github_repo_issues</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">3518</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.1824309</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">1.230344e+02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">5.462553e+02</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">9522</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">github_repo_first_commit</td>
-<td headers="n_missing" class="gt_row gt_right">3567</td>
-<td headers="complete_rate" class="gt_row gt_right">0.1710435</td>
-<td headers="numeric.mean" class="gt_row gt_right">2.014739e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">4.985409e+00</td>
-<td headers="numeric.p0" class="gt_row gt_right">1987</td>
-<td headers="numeric.p100" class="gt_row gt_right">2022</td>
-<td headers="numeric.hist" class="gt_row gt_left">▁▁▁▆▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">github_language_repos</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">3833</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.1092261</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">1.971347e+05</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">1.226901e+06</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">16046489</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">wikipedia_daily_page_views</td>
-<td headers="n_missing" class="gt_row gt_right">2837</td>
-<td headers="complete_rate" class="gt_row gt_right">0.3406925</td>
-<td headers="numeric.mean" class="gt_row gt_right">2.271330e+02</td>
-<td headers="numeric.sd" class="gt_row gt_right">7.835524e+02</td>
-<td headers="numeric.p0" class="gt_row gt_right">-1</td>
-<td headers="numeric.p100" class="gt_row gt_right">13394</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">wikipedia_backlinks_count</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">2877</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.3313967</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">3.185484e+02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">1.635289e+03</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">34348</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">wikipedia_page_id</td>
-<td headers="n_missing" class="gt_row gt_right">2893</td>
-<td headers="complete_rate" class="gt_row gt_right">0.3276784</td>
-<td headers="numeric.mean" class="gt_row gt_right">9.167847e+06</td>
-<td headers="numeric.sd" class="gt_row gt_right">1.350683e+07</td>
-<td headers="numeric.p0" class="gt_row gt_right">928</td>
-<td headers="numeric.p100" class="gt_row gt_right">63063548</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">wikipedia_appeared</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">2958</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.3125726</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">1.991144e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">1.702650e+01</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">1830</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">2019</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▁▁▁▃▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">wikipedia_created</td>
-<td headers="n_missing" class="gt_row gt_right">3040</td>
-<td headers="complete_rate" class="gt_row gt_right">0.2935162</td>
-<td headers="numeric.mean" class="gt_row gt_right">2.005748e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">3.768240e+00</td>
-<td headers="numeric.p0" class="gt_row gt_right">2001</td>
-<td headers="numeric.p100" class="gt_row gt_right">2020</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▇▂▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">wikipedia_revision_count</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">3130</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.2726005</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">3.304314e+02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">8.132556e+02</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">10104</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">last_activity</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">2.000616e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">8.459776e+01</td>
-<td headers="numeric.p0" class="gt_row gt_right">-900</td>
-<td headers="numeric.p100" class="gt_row gt_right">2023</td>
-<td headers="numeric.hist" class="gt_row gt_left">▁▁▁▁▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">number_of_users</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">1.377126e+04</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">2.277129e+05</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">7179119</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">number_of_jobs</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">4.221838e+02</td>
-<td headers="numeric.sd" class="gt_row gt_right">1.257299e+04</td>
-<td headers="numeric.p0" class="gt_row gt_right">0</td>
-<td headers="numeric.p100" class="gt_row gt_right">771996</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▁▁▁▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">central_package_repository_count</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1482</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.6555891</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.000000e+00</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.000000e+00</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▁▁▇▁▁</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Summary of Numerical Variables in Languages</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="skim_variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">skim_variable</th>
+<th id="# Missing" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"># Missing</th>
+<th id="Completeness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Completeness</th>
+<th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="Standard Deviation" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standard Deviation</th>
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Min</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Max</th>
+<th id="Histogram" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Histogram</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">appeared</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.991105e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">1.114434e+02</td>
+<td class="gt_row gt_right" headers="numeric.p0">-2000</td>
+<td class="gt_row gt_right" headers="numeric.p100">2023</td>
+<td class="gt_row gt_left" headers="numeric.hist">▁▁▁▁▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">domain_name_registered</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">3801</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.1166628</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">2.011333e+03</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">7.021132e+00</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">1990</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">2023</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▁▃▃▇▆</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">isbndb</td>
+<td class="gt_row gt_right" headers="n_missing">3217</td>
+<td class="gt_row gt_right" headers="complete_rate">0.2523821</td>
+<td class="gt_row gt_right" headers="numeric.mean">7.706262e+00</td>
+<td class="gt_row gt_right" headers="numeric.sd">3.316421e+01</td>
+<td class="gt_row gt_right" headers="numeric.p0">0</td>
+<td class="gt_row gt_right" headers="numeric.p100">400</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">book_count</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">2.079479e+00</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">1.734465e+01</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">0</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">401</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">semantic_scholar</td>
+<td class="gt_row gt_right" headers="n_missing">3545</td>
+<td class="gt_row gt_right" headers="complete_rate">0.1761562</td>
+<td class="gt_row gt_right" headers="numeric.mean">3.794195e+00</td>
+<td class="gt_row gt_right" headers="numeric.sd">8.316231e+00</td>
+<td class="gt_row gt_right" headers="numeric.p0">0</td>
+<td class="gt_row gt_right" headers="numeric.p100">52</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">language_rank</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">2.151000e+03</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">1.242313e+03</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">0</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">4302</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▇▇▇▇</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">github_repo_stars</td>
+<td class="gt_row gt_right" headers="n_missing">3414</td>
+<td class="gt_row gt_right" headers="complete_rate">0.2066000</td>
+<td class="gt_row gt_right" headers="numeric.mean">2.127403e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">7.554016e+03</td>
+<td class="gt_row gt_right" headers="numeric.p0">0</td>
+<td class="gt_row gt_right" headers="numeric.p100">88526</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">github_repo_forks</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">3417</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.2059029</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">2.612867e+02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">1.203003e+03</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">0</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">23732</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">github_repo_updated</td>
+<td class="gt_row gt_right" headers="n_missing">3418</td>
+<td class="gt_row gt_right" headers="complete_rate">0.2056705</td>
+<td class="gt_row gt_right" headers="numeric.mean">2.021390e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">1.763285e+00</td>
+<td class="gt_row gt_right" headers="numeric.p0">2012</td>
+<td class="gt_row gt_right" headers="numeric.p100">2023</td>
+<td class="gt_row gt_left" headers="numeric.hist">▁▁▁▁▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">github_repo_subscribers</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">3418</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.2056705</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">6.234237e+01</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">2.008820e+02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">0</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">2910</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">github_repo_created</td>
+<td class="gt_row gt_right" headers="n_missing">3425</td>
+<td class="gt_row gt_right" headers="complete_rate">0.2040437</td>
+<td class="gt_row gt_right" headers="numeric.mean">2.015843e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">3.479589e+00</td>
+<td class="gt_row gt_right" headers="numeric.p0">2006</td>
+<td class="gt_row gt_right" headers="numeric.p100">2022</td>
+<td class="gt_row gt_left" headers="numeric.hist">▁▅▇▇▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">github_repo_issues</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">3518</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.1824309</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">1.230344e+02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">5.462553e+02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">0</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">9522</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">github_repo_first_commit</td>
+<td class="gt_row gt_right" headers="n_missing">3567</td>
+<td class="gt_row gt_right" headers="complete_rate">0.1710435</td>
+<td class="gt_row gt_right" headers="numeric.mean">2.014739e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">4.985409e+00</td>
+<td class="gt_row gt_right" headers="numeric.p0">1987</td>
+<td class="gt_row gt_right" headers="numeric.p100">2022</td>
+<td class="gt_row gt_left" headers="numeric.hist">▁▁▁▆▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">github_language_repos</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">3833</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.1092261</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">1.971347e+05</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">1.226901e+06</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">0</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">16046489</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">wikipedia_daily_page_views</td>
+<td class="gt_row gt_right" headers="n_missing">2837</td>
+<td class="gt_row gt_right" headers="complete_rate">0.3406925</td>
+<td class="gt_row gt_right" headers="numeric.mean">2.271330e+02</td>
+<td class="gt_row gt_right" headers="numeric.sd">7.835524e+02</td>
+<td class="gt_row gt_right" headers="numeric.p0">-1</td>
+<td class="gt_row gt_right" headers="numeric.p100">13394</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">wikipedia_backlinks_count</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">2877</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.3313967</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">3.185484e+02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">1.635289e+03</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">34348</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">wikipedia_page_id</td>
+<td class="gt_row gt_right" headers="n_missing">2893</td>
+<td class="gt_row gt_right" headers="complete_rate">0.3276784</td>
+<td class="gt_row gt_right" headers="numeric.mean">9.167847e+06</td>
+<td class="gt_row gt_right" headers="numeric.sd">1.350683e+07</td>
+<td class="gt_row gt_right" headers="numeric.p0">928</td>
+<td class="gt_row gt_right" headers="numeric.p100">63063548</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">wikipedia_appeared</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">2958</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.3125726</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">1.991144e+03</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">1.702650e+01</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">1830</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">2019</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▁▁▁▃▇</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">wikipedia_created</td>
+<td class="gt_row gt_right" headers="n_missing">3040</td>
+<td class="gt_row gt_right" headers="complete_rate">0.2935162</td>
+<td class="gt_row gt_right" headers="numeric.mean">2.005748e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">3.768240e+00</td>
+<td class="gt_row gt_right" headers="numeric.p0">2001</td>
+<td class="gt_row gt_right" headers="numeric.p100">2020</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▇▂▁▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">wikipedia_revision_count</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">3130</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.2726005</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">3.304314e+02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">8.132556e+02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">10104</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">last_activity</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">2.000616e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">8.459776e+01</td>
+<td class="gt_row gt_right" headers="numeric.p0">-900</td>
+<td class="gt_row gt_right" headers="numeric.p100">2023</td>
+<td class="gt_row gt_left" headers="numeric.hist">▁▁▁▁▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">number_of_users</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">1.377126e+04</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">2.277129e+05</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">0</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">7179119</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">number_of_jobs</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">4.221838e+02</td>
+<td class="gt_row gt_right" headers="numeric.sd">1.257299e+04</td>
+<td class="gt_row gt_right" headers="numeric.p0">0</td>
+<td class="gt_row gt_right" headers="numeric.p100">771996</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▁▁▁▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">central_package_repository_count</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1482</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.6555891</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.000000e+00</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.000000e+00</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">0</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▁▁▇▁▁</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1591,7 +1649,11 @@ cookieconsent.run({
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme_classic() +</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">angle =</span> <span class="dv">90</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1614,7 +1676,11 @@ cookieconsent.run({
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Number of languages using token"</span>) <span class="sc">+</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/lang-token-graph-undordered-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/lang-token-graph-undordered-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>I thought I had noted this in the previous post, but one of the tokens, ⍝ , is rendered as an empty box in the ggplot figures. I thought fixing this would be easy. First, I thought I could just pass the Unicode value for that symbol. Then, when that didn’t work, I thought I could change the font to one supporting that symbol. Supposedly, changing the font should be easy, yet after 3 hours working on it, I still had blank squares. There is a nice tutorial on <a href="https://statisticaloddsandends.wordpress.com/2021/07/08/using-different-fonts-with-ggplot2/">changing fonts in ggplot</a> that did not work until <a href="https://github.com/GuangchuangYu/meme/issues/1">I found someone with the same issue</a>. The solution is to add a line of code that doesn’t make much sense to me : <code>windowsFonts("Cambria Math" = windowsFont("Cambria Math"))</code></p>
@@ -1644,14 +1710,18 @@ cookieconsent.run({
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>( <span class="at">family =</span> <span class="st">"Cambria Math"</span>)) <span class="sc">+</span></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
   author = {Sinks, Louise E.},
   title = {TidyTuesday {Week} 12: {Programming} {Languages} {Revisited}},
   date = {2023-03-24},
@@ -1697,18 +1767,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1740,11 +1799,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/lsinks\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1754,8 +1850,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1767,7 +1872,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1811,6 +2038,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1836,6 +2064,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1903,12 +2157,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

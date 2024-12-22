@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Louise E. Sinks">
 <meta name="dcterms.date" content="2023-03-28">
 <meta name="description" content="TidyTuesday: Exploring Time Zones and Daylight Savings Time">
 
-<title>Louise E. Sinks - Tidy Tuesday: Daylight Savings Time</title>
+<title>Tidy Tuesday: Daylight Savings Time – Louise E. Sinks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -73,17 +74,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -118,6 +126,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -125,7 +135,7 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Louise E. Sinks - Tidy Tuesday: Daylight Savings Time">
+<meta name="twitter:title" content="Tidy Tuesday: Daylight Savings Time – Louise E. Sinks">
 <meta name="twitter:description" content="TidyTuesday: Exploring Time Zones and Daylight Savings Time">
 <meta name="twitter:image" content="https://lsinks.github.io/posts/2023-03-28-tidytuesday-timezones/thumbnail.png">
 <meta name="twitter:creator" content="@LouiseSinks">
@@ -138,52 +148,52 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Louise E. Sinks</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../portfolio.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me/ CV</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me/ CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Blog Entries</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Blog Entries</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../currentprojects.html" rel="" target="">
- <span class="menu-text">Current Projects</span></a>
+    <a class="nav-link" href="../../currentprojects.html"> 
+<span class="menu-text">Current Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogroll.html" rel="" target="">
- <span class="menu-text">Blog Roll</span></a>
+    <a class="nav-link" href="../../blogroll.html"> 
+<span class="menu-text">Blog Roll</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../posts.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -191,7 +201,7 @@ cookieconsent.run({
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
@@ -202,12 +212,12 @@ cookieconsent.run({
 <h1 class="title">Tidy Tuesday: Daylight Savings Time</h1>
   <div class="quarto-categories">
     <div class="quarto-category">R</div>
-    <div class="quarto-category">TidyTuesday</div>
+    <div class="quarto-category">tidyTuesday</div>
     <div class="quarto-category">R-code</div>
     <div class="quarto-category">code-along</div>
-    <div class="quarto-category">Data-Viz</div>
+    <div class="quarto-category">data visualization</div>
     <div class="quarto-category">ggimage</div>
-    <div class="quarto-category">maps</div>
+    <div class="quarto-category">mapping</div>
   </div>
   </div>
 
@@ -237,14 +247,16 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 3, 2023</p>
+      <p class="date-modified">December 21, 2024</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <p><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-03-28/readme.md">This week’s TidyTuesday</a> is about the timezone data from <a href="https://data.iana.org/time-zones/tz-link.html">IANA timezone database</a>.</p>
 <div class="cell">
@@ -298,7 +310,6 @@ cookieconsent.run({
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Countries with Multiple TZs"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="bvriabpeoq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#bvriabpeoq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -739,86 +750,149 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Countries with Multiple TZs</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Country">Country</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Number of TZs">Number of TZs</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="place_name" class="gt_row gt_left">United States</td>
-<td headers="n" class="gt_row gt_right">29</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Canada</td>
-<td headers="n" class="gt_row gt_right gt_striped">28</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Russia</td>
-<td headers="n" class="gt_row gt_right">27</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Brazil</td>
-<td headers="n" class="gt_row gt_right gt_striped">16</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Argentina</td>
-<td headers="n" class="gt_row gt_right">12</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Australia</td>
-<td headers="n" class="gt_row gt_right gt_striped">12</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Mexico</td>
-<td headers="n" class="gt_row gt_right">11</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Kazakhstan</td>
-<td headers="n" class="gt_row gt_right gt_striped">7</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Greenland</td>
-<td headers="n" class="gt_row gt_right">4</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Indonesia</td>
-<td headers="n" class="gt_row gt_right gt_striped">4</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Ukraine</td>
-<td headers="n" class="gt_row gt_right">4</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Chile</td>
-<td headers="n" class="gt_row gt_right gt_striped">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Spain</td>
-<td headers="n" class="gt_row gt_right">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Micronesia</td>
-<td headers="n" class="gt_row gt_right gt_striped">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Kiribati</td>
-<td headers="n" class="gt_row gt_right">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Mongolia</td>
-<td headers="n" class="gt_row gt_right gt_striped">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Malaysia</td>
-<td headers="n" class="gt_row gt_right">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">French Polynesia</td>
-<td headers="n" class="gt_row gt_right gt_striped">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Portugal</td>
-<td headers="n" class="gt_row gt_right">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">US minor outlying islands</td>
-<td headers="n" class="gt_row gt_right gt_striped">3</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Congo (Dem. Rep.)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">China</td>
-<td headers="n" class="gt_row gt_right gt_striped">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Cyprus</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Germany</td>
-<td headers="n" class="gt_row gt_right gt_striped">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Ecuador</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Marshall Islands</td>
-<td headers="n" class="gt_row gt_right gt_striped">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">New Zealand</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Papua New Guinea</td>
-<td headers="n" class="gt_row gt_right gt_striped">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Palestine</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">French Southern &amp; Antarctic Lands</td>
-<td headers="n" class="gt_row gt_right gt_striped">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left">Uzbekistan</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="place_name" class="gt_row gt_left gt_striped">Vietnam</td>
-<td headers="n" class="gt_row gt_right gt_striped">2</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border">Countries with Multiple TZs</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Country" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Country</th>
+<th id="Number of TZs" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Number of TZs</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">United States</td>
+<td class="gt_row gt_right" headers="n">29</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Canada</td>
+<td class="gt_row gt_right gt_striped" headers="n">28</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Russia</td>
+<td class="gt_row gt_right" headers="n">27</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Brazil</td>
+<td class="gt_row gt_right gt_striped" headers="n">16</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Argentina</td>
+<td class="gt_row gt_right" headers="n">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Australia</td>
+<td class="gt_row gt_right gt_striped" headers="n">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Mexico</td>
+<td class="gt_row gt_right" headers="n">11</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Kazakhstan</td>
+<td class="gt_row gt_right gt_striped" headers="n">7</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Greenland</td>
+<td class="gt_row gt_right" headers="n">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Indonesia</td>
+<td class="gt_row gt_right gt_striped" headers="n">4</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Ukraine</td>
+<td class="gt_row gt_right" headers="n">4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Chile</td>
+<td class="gt_row gt_right gt_striped" headers="n">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Spain</td>
+<td class="gt_row gt_right" headers="n">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Micronesia</td>
+<td class="gt_row gt_right gt_striped" headers="n">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Kiribati</td>
+<td class="gt_row gt_right" headers="n">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Mongolia</td>
+<td class="gt_row gt_right gt_striped" headers="n">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Malaysia</td>
+<td class="gt_row gt_right" headers="n">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">French Polynesia</td>
+<td class="gt_row gt_right gt_striped" headers="n">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Portugal</td>
+<td class="gt_row gt_right" headers="n">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">US minor outlying islands</td>
+<td class="gt_row gt_right gt_striped" headers="n">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Congo (Dem. Rep.)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">China</td>
+<td class="gt_row gt_right gt_striped" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Cyprus</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Germany</td>
+<td class="gt_row gt_right gt_striped" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Ecuador</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Marshall Islands</td>
+<td class="gt_row gt_right gt_striped" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">New Zealand</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Papua New Guinea</td>
+<td class="gt_row gt_right gt_striped" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Palestine</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">French Southern &amp; Antarctic Lands</td>
+<td class="gt_row gt_right gt_striped" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="place_name">Uzbekistan</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="place_name">Vietnam</td>
+<td class="gt_row gt_right gt_striped" headers="n">2</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -835,7 +909,11 @@ cookieconsent.run({
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">tz_plot</span>(US_tz<span class="sc">$</span>zone[<span class="dv">21</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-timezones_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-timezones_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>I created the plots and saved them as images. I modified a function I found on <a href="https://stackoverflow.com/questions/66324232/how-to-save-files-with-different-names-using-for-loops-in-r">stack overflow to create the file names</a>.</p>
@@ -903,7 +981,11 @@ cookieconsent.run({
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"thumbnail.png"</span>, us_tz_map, <span class="at">width =</span> <span class="dv">5</span> <span class="sc">*</span> aspect_ratio, <span class="at">height =</span> <span class="dv">5</span>)</span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>us_tz_map</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-timezones_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-timezones_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>And what we see is there are a bunch of redundant times zone specification, especially in the Midwest.</p>
@@ -915,7 +997,6 @@ cookieconsent.run({
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Countries with Multiple TZs"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="nrdpglnhpu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#nrdpglnhpu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1356,117 +1437,174 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Countries with Multiple TZs</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="zone">zone</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="latitude">latitude</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="longitude">longitude</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="zone" class="gt_row gt_left">America/Adak</td>
-<td headers="latitude" class="gt_row gt_right">52.66667</td>
-<td headers="longitude" class="gt_row gt_right">-177.13333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Nome</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">64.56667</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-165.78333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">Pacific/Honolulu</td>
-<td headers="latitude" class="gt_row gt_right">21.71667</td>
-<td headers="longitude" class="gt_row gt_right">-158.35000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Anchorage</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">61.30000</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-149.91667</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Yakutat</td>
-<td headers="latitude" class="gt_row gt_right">60.35000</td>
-<td headers="longitude" class="gt_row gt_right">-140.35000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Sitka</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">57.75000</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-135.41667</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Juneau</td>
-<td headers="latitude" class="gt_row gt_right">58.41667</td>
-<td headers="longitude" class="gt_row gt_right">-134.60000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Metlakatla</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">55.73333</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-132.15000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Los_Angeles</td>
-<td headers="latitude" class="gt_row gt_right">34.18333</td>
-<td headers="longitude" class="gt_row gt_right">-118.80000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Boise</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">44.41667</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-116.35000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Phoenix</td>
-<td headers="latitude" class="gt_row gt_right">34.33333</td>
-<td headers="longitude" class="gt_row gt_right">-112.46667</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Denver</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">40.08333</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-105.03333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/North_Dakota/Beulah</td>
-<td headers="latitude" class="gt_row gt_right">48.10000</td>
-<td headers="longitude" class="gt_row gt_right">-102.43333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/North_Dakota/Center</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">48.08333</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-102.23333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/North_Dakota/New_Salem</td>
-<td headers="latitude" class="gt_row gt_right">47.53333</td>
-<td headers="longitude" class="gt_row gt_right">-102.05000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Menominee</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">45.56667</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-88.45000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Indiana/Vincennes</td>
-<td headers="latitude" class="gt_row gt_right">39.30000</td>
-<td headers="longitude" class="gt_row gt_right">-88.23333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Indiana/Petersburg</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">39.00000</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-87.98333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Chicago</td>
-<td headers="latitude" class="gt_row gt_right">41.85000</td>
-<td headers="longitude" class="gt_row gt_right">-87.65000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Indiana/Tell_City</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">38.13333</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-87.43333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Indiana/Knox</td>
-<td headers="latitude" class="gt_row gt_right">42.03333</td>
-<td headers="longitude" class="gt_row gt_right">-87.11667</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Indiana/Marengo</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">38.90000</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-87.01667</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Indiana/Winamac</td>
-<td headers="latitude" class="gt_row gt_right">41.13333</td>
-<td headers="longitude" class="gt_row gt_right">-86.78333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Indiana/Indianapolis</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">39.86667</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-86.63333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Kentucky/Louisville</td>
-<td headers="latitude" class="gt_row gt_right">38.50000</td>
-<td headers="longitude" class="gt_row gt_right">-86.31667</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Kentucky/Monticello</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">37.60000</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-85.78333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/Indiana/Vevay</td>
-<td headers="latitude" class="gt_row gt_right">39.60000</td>
-<td headers="longitude" class="gt_row gt_right">-85.10000</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left gt_striped">America/Detroit</td>
-<td headers="latitude" class="gt_row gt_right gt_striped">43.20000</td>
-<td headers="longitude" class="gt_row gt_right gt_striped">-83.78333</td></tr>
-    <tr><td headers="zone" class="gt_row gt_left">America/New_York</td>
-<td headers="latitude" class="gt_row gt_right">41.55000</td>
-<td headers="longitude" class="gt_row gt_right">-74.38333</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border">Countries with Multiple TZs</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="zone" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">zone</th>
+<th id="latitude" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">latitude</th>
+<th id="longitude" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">longitude</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Adak</td>
+<td class="gt_row gt_right" headers="latitude">52.66667</td>
+<td class="gt_row gt_right" headers="longitude">-177.13333</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Nome</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">64.56667</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-165.78333</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">Pacific/Honolulu</td>
+<td class="gt_row gt_right" headers="latitude">21.71667</td>
+<td class="gt_row gt_right" headers="longitude">-158.35000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Anchorage</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">61.30000</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-149.91667</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Yakutat</td>
+<td class="gt_row gt_right" headers="latitude">60.35000</td>
+<td class="gt_row gt_right" headers="longitude">-140.35000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Sitka</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">57.75000</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-135.41667</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Juneau</td>
+<td class="gt_row gt_right" headers="latitude">58.41667</td>
+<td class="gt_row gt_right" headers="longitude">-134.60000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Metlakatla</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">55.73333</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-132.15000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Los_Angeles</td>
+<td class="gt_row gt_right" headers="latitude">34.18333</td>
+<td class="gt_row gt_right" headers="longitude">-118.80000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Boise</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">44.41667</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-116.35000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Phoenix</td>
+<td class="gt_row gt_right" headers="latitude">34.33333</td>
+<td class="gt_row gt_right" headers="longitude">-112.46667</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Denver</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">40.08333</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-105.03333</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/North_Dakota/Beulah</td>
+<td class="gt_row gt_right" headers="latitude">48.10000</td>
+<td class="gt_row gt_right" headers="longitude">-102.43333</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/North_Dakota/Center</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">48.08333</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-102.23333</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/North_Dakota/New_Salem</td>
+<td class="gt_row gt_right" headers="latitude">47.53333</td>
+<td class="gt_row gt_right" headers="longitude">-102.05000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Menominee</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">45.56667</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-88.45000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Indiana/Vincennes</td>
+<td class="gt_row gt_right" headers="latitude">39.30000</td>
+<td class="gt_row gt_right" headers="longitude">-88.23333</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Indiana/Petersburg</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">39.00000</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-87.98333</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Chicago</td>
+<td class="gt_row gt_right" headers="latitude">41.85000</td>
+<td class="gt_row gt_right" headers="longitude">-87.65000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Indiana/Tell_City</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">38.13333</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-87.43333</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Indiana/Knox</td>
+<td class="gt_row gt_right" headers="latitude">42.03333</td>
+<td class="gt_row gt_right" headers="longitude">-87.11667</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Indiana/Marengo</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">38.90000</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-87.01667</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Indiana/Winamac</td>
+<td class="gt_row gt_right" headers="latitude">41.13333</td>
+<td class="gt_row gt_right" headers="longitude">-86.78333</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Indiana/Indianapolis</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">39.86667</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-86.63333</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Kentucky/Louisville</td>
+<td class="gt_row gt_right" headers="latitude">38.50000</td>
+<td class="gt_row gt_right" headers="longitude">-86.31667</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Kentucky/Monticello</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">37.60000</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-85.78333</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/Indiana/Vevay</td>
+<td class="gt_row gt_right" headers="latitude">39.60000</td>
+<td class="gt_row gt_right" headers="longitude">-85.10000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="zone">America/Detroit</td>
+<td class="gt_row gt_right gt_striped" headers="latitude">43.20000</td>
+<td class="gt_row gt_right gt_striped" headers="longitude">-83.78333</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="zone">America/New_York</td>
+<td class="gt_row gt_right" headers="latitude">41.55000</td>
+<td class="gt_row gt_right" headers="longitude">-74.38333</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
 
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
   author = {Sinks, Louise E.},
   title = {Tidy {Tuesday:} {Daylight} {Savings} {Time}},
   date = {2023-03-28},
@@ -1512,18 +1650,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1555,11 +1682,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/lsinks\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1569,8 +1733,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1582,7 +1755,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1626,6 +1921,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1651,6 +1947,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1718,12 +2040,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="Development of novel oxygen imaging technique based on two-photon excitation microscopy. Modeling kinetic events and simulation of excitation volume with Matlab.">
 
-<title>Louise E. Sinks - Phosphorescence Lifetime Imaging</title>
+<title>Phosphorescence Lifetime Imaging – Louise E. Sinks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,17 +38,23 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -83,6 +90,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -108,7 +117,7 @@ background-size: cover;
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Louise E. Sinks - Phosphorescence Lifetime Imaging">
+<meta name="twitter:title" content="Phosphorescence Lifetime Imaging – Louise E. Sinks">
 <meta name="twitter:description" content="Development of novel oxygen imaging technique based on two-photon excitation microscopy. Modeling kinetic events and simulation of excitation volume with Matlab.">
 <meta name="twitter:image" content="https://lsinks.github.io/portfolio/Phosphorescence_Lifetime_Imaging/one_photon_psf.jpg">
 <meta name="twitter:creator" content="@LouiseSinks">
@@ -118,53 +127,53 @@ background-size: cover;
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Louise E. Sinks</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../portfolio.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me/ CV</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me/ CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Blog Entries</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Blog Entries</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../currentprojects.html" rel="" target="">
- <span class="menu-text">Current Projects</span></a>
+    <a class="nav-link" href="../../currentprojects.html"> 
+<span class="menu-text">Current Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogroll.html" rel="" target="">
- <span class="menu-text">Blog Roll</span></a>
+    <a class="nav-link" href="../../blogroll.html"> 
+<span class="menu-text">Blog Roll</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../posts.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -213,6 +222,7 @@ background-size: cover;
 
 
 
+
 <p>The <a href="https://vinogradovlab.org/">Vinogradov Lab</a> at the University of Pennsylvania is a multi-disciplinary group that develops new molecules and instrumentation for analyte detection and imaging. My work focused on developing a new two-photon lifetime imaging microscopy techniques and photophysical characterization of new probe molecules.</p>
 <section id="development-of-two-photon-phosphorescence-lifetime-imaging-microscope" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="development-of-two-photon-phosphorescence-lifetime-imaging-microscope">Development of Two-Photon Phosphorescence Lifetime Imaging Microscope</h2>
@@ -222,26 +232,38 @@ background-size: cover;
 <p><img src="3D_polymersome.png" class="img-fluid" alt="a 3D image of a large white oval and a smaller less bright sphere."></p>
 </div></div><p>Two-photon microscopy achieves super-resolution through a contracted point spread function of excitation compared to one-photon resolution. While the resolution was fairly well understood for fluorescent probes, the novel phosphorescent probes developed by the Vinogradov lab had additional properties (emission lifetimes that are several orders of magnitude longer than for fluorophores) that could impact resolution. I simulated the point spread function with Matlab to determine the resolution under various operating conditions.</p>
 <div id="fig-psf" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-onephoton" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="one_photon_psf.jpg" class="img-fluid figure-img" alt="The PSF for one photon excitation showing a large z extent and multiple lobes and structure that would make the airy disk in the xy plane" data-ref-parent="fig-psf"></p>
-<figcaption class="figure-caption">(a) One Photon Excitation Volume</figcaption>
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-psf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-psf" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-onephoton" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The PSF for one photon excitation showing a large z extent and multiple lobes and structure that would make the airy disk in the xy plane">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-onephoton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="one_photon_psf.jpg" class="img-fluid figure-img" data-ref-parent="fig-psf" alt="The PSF for one photon excitation showing a large z extent and multiple lobes and structure that would make the airy disk in the xy plane">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-onephoton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) One Photon Excitation Volume
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-twophoton" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="two_photon_psf.jpg" class="img-fluid figure-img" alt="The PSF for two photon excitation showing a compact oval in z direction" data-ref-parent="fig-psf"></p>
-<figcaption class="figure-caption">(b) Two Photon Excitation Volume</figcaption>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-psf" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-twophoton" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The PSF for two photon excitation showing a compact oval in z direction">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-twophoton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="two_photon_psf.jpg" class="img-fluid figure-img" data-ref-parent="fig-psf" alt="The PSF for two photon excitation showing a compact oval in z direction">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-twophoton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Two Photon Excitation Volume
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Excitation volumes under one and two photon absorption regimes. Graphs are of the XZ plane.</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-psf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Excitation volumes under one and two photon absorption regimes. Graphs are of the XZ plane.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -258,26 +280,38 @@ background-size: cover;
 <p>The probe molecules were developed for in vitro and in vivo use. Lots of fundamental questions about cellular functioning remain unanswered due to the lack of high-resolution data. Is there an oxygen gradient within a cell as the mitochondria consume oxygen? How exactly do zinc levels change as insulin is released?</p>
 <p>I collaborated with multiple groups at the University of Pennsylvania on the problem of loading our probes into the cell. At one point, I collaborated with research groups from every experimental school at Penn- Arts &amp; Science, Medicine, Veterinary Medicine, and Engineering! We worked with a variety of cell lines- HeLa, fibroblasts, and macrophages. I did much of the cell culture myself. Various loading techniques were tested, such as microporation, transfection agents, scrape loading, endocytosis of vesicles, and polymersomes decorated with transfection agents. I would then characterize the probe within the cell using Two-Photon Phosphorescent Lifetime Imaging. Generally, the molecules behaved well, but often, the loading process led to many dead cells.</p>
 <div id="fig-cells" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-cell" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="cell.jpg" class="img-fluid figure-img" alt="A brightfield image of a healthy triangular cell in the center and a dead or blebbed cell in the corner" data-ref-parent="fig-cells"></p>
-<figcaption class="figure-caption">(a) Bright Field Image of HeLa cells</figcaption>
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cells-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cells" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-cell" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A brightfield image of a healthy triangular cell in the center and a dead or blebbed cell in the corner">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-cell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cell.jpg" class="img-fluid figure-img" data-ref-parent="fig-cells" alt="A brightfield image of a healthy triangular cell in the center and a dead or blebbed cell in the corner">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Bright Field Image of HeLa cells
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-cell-phos" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="cell_phosphorescence.jpg" class="img-fluid figure-img" alt="Both cells glow white. The healthy cell has a dark spot in the center where the nucleus is" data-ref-parent="fig-cells"></p>
-<figcaption class="figure-caption">(b) Phosphorescence Image of HeLa cells</figcaption>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-cells" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-cell-phos" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Both cells glow white. The healthy cell has a dark spot in the center where the nucleus is">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-cell-phos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="cell_phosphorescence.jpg" class="img-fluid figure-img" data-ref-parent="fig-cells" alt="Both cells glow white. The healthy cell has a dark spot in the center where the nucleus is">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-cell-phos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Phosphorescence Image of HeLa cells
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Bright-field and Phosphorescent Images of HeLa cells. Probe loading was via microporation. Probe appears not to enter the nucleus.</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cells-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Bright-field and Phosphorescent Images of HeLa cells. Probe loading was via microporation. Probe appears not to enter the nucleus.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -338,18 +372,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -381,11 +404,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/lsinks\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -395,8 +455,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -408,7 +477,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -452,6 +643,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -477,6 +669,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -542,12 +760,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

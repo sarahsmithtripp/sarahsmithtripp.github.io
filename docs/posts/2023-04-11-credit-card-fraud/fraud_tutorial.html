@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-04-11">
 <meta name="description" content="An Imbalanced Class Problem">
 
-<title>Louise E. Sinks - Credit Card Fraud: A Tidymodels Tutorial</title>
+<title>Credit Card Fraud: A Tidymodels Tutorial – Louise E. Sinks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -74,17 +74,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -119,6 +126,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -126,7 +135,7 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Louise E. Sinks - Credit Card Fraud: A Tidymodels Tutorial">
+<meta name="twitter:title" content="Credit Card Fraud: A Tidymodels Tutorial – Louise E. Sinks">
 <meta name="twitter:description" content="An Imbalanced Class Problem">
 <meta name="twitter:image" content="https://lsinks.github.io/posts/2023-04-11-credit-card-fraud/thumbnail.png">
 <meta name="twitter:creator" content="@LouiseSinks">
@@ -139,52 +148,52 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Louise E. Sinks</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../portfolio.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me/ CV</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me/ CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Blog Entries</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Blog Entries</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../currentprojects.html" rel="" target="">
- <span class="menu-text">Current Projects</span></a>
+    <a class="nav-link" href="../../currentprojects.html"> 
+<span class="menu-text">Current Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogroll.html" rel="" target="">
- <span class="menu-text">Blog Roll</span></a>
+    <a class="nav-link" href="../../blogroll.html"> 
+<span class="menu-text">Blog Roll</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../posts.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -237,7 +246,7 @@ cookieconsent.run({
     <div class="quarto-category">R</div>
     <div class="quarto-category">R-code</div>
     <div class="quarto-category">tidymodels</div>
-    <div class="quarto-category">Machine Learning</div>
+    <div class="quarto-category">machine learning</div>
     <div class="quarto-category">classifiers</div>
   </div>
   </div>
@@ -268,14 +277,16 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 3, 2023</p>
+      <p class="date-modified">December 21, 2024</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <section id="classification-using-tidymodels" class="level1">
 <h1>1. Classification using tidymodels</h1>
@@ -363,7 +374,7 @@ cookieconsent.run({
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">my_skim</span>(fraud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
@@ -413,7 +424,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: character</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 13%">
@@ -500,7 +511,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: Date</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 12%">
@@ -534,7 +545,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 16%">
 <col style="width: 12%">
@@ -631,7 +642,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: POSIXct</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 8%">
@@ -808,7 +819,11 @@ cookieconsent.run({
 <span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>          <span class="co"># rel_heights values control vertical title margins</span></span>
 <span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>          <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/compactness-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/compactness-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>If you look at Figure 1A, roughly 75-80 categories have to be included to capture 80% of the data. For Figure 1B, roughly ten categories have to be included. Ideally, you’d like a very steep curve initially (where a “small number” of categories cover the “majority” of the data) and then a long, shallow tail approaching 100% that corresponds to the data to be binned in “other” or dropped. There aren’t hard and fast rules on making these decisions. I decided to use 80% as my threshold. Both of these curves look relatively shallow to me, so I decided not to do any binning, grouping, or dropping of levels.</p>
@@ -822,7 +837,11 @@ cookieconsent.run({
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Count"</span>) <span class="sc">+</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Merchant Type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/category-levels-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/category-levels-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Gas/transport was the most common category, and grocery was the second most common, both of which make sense. The least common category was travel. Nothing seemed unusual in the ranking.</p>
@@ -924,7 +943,11 @@ cookieconsent.run({
 <span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">1</span>,</span>
 <span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>          <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/transaction-merchant-coords-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/transaction-merchant-coords-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>These two sets of data are highly correlated (for latitude = 0.994 and for longitude = 0.999) and thus are redundant. So I remove <code>merch_lat</code> and <code>merch_long</code> from the dataset.</p>
@@ -954,7 +977,11 @@ cookieconsent.run({
 <span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Latitude"</span>) <span class="sc">+</span></span>
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Longitude"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/fraud-by-location-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/fraud-by-location-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>It looks like there are some locations which only have fraudulent transactions.</p>
@@ -1045,7 +1072,11 @@ cookieconsent.run({
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Distance from Home (miles)"</span>) <span class="sc">+</span></span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Is Fraud?"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/distance-and-fraud-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/distance-and-fraud-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Some distances only have fraudulent transactions. This might be related to the locations that are only fraud, Figure 4.</p>
@@ -1119,7 +1150,11 @@ cookieconsent.run({
 <span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>          <span class="co"># rel_heights values control vertical title margins</span></span>
 <span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>          <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/dob-viz-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/dob-viz-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>table_4_data <span class="ot">&lt;-</span> fraud <span class="sc">%&gt;%</span> <span class="fu">count</span>(age)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1132,7 +1167,6 @@ cookieconsent.run({
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">:::</span><span class="fu">as.tags.gt_tbl</span>(table_4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="privxtybpz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#privxtybpz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1573,156 +1607,289 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Ages of Card Holders</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Ages">Ages</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Count">Count</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="age" class="gt_row gt_right">17</td>
-<td headers="n" class="gt_row gt_right">2190</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">18</td>
-<td headers="n" class="gt_row gt_right gt_striped">2198</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">19</td>
-<td headers="n" class="gt_row gt_right">6592</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">20</td>
-<td headers="n" class="gt_row gt_right gt_striped">741</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">21</td>
-<td headers="n" class="gt_row gt_right">2207</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">22</td>
-<td headers="n" class="gt_row gt_right gt_striped">31</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">23</td>
-<td headers="n" class="gt_row gt_right">3663</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">25</td>
-<td headers="n" class="gt_row gt_right gt_striped">3659</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">26</td>
-<td headers="n" class="gt_row gt_right">6587</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">27</td>
-<td headers="n" class="gt_row gt_right gt_striped">4378</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">28</td>
-<td headers="n" class="gt_row gt_right">2926</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">29</td>
-<td headers="n" class="gt_row gt_right gt_striped">8772</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">30</td>
-<td headers="n" class="gt_row gt_right">17525</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">31</td>
-<td headers="n" class="gt_row gt_right gt_striped">16093</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">32</td>
-<td headers="n" class="gt_row gt_right">2940</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">33</td>
-<td headers="n" class="gt_row gt_right gt_striped">10220</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">34</td>
-<td headers="n" class="gt_row gt_right">11675</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">35</td>
-<td headers="n" class="gt_row gt_right gt_striped">2204</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">36</td>
-<td headers="n" class="gt_row gt_right">10218</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">37</td>
-<td headers="n" class="gt_row gt_right gt_striped">9489</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">38</td>
-<td headers="n" class="gt_row gt_right">8049</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">39</td>
-<td headers="n" class="gt_row gt_right gt_striped">5120</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">40</td>
-<td headers="n" class="gt_row gt_right">8017</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">41</td>
-<td headers="n" class="gt_row gt_right gt_striped">1467</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">42</td>
-<td headers="n" class="gt_row gt_right">6592</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">43</td>
-<td headers="n" class="gt_row gt_right gt_striped">5847</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">44</td>
-<td headers="n" class="gt_row gt_right">14619</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">45</td>
-<td headers="n" class="gt_row gt_right gt_striped">14608</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">46</td>
-<td headers="n" class="gt_row gt_right">13888</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">47</td>
-<td headers="n" class="gt_row gt_right gt_striped">8015</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">48</td>
-<td headers="n" class="gt_row gt_right">1500</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">49</td>
-<td headers="n" class="gt_row gt_right gt_striped">5135</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">50</td>
-<td headers="n" class="gt_row gt_right">1482</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">51</td>
-<td headers="n" class="gt_row gt_right gt_striped">12449</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">52</td>
-<td headers="n" class="gt_row gt_right">7330</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">53</td>
-<td headers="n" class="gt_row gt_right gt_striped">5855</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">54</td>
-<td headers="n" class="gt_row gt_right">2922</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">55</td>
-<td headers="n" class="gt_row gt_right gt_striped">3684</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">56</td>
-<td headers="n" class="gt_row gt_right">735</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">57</td>
-<td headers="n" class="gt_row gt_right gt_striped">7340</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">58</td>
-<td headers="n" class="gt_row gt_right">2201</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">59</td>
-<td headers="n" class="gt_row gt_right gt_striped">7318</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">60</td>
-<td headers="n" class="gt_row gt_right">2194</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">61</td>
-<td headers="n" class="gt_row gt_right gt_striped">2951</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">62</td>
-<td headers="n" class="gt_row gt_right">5878</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">63</td>
-<td headers="n" class="gt_row gt_right gt_striped">5143</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">64</td>
-<td headers="n" class="gt_row gt_right">5115</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">65</td>
-<td headers="n" class="gt_row gt_right gt_striped">3657</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">66</td>
-<td headers="n" class="gt_row gt_right">737</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">67</td>
-<td headers="n" class="gt_row gt_right gt_striped">4391</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">68</td>
-<td headers="n" class="gt_row gt_right">6582</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">70</td>
-<td headers="n" class="gt_row gt_right gt_striped">1461</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">72</td>
-<td headers="n" class="gt_row gt_right">8</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">73</td>
-<td headers="n" class="gt_row gt_right gt_striped">2939</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">75</td>
-<td headers="n" class="gt_row gt_right">1463</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">76</td>
-<td headers="n" class="gt_row gt_right gt_striped">1472</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">77</td>
-<td headers="n" class="gt_row gt_right">753</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">78</td>
-<td headers="n" class="gt_row gt_right gt_striped">2951</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">79</td>
-<td headers="n" class="gt_row gt_right">5118</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">80</td>
-<td headers="n" class="gt_row gt_right gt_striped">11</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">81</td>
-<td headers="n" class="gt_row gt_right">1465</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">82</td>
-<td headers="n" class="gt_row gt_right gt_striped">2926</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">83</td>
-<td headers="n" class="gt_row gt_right">4393</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">86</td>
-<td headers="n" class="gt_row gt_right gt_striped">744</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">89</td>
-<td headers="n" class="gt_row gt_right">2929</td></tr>
-    <tr><td headers="age" class="gt_row gt_right gt_striped">90</td>
-<td headers="n" class="gt_row gt_right gt_striped">3652</td></tr>
-    <tr><td headers="age" class="gt_row gt_right">91</td>
-<td headers="n" class="gt_row gt_right">2193</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border">Ages of Card Holders</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Ages" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ages</th>
+<th id="Count" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Count</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">17</td>
+<td class="gt_row gt_right" headers="n">2190</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">18</td>
+<td class="gt_row gt_right gt_striped" headers="n">2198</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">19</td>
+<td class="gt_row gt_right" headers="n">6592</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">20</td>
+<td class="gt_row gt_right gt_striped" headers="n">741</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">21</td>
+<td class="gt_row gt_right" headers="n">2207</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">22</td>
+<td class="gt_row gt_right gt_striped" headers="n">31</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">23</td>
+<td class="gt_row gt_right" headers="n">3663</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">25</td>
+<td class="gt_row gt_right gt_striped" headers="n">3659</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">26</td>
+<td class="gt_row gt_right" headers="n">6587</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">27</td>
+<td class="gt_row gt_right gt_striped" headers="n">4378</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">28</td>
+<td class="gt_row gt_right" headers="n">2926</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">29</td>
+<td class="gt_row gt_right gt_striped" headers="n">8772</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">30</td>
+<td class="gt_row gt_right" headers="n">17525</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">31</td>
+<td class="gt_row gt_right gt_striped" headers="n">16093</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">32</td>
+<td class="gt_row gt_right" headers="n">2940</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">33</td>
+<td class="gt_row gt_right gt_striped" headers="n">10220</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">34</td>
+<td class="gt_row gt_right" headers="n">11675</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">35</td>
+<td class="gt_row gt_right gt_striped" headers="n">2204</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">36</td>
+<td class="gt_row gt_right" headers="n">10218</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">37</td>
+<td class="gt_row gt_right gt_striped" headers="n">9489</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">38</td>
+<td class="gt_row gt_right" headers="n">8049</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">39</td>
+<td class="gt_row gt_right gt_striped" headers="n">5120</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">40</td>
+<td class="gt_row gt_right" headers="n">8017</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">41</td>
+<td class="gt_row gt_right gt_striped" headers="n">1467</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">42</td>
+<td class="gt_row gt_right" headers="n">6592</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">43</td>
+<td class="gt_row gt_right gt_striped" headers="n">5847</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">44</td>
+<td class="gt_row gt_right" headers="n">14619</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">45</td>
+<td class="gt_row gt_right gt_striped" headers="n">14608</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">46</td>
+<td class="gt_row gt_right" headers="n">13888</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">47</td>
+<td class="gt_row gt_right gt_striped" headers="n">8015</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">48</td>
+<td class="gt_row gt_right" headers="n">1500</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">49</td>
+<td class="gt_row gt_right gt_striped" headers="n">5135</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">50</td>
+<td class="gt_row gt_right" headers="n">1482</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">51</td>
+<td class="gt_row gt_right gt_striped" headers="n">12449</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">52</td>
+<td class="gt_row gt_right" headers="n">7330</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">53</td>
+<td class="gt_row gt_right gt_striped" headers="n">5855</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">54</td>
+<td class="gt_row gt_right" headers="n">2922</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">55</td>
+<td class="gt_row gt_right gt_striped" headers="n">3684</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">56</td>
+<td class="gt_row gt_right" headers="n">735</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">57</td>
+<td class="gt_row gt_right gt_striped" headers="n">7340</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">58</td>
+<td class="gt_row gt_right" headers="n">2201</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">59</td>
+<td class="gt_row gt_right gt_striped" headers="n">7318</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">60</td>
+<td class="gt_row gt_right" headers="n">2194</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">61</td>
+<td class="gt_row gt_right gt_striped" headers="n">2951</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">62</td>
+<td class="gt_row gt_right" headers="n">5878</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">63</td>
+<td class="gt_row gt_right gt_striped" headers="n">5143</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">64</td>
+<td class="gt_row gt_right" headers="n">5115</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">65</td>
+<td class="gt_row gt_right gt_striped" headers="n">3657</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">66</td>
+<td class="gt_row gt_right" headers="n">737</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">67</td>
+<td class="gt_row gt_right gt_striped" headers="n">4391</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">68</td>
+<td class="gt_row gt_right" headers="n">6582</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">70</td>
+<td class="gt_row gt_right gt_striped" headers="n">1461</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">72</td>
+<td class="gt_row gt_right" headers="n">8</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">73</td>
+<td class="gt_row gt_right gt_striped" headers="n">2939</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">75</td>
+<td class="gt_row gt_right" headers="n">1463</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">76</td>
+<td class="gt_row gt_right gt_striped" headers="n">1472</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">77</td>
+<td class="gt_row gt_right" headers="n">753</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">78</td>
+<td class="gt_row gt_right gt_striped" headers="n">2951</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">79</td>
+<td class="gt_row gt_right" headers="n">5118</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">80</td>
+<td class="gt_row gt_right gt_striped" headers="n">11</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">81</td>
+<td class="gt_row gt_right" headers="n">1465</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">82</td>
+<td class="gt_row gt_right gt_striped" headers="n">2926</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">83</td>
+<td class="gt_row gt_right" headers="n">4393</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">86</td>
+<td class="gt_row gt_right gt_striped" headers="n">744</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">89</td>
+<td class="gt_row gt_right" headers="n">2929</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="age">90</td>
+<td class="gt_row gt_right gt_striped" headers="n">3652</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="age">91</td>
+<td class="gt_row gt_right" headers="n">2193</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1752,7 +1919,11 @@ cookieconsent.run({
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Count"</span>) <span class="sc">+</span></span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Date/ Time"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/date-times-viz-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/date-times-viz-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Next, I will break the transaction date-time into day of the week, hour, and the date only. I’m doing this here with <a href="https://lubridate.tidyverse.org/">lubridate functions</a>, but I could also do this in the model building section, when I create recipes by using <a href="https://recipes.tidymodels.org/reference/step_date.html">step_date()</a>. I will also graph transactions by day of the week.</p>
@@ -1777,7 +1948,11 @@ cookieconsent.run({
 <span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Count"</span>) <span class="sc">+</span></span>
 <span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Weekday"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/day-transactions-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/day-transactions-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Monday has the highest number of transactions; this could be due to businesses processing orders that came in over the weekend. By default, lubridate codes the day of the week as a number where 1 means Monday, 7 means Sunday.</p>
@@ -1814,7 +1989,11 @@ cookieconsent.run({
 <span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>          <span class="co"># rel_heights values control vertical title margins</span></span>
 <span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>          <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/hour-transactions-graph-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/hour-transactions-graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This data honestly looks funny to me. I might expect that most transactions would occur during normal business hours (~9-5) or more occur during lunch or after work, but what we see is a lower number of transactions from midnight to ~ 2 pm and then a higher number of transactions from 2 pm until midnight. The odd pattern could be a sign that something is wrong with the data (perhaps timezones aren’t being encoded properly?), or it could be simply a lack of subject matter knowledge (for example, transactions are pre-authorized at the time of sale and processed later, and the transaction time is the processing time, not the sale time.) Of course, this is also a synthetic dataset, so this pattern may be simply the result of user input choices when the set was generated. If this were a real dataset, I’d chase this down.</p>
@@ -1832,7 +2011,6 @@ cookieconsent.run({
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">:::</span><span class="fu">as.tags.gt_tbl</span>(table_5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="ytjiddkmzb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#ytjiddkmzb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -2273,70 +2451,117 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Transactions by Time of Day</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Hour">Hour</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Count">Count</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="hour" class="gt_row gt_right">0</td>
-<td headers="n" class="gt_row gt_right">11039</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">1</td>
-<td headers="n" class="gt_row gt_right gt_striped">11241</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">2</td>
-<td headers="n" class="gt_row gt_right">11019</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">3</td>
-<td headers="n" class="gt_row gt_right gt_striped">11227</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">4</td>
-<td headers="n" class="gt_row gt_right">10904</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">5</td>
-<td headers="n" class="gt_row gt_right gt_striped">11023</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">6</td>
-<td headers="n" class="gt_row gt_right">11145</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">7</td>
-<td headers="n" class="gt_row gt_right gt_striped">11094</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">8</td>
-<td headers="n" class="gt_row gt_right">11123</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">9</td>
-<td headers="n" class="gt_row gt_right gt_striped">10997</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">10</td>
-<td headers="n" class="gt_row gt_right">11123</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">11</td>
-<td headers="n" class="gt_row gt_right gt_striped">11016</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">12</td>
-<td headers="n" class="gt_row gt_right">17168</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">13</td>
-<td headers="n" class="gt_row gt_right gt_striped">17125</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">14</td>
-<td headers="n" class="gt_row gt_right">16879</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">15</td>
-<td headers="n" class="gt_row gt_right gt_striped">17169</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">16</td>
-<td headers="n" class="gt_row gt_right">17465</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">17</td>
-<td headers="n" class="gt_row gt_right gt_striped">17011</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">18</td>
-<td headers="n" class="gt_row gt_right">17021</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">19</td>
-<td headers="n" class="gt_row gt_right gt_striped">17277</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">20</td>
-<td headers="n" class="gt_row gt_right">17298</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">21</td>
-<td headers="n" class="gt_row gt_right gt_striped">17267</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right">22</td>
-<td headers="n" class="gt_row gt_right">17460</td></tr>
-    <tr><td headers="hour" class="gt_row gt_right gt_striped">23</td>
-<td headers="n" class="gt_row gt_right gt_striped">17516</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border">Transactions by Time of Day</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Hour" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Hour</th>
+<th id="Count" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Count</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">0</td>
+<td class="gt_row gt_right" headers="n">11039</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">1</td>
+<td class="gt_row gt_right gt_striped" headers="n">11241</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">2</td>
+<td class="gt_row gt_right" headers="n">11019</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">3</td>
+<td class="gt_row gt_right gt_striped" headers="n">11227</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">4</td>
+<td class="gt_row gt_right" headers="n">10904</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">5</td>
+<td class="gt_row gt_right gt_striped" headers="n">11023</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">6</td>
+<td class="gt_row gt_right" headers="n">11145</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">7</td>
+<td class="gt_row gt_right gt_striped" headers="n">11094</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">8</td>
+<td class="gt_row gt_right" headers="n">11123</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">9</td>
+<td class="gt_row gt_right gt_striped" headers="n">10997</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">10</td>
+<td class="gt_row gt_right" headers="n">11123</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">11</td>
+<td class="gt_row gt_right gt_striped" headers="n">11016</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">12</td>
+<td class="gt_row gt_right" headers="n">17168</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">13</td>
+<td class="gt_row gt_right gt_striped" headers="n">17125</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">14</td>
+<td class="gt_row gt_right" headers="n">16879</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">15</td>
+<td class="gt_row gt_right gt_striped" headers="n">17169</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">16</td>
+<td class="gt_row gt_right" headers="n">17465</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">17</td>
+<td class="gt_row gt_right gt_striped" headers="n">17011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">18</td>
+<td class="gt_row gt_right" headers="n">17021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">19</td>
+<td class="gt_row gt_right gt_striped" headers="n">17277</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">20</td>
+<td class="gt_row gt_right" headers="n">17298</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">21</td>
+<td class="gt_row gt_right gt_striped" headers="n">17267</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="hour">22</td>
+<td class="gt_row gt_right" headers="n">17460</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right gt_striped" headers="hour">23</td>
+<td class="gt_row gt_right gt_striped" headers="n">17516</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2387,7 +2612,11 @@ cookieconsent.run({
 <span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">1</span>,</span>
 <span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">rel_heights =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/amt-log-amt-graph-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/amt-log-amt-graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The transformed data is more symmetric so that the transformed variable will be retained.</p>
@@ -2447,7 +2676,11 @@ cookieconsent.run({
 <span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Figure 10: Correlations between fraud and the predictors"</span></span>
 <span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/correlation-graph-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/correlation-graph-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Tidymodels requires that the outcome be a factor and the <a href="https://community.rstudio.com/t/tidymodels-which-factor-level-is-the-default-positive-class/100428">positive class be the first level</a>. So I create the factor and relevel it.</p>
@@ -2803,7 +3036,11 @@ $ amt_log        &lt;dbl&gt; 4.6749761, 5.3941274, 4.5673645, 2.0502702, 1.92424
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(tune_results, <span class="at">rank_metric =</span> <span class="st">"j_index"</span>, <span class="at">select_best =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Figure 11: Performance of various models"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/rank-results-table-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/rank-results-table-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The best performing model / recipe pair by j-index is the downsampled lightgmb (<code>down_lightgmb</code>).</p>
@@ -2817,7 +3054,11 @@ $ amt_log        &lt;dbl&gt; 4.6749761, 5.3941274, 4.5673645, 2.0502702, 1.92424
 <span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_pander</span>(<span class="dv">8</span>) <span class="sc">+</span></span>
 <span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Figure 12: Perfomance of different hyperparameters"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/gmb-hyperparameters-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/gmb-hyperparameters-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>In this case, I’m just going to extract the best set of hyperparameters and move on. This is done using the <code>extract_workflow_set_result</code> and <code>select_best(metric = "j_index")</code>. There are other ways to select the best hyperparameters. The list of selectors is found <a href="https://tune.tidymodels.org/reference/show_best.html">here</a>.</p>
@@ -2866,7 +3107,11 @@ $ amt_log        &lt;dbl&gt; 4.6749761, 5.3941274, 4.5673645, 2.0502702, 1.92424
 <span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autoplot</span>() <span class="sc">+</span></span>
 <span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Figure 13: ROC Curve"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fraud_tutorial_files/figure-html/model-performance-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="fraud_tutorial_files/figure-html/model-performance-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Just for fun, let’s see how much money this model would have save our credit card company. I’m going to assume the cost of fraud is the cost of the transaction. I calculate the total cost of all the fraudulent transactions in the test dataset. I then calculate the cost based on the model predictions. Any truly fraudulent transactions that were not caught, cost the value of the transaction. Legitimate transactions that were marked as fraud were assigned $0 cost. This likely isn’t true. There is the cost of having to deal with customers calling because the transaction was declined or the cost sending out texts for suspicious transactions, but this cost is very small relative to the cost of a fraudulent transaction. I got the idea from this paper: Zhang, D. , Bhandari, B. and Black, D. (2020) Credit Card Fraud Detection Using Weighted Support Vector Machine. <em>Applied Mathematics</em>, <strong>11</strong>, 1275-1291. doi: <a href="https://doi.org/10.4236/am.2020.1112087">10.4236/am.2020.1112087</a>.</p>
@@ -2911,7 +3156,7 @@ Prediction     1     0
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
   author = {Sinks, Louise E.},
   title = {Credit {Card} {Fraud:} {A} {Tidymodels} {Tutorial}},
   date = {2023-04-11},
@@ -2957,18 +3202,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3000,11 +3234,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/lsinks\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3014,8 +3285,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3027,7 +3307,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -3071,6 +3473,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3096,6 +3499,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -3163,12 +3592,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

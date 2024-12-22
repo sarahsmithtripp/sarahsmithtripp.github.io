@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-08-15">
 <meta name="description" content="Methods for dealing with overlapping points and then styling a leaflet map with various labels and pop-ups.">
 
-<title>Louise E. Sinks - Mapping for the Tombstone Project</title>
+<title>Mapping for the Tombstone Project – Louise E. Sinks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -74,17 +74,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -119,225 +126,438 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
   
 <script src="../../site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+
 <script src="../../site_libs/jquery-1.12.4/jquery.min.js"></script>
+
 <link href="../../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+
 <script src="../../site_libs/leaflet-1.3.1/leaflet.js"></script>
+
 <link href="../../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+
 <script src="../../site_libs/proj4-2.6.2/proj4.min.js"></script>
+
 <script src="../../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+
 <link href="../../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+
 <script src="../../site_libs/leaflet-binding-2.1.2/leaflet.js"></script>
+
 <link href="../../site_libs/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet">
+
 <link href="../../site_libs/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet">
+
 <script src="../../site_libs/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+
 <script src="../../site_libs/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+
 <script src="../../site_libs/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+
 <script src="../../site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+
 <script src="../../site_libs/leaflet-providers-plugin-2.1.2/leaflet-providers-plugin.js"></script>
+
 <script src="../../site_libs/popup-0.0.1/popup.js"></script>
+
 <link id="image-group1-Anderson E Francis-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Anderson E Francis.JPG">
+
 <link id="image-group1-Brown Elizabeth Minnich-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Brown Elizabeth Minnich.jpg">
+
 <link id="image-group1-Doley L Earl-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Doley L Earl.JPG">
+
 <link id="image-group1-Doley G Clyde and D Hilda-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Doley G Clyde and D Hilda.JPG">
+
 <link id="image-group1-Hess Samuel Jackson Chapman-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess Samuel Jackson Chapman.JPG">
+
 <link id="image-group1-Hess Catherine West-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess Catherine West.JPG">
+
 <link id="image-group1-Hess George Dougin-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess George Dougin.JPG">
+
 <link id="image-group1-Kleppinger Anna Maria_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Kleppinger Anna Maria_panel.png">
+
 <link id="image-group1-Nagel Johann Georg_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Nagel Johann Georg_panel.png">
+
 <link id="image-group1-Odom Cynthia Ann-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Odom Cynthia Ann.JPG">
+
 <link id="image-group1-Pickard William Epps-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Pickard William Epps.JPG">
+
 <link id="image-group1-Sinks Anna Lorena-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Anna Lorena.JPG">
+
 <link id="image-group1-Veach James Allen-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach James Allen.JPG">
+
 <link id="image-group1-Veach John Logan-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach John Logan.JPG">
+
 <link id="image-group1-Veach Rose Ella-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach Rose Ella.JPG">
+
 <link id="image-group1-Whiteside Lucinda Jane and John V-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Whiteside Lucinda Jane and John V.jpg">
+
 <link id="image-group1-Woolard Millie Caroline-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Millie Caroline.JPG">
+
 <link id="image-group1-Woolard John Edward-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard John Edward.JPG">
+
 <link id="image-group1-Woolard C Leonard and Blanche B-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard C Leonard and Blanche B.JPG">
+
 <link id="image-group1-Anderson Albert A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Anderson Albert A.JPG">
+
 <link id="image-group1-Anderson William G-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Anderson William G.JPG">
+
 <link id="image-group1-Anderson Nancy A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Anderson Nancy A.JPG">
+
 <link id="image-group1-Beasley EC_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Beasley EC_panel.png">
+
 <link id="image-group1-Bundy WM chalk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Bundy WM chalk.jpg">
+
 <link id="image-group1-Burgess WJ-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Burgess WJ.JPG">
+
 <link id="image-group1-Clayton GM Ellen P-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Clayton GM Ellen P.JPG">
+
 <link id="image-group1-Clayton LS Mary A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Clayton LS Mary A.JPG">
+
 <link id="image-group1-Dolch Catherine S_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dolch Catherine S_panel.png">
+
 <link id="image-group1-Doley Maggie M-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Doley Maggie M.JPG">
+
 <link id="image-group1-Doley William F-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Doley William F.JPG">
+
 <link id="image-group1-Dorris WP_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris WP_panel.png">
+
 <link id="image-group1-Dorris AC_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris AC_panel.png">
+
 <link id="image-group1-Dorris Robert T Chalk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris Robert T Chalk.JPG">
+
 <link id="image-group1-Dorris Smith H-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris Smith H.jpg">
+
 <link id="image-group1-Dorris John W_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris John W_panel.png">
+
 <link id="image-group1-Dorris WE-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris WE.JPG">
+
 <link id="image-group1-Dorris William T Mary C-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris William T Mary C.JPG">
+
 <link id="image-group1-Dorris James J-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris James J.JPG">
+
 <link id="image-group1-Dorris WR-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris WR.JPG">
+
 <link id="image-group1-Dorris EL and Sarah E-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris EL and Sarah E.JPG">
+
 <link id="image-group1-Dorris James W and Georgia A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris James W and Georgia A.JPG">
+
 <link id="image-group1-Follis Fawn W_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Follis Fawn W_panel.png">
+
 <link id="image-group1-Follis Ralph R chalk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Follis Ralph R chalk.JPG">
+
 <link id="image-group1-Follis A O_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Follis A O_panel.png">
+
 <link id="image-group1-Follis Christian R chalk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Follis Christian R chalk.JPG">
+
 <link id="image-group1-Follis G W_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Follis G W_panel.png">
+
 <link id="image-group1-Follis E P challk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Follis E P challk.JPG">
+
 <link id="image-group1-Follis Jeff M_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Follis Jeff M_panel.png">
+
 <link id="image-group1-Ford Florence W-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Ford Florence W.JPG">
+
 <link id="image-group1-Gregory Leonard N-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Gregory Leonard N.JPG">
+
 <link id="image-group1-Hess Jerome B-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess Jerome B.JPG">
+
 <link id="image-group1-Hess Bernice L-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess Bernice L.JPG">
+
 <link id="image-group1-Johnson James N-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Johnson James N.JPG">
+
 <link id="image-group1-Johnson Mary E-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Johnson Mary E.JPG">
+
 <link id="image-group1-Jones Levi A Jones Hester J-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jones Levi A Jones Hester J.JPG">
+
 <link id="image-group1-Jones Levi A Jones Hester J-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jones Levi A Jones Hester J.JPG">
+
 <link id="image-group1-Jones Ridley A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jones Ridley A.JPG">
+
 <link id="image-group1-Jones James T  Tina-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jones James T  Tina.JPG">
+
 <link id="image-group1-Jones Ezra L  Nannie C-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jones Ezra L  Nannie C.JPG">
+
 <link id="image-group1-Jones Samuel D Melverda-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jones Samuel D Melverda.JPG">
+
 <link id="image-group1-Karnes Willard M_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Karnes Willard M_panel.png">
+
 <link id="image-group1-Miller Myrtie V-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Miller Myrtie V.JPG">
+
 <link id="image-group1-Nagle John D distance-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Nagle John D distance.JPG">
+
 <link id="image-group1-Nagel Will F Adeline L-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Nagel Will F Adeline L.JPG">
+
 <link id="image-group1-Odom GW-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Odom GW.JPG">
+
 <link id="image-group1-Pletz Karl F-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Pletz Karl F.JPG">
+
 <link id="image-group1-Rex George W_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rex George W_panel.png">
+
 <link id="image-group1-Ritter J M_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Ritter J M_panel.png">
+
 <link id="image-group1-Ritter Mary J_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Ritter Mary J_panel.png">
+
 <link id="image-group1-Sinks A T_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks A T_panel.png">
+
 <link id="image-group1-Sinks Francis A_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Francis A_panel.png">
+
 <link id="image-group1-Sinks Martha J-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Martha J.JPG">
+
 <link id="image-group1-Sinks John H-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks John H.JPG">
+
 <link id="image-group1-Sinks Mary E-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Mary E.JPG">
+
 <link id="image-group1-Sinks William D_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks William D_panel.png">
+
 <link id="image-group1-Sinks Charlotte J-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Charlotte J.JPG">
+
 <link id="image-group1-Sinks John A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks John A.JPG">
+
 <link id="image-group1-Sinks Sena L-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Sena L.JPG">
+
 <link id="image-group1-Sinks William J_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks William J_panel.png">
+
 <link id="image-group1-Sweet Jewell S-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sweet Jewell S.JPG">
+
 <link id="image-group1-Sinks Arlie T-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Arlie T.JPG">
+
 <link id="image-group1-Sinks Eva E  Arlie T-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Eva E  Arlie T.JPG">
+
 <link id="image-group1-Steen Richard G-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Steen Richard G.JPG">
+
 <link id="image-group1-VanCleve Martin T Florence A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/VanCleve Martin T Florence A.jpg">
+
 <link id="image-group1-VanCleve WF-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/VanCleve WF.JPG">
+
 <link id="image-group1-VanCleve JE-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/VanCleve JE.JPG">
+
 <link id="image-group1-Veach Pleasant G Victoria-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach Pleasant G Victoria.JPG">
+
 <link id="image-group1-Veach Ward B-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach Ward B.JPG">
+
 <link id="image-group1-Veach Cynthia M-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach Cynthia M.JPG">
+
 <link id="image-group1-Veach James C Nannie-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach James C Nannie.JPG">
+
 <link id="image-group1-Veach Ruth E-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach Ruth E.JPG">
+
 <link id="image-group1-Weir James C Mary Bell No challk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Weir James C Mary Bell No challk.JPG">
+
 <link id="image-group1-Wilson Sallie J_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Wilson Sallie J_panel.png">
+
 <link id="image-group1-Woolard Lawrence A and Etta G-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Lawrence A and Etta G.JPG">
+
 <link id="image-group1-Woolard James B-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard James B.JPG">
+
 <link id="image-group1-Woolard LB-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard LB.JPG">
+
 <link id="image-group1-Woolard James H-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard James H.JPG">
+
 <link id="image-group1-Woolard Romey D-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Romey D.JPG">
+
 <link id="image-group1-Woolard Anna F-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Anna F.JPG">
+
 <link id="image-group1-Woolard Francis J-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Francis J.JPG">
+
 <link id="image-group1-Woolard Turner W-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Turner W.JPG">
+
 <link id="image-group1-Woolard William C-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard William C.JPG">
+
 <link id="image-group1-Anderson Zady_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Anderson Zady_panel.png">
+
 <link id="image-group1-Anderson Adesia-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Anderson Adesia.JPG">
+
 <link id="image-group1-Appleton Richard_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Appleton Richard_panel.png">
+
 <link id="image-group1-Baldwin William_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Baldwin William_panel.png">
+
 <link id="image-group1-Baggett Mahalia_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Baggett Mahalia_panel.png">
+
 <link id="image-group1-Brown Joel_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Brown Joel_panel.png">
+
 <link id="image-group1-Bundy Clem_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Bundy Clem_panel.png">
+
 <link id="image-group1-Bundy Nancy chalk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Bundy Nancy chalk.jpg">
+
 <link id="image-group1-Bundy Thomas-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Bundy Thomas.JPG">
+
 <link id="image-group1-Bundy George and Lora L-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Bundy George and Lora L.JPG">
+
 <link id="image-group1-Burgess Alzada_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Burgess Alzada_panel.png">
+
 <link id="image-group1-Chapman Caroline_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Chapman Caroline_panel.png">
+
 <link id="image-group1-Chapman Samuel_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Chapman Samuel_panel.png">
+
 <link id="image-group1-Chapman Polly_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Chapman Polly_panel.png">
+
 <link id="image-group1-Crockett Mandy_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Crockett Mandy_panel.png">
+
 <link id="image-group1-Crockett John_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Crockett John_panel.png">
+
 <link id="image-group1-Davis Ezra N-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Davis Ezra N.JPG">
+
 <link id="image-group1-Davis Lizzie-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Davis Lizzie.JPG">
+
 <link id="image-group1-Dolch Christian_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dolch Christian_panel.png">
+
 <link id="image-group1-Dolch Peter-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dolch Peter.JPG">
+
 <link id="image-group1-Dorris Sarah_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris Sarah_panel.png">
+
 <link id="image-group1-Dorris Rebecca_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dorris Rebecca_panel.png">
+
 <link id="image-group1-Drake Mary-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Drake Mary.jpg">
+
 <link id="image-group1-Dreisbach Johannes-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Dreisbach Johannes.JPG">
+
 <link id="image-group1-Everett Semantha_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Everett Semantha_panel.png">
+
 <link id="image-group1-Finch Isaac_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Finch Isaac_panel.png">
+
 <link id="image-group1-Frost Ebenezer_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Frost Ebenezer_panel.png">
+
 <link id="image-group1-Fuqua William_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Fuqua William_panel.png">
+
 <link id="image-group1-Gregory Lucille Doley-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Gregory Lucille Doley.JPG">
+
 <link id="image-group1-Hart Parmelia_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hart Parmelia_panel.png">
+
 <link id="image-group1-Hess Amalphus_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess Amalphus_panel.png">
+
 <link id="image-group1-Hess Adolphus_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess Adolphus_panel.png">
+
 <link id="image-group1-Hess Samuel_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess Samuel_panel.png">
+
 <link id="image-group1-Hess Franklin-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hess Franklin.JPG">
+
 <link id="image-group1-Horlacher Daniel_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Horlacher Daniel_panel.png">
+
 <link id="image-group1-Horlacher Margaretha_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Horlacher Margaretha_panel.png">
+
 <link id="image-group1-Horrall Polly wf J-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Horrall Polly wf J.JPG">
+
 <link id="image-group1-Horrall William_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Horrall William_panel.png">
+
 <link id="image-group1-Hurt Elizabeth chalk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Hurt Elizabeth chalk.jpg">
+
 <link id="image-group1-Jacobs Jeremiah_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jacobs Jeremiah_panel.png">
+
 <link id="image-group1-Jacobs Rebecca-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jacobs Rebecca.JPG">
+
 <link id="image-group1-Jones John-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Jones John.JPG">
+
 <link id="image-group1-Lipsey Joe F-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Lipsey Joe F.JPG">
+
 <link id="image-group1-Loomis Jon_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Loomis Jon_panel.png">
+
 <link id="image-group1-Merrell Azariah_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Merrell Azariah_panel.png">
+
 <link id="image-group1-Merrell Abigail_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Merrell Abigail_panel.png">
+
 <link id="image-group1-Mildenberger Nicolaus-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Mildenberger Nicolaus.JPG">
+
 <link id="image-group1-Mory Catherina..JPG-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Mory Catherina..JPG">
+
 <link id="image-group1-Mory Gotthard-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Mory Gotthard.JPG">
+
 <link id="image-group1-Mory Magdelena_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Mory Magdelena_panel.png">
+
 <link id="image-group1-Mory Peter-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Mory Peter.JPG">
+
 <link id="image-group1-Nagel Caty_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Nagel Caty_panel.png">
+
 <link id="image-group1-Nagel Daniel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Nagel Daniel.jpg">
+
 <link id="image-group1-Nutty Beatrice-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Nutty Beatrice.JPG">
+
 <link id="image-group1-Odom Archibald_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Odom Archibald_panel.png">
+
 <link id="image-group1-Odom Sarah M-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Odom Sarah M.JPG">
+
 <link id="image-group1-Odum Wiley Sallie A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Odum Wiley Sallie A.jpg">
+
 <link id="image-group1-Peters Daniel_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Peters Daniel_panel.png">
+
 <link id="image-group1-Peters Charlotte_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Peters Charlotte_panel.png">
+
 <link id="image-group1-Rex Bertie-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rex Bertie.JPG">
+
 <link id="image-group1-Rex Lulie-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rex Lulie.JPG">
+
 <link id="image-group1-Rex Lily-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rex Lily.JPG">
+
 <link id="image-group1-Rex Arthur-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rex Arthur.JPG">
+
 <link id="image-group1-Rex Guy-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rex Guy.JPG">
+
 <link id="image-group1-Rex Harlie G-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rex Harlie G.JPG">
+
 <link id="image-group1-Riegel Solomon_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Riegel Solomon_panel.png">
+
 <link id="image-group1-Riegel Catherine_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Riegel Catherine_panel.png">
+
 <link id="image-group1-Rockel Elisabetha Lehrer no chalk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rockel Elisabetha Lehrer no chalk.JPG">
+
 <link id="image-group1-Rockel Johannes_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rockel Johannes_panel.png">
+
 <link id="image-group1-Rockel Elizabeth_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Rockel Elizabeth_panel.png">
+
 <link id="image-group1-Ross Euna-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Ross Euna.jpg">
+
 <link id="image-group1-Sinks Salem_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Salem_panel.png">
+
 <link id="image-group1-Sinks Daniel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Daniel.JPG">
+
 <link id="image-group1-Sinks Elizabeth-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Elizabeth.JPG">
+
 <link id="image-group1-Sinks Etta Faye-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Etta Faye.JPG">
+
 <link id="image-group1-Sinks Arlie-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Arlie.JPG">
+
 <link id="image-group1-Sinks Viola-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Viola.JPG">
+
 <link id="image-group1-Sinks Mae-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Mae.JPG">
+
 <link id="image-group1-Sinks Caroline_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Sinks Caroline_panel.png">
+
 <link id="image-group1-Veatch John_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veatch John_panel.png">
+
 <link id="image-group1-Veach Pleasant_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veach Pleasant_panel.png">
+
 <link id="image-group1-Veatch Mary_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veatch Mary_panel.png">
+
 <link id="image-group1-Veatch Frelin_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Veatch Frelin_panel.png">
+
 <link id="image-group1-Ware Turner chalk-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Ware Turner chalk.JPG">
+
 <link id="image-group1-Ware Martha A-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Ware Martha A.JPG">
+
 <link id="image-group1-Wilson Joseph_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Wilson Joseph_panel.png">
+
 <link id="image-group1-Wilson Thomas Sarah-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Wilson Thomas Sarah.jpg">
+
 <link id="image-group1-Wise Luvena Woolard-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Wise Luvena Woolard.jpg">
+
 <link id="image-group1-Woolard Nettie-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Nettie.JPG">
+
 <link id="image-group1-Woolard Ama_panel-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Ama_panel.png">
+
 <link id="image-group1-Woolard Robert-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard Robert.JPG">
+
 <link id="image-group1-Woolard George H and Nancy V Woolard-attachment" rel="attachment" href="../../site_libs/image-group1-0.0.1/Woolard George H and Nancy V Woolard.JPG">
 
 
+
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Louise E. Sinks - Mapping for the Tombstone Project">
+<meta name="twitter:title" content="Mapping for the Tombstone Project – Louise E. Sinks">
 <meta name="twitter:description" content="Methods for dealing with overlapping points and then styling a leaflet map with various labels and pop-ups.">
 <meta name="twitter:image" content="https://lsinks.github.io/posts/2023-08-14-mapping-tombstone/thumbnail.jpg">
 <meta name="twitter:creator" content="@LouiseSinks">
@@ -348,52 +568,52 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Louise E. Sinks</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../portfolio.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me/ CV</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me/ CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Blog Entries</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Blog Entries</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../currentprojects.html" rel="" target="">
- <span class="menu-text">Current Projects</span></a>
+    <a class="nav-link" href="../../currentprojects.html"> 
+<span class="menu-text">Current Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogroll.html" rel="" target="">
- <span class="menu-text">Blog Roll</span></a>
+    <a class="nav-link" href="../../blogroll.html"> 
+<span class="menu-text">Blog Roll</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../posts.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -438,16 +658,16 @@ cookieconsent.run({
 <div class="quarto-title">
 <h1 class="title">Mapping for the Tombstone Project</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Data-Viz</div>
+    <div class="quarto-category">data visualization</div>
     <div class="quarto-category">R</div>
     <div class="quarto-category">R-code</div>
     <div class="quarto-category">leaflet</div>
     <div class="quarto-category">quarto</div>
     <div class="quarto-category">problem solving</div>
     <div class="quarto-category">mapping</div>
-    <div class="quarto-category">Code-Along</div>
+    <div class="quarto-category">code-along</div>
     <div class="quarto-category">spatial join</div>
-    <div class="quarto-category">WordPress</div>
+    <div class="quarto-category">wordPress</div>
     <div class="quarto-category">leafpop</div>
     <div class="quarto-category">st_jitter</div>
   </div>
@@ -479,14 +699,16 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 3, 2023</p>
+      <p class="date-modified">December 21, 2024</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <section id="project-overview" class="level1">
 <h1>Project Overview</h1>
@@ -522,7 +744,6 @@ cookieconsent.run({
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tombstones_geo) <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="jizyfjahpm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#jizyfjahpm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -963,276 +1184,287 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="photos_Matched_Round1">photos_Matched_Round1</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Surname">Surname</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="First.Name">First.Name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Middle.Name">Middle.Name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Maiden/Title">Maiden/Title</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Cemetery">Cemetery</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="City">City</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="State">State</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="DOB">DOB</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="DOD">DOD</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Age">Age</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="N">N</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="W">W</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="X13">X13</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="X14">X14</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="X15">X15</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="N_degree">N_degree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="N_minute">N_minute</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="N_second">N_second</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="W_degree">W_degree</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="W_minute">W_minute</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="W_second">W_second</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="DOB_date">DOB_date</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="DOD_date">DOD_date</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Extra_First_Name">Extra_First_Name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Extra_Middle_Name1">Extra_Middle_Name1</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Extra_Middle_Name2">Extra_Middle_Name2</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="full_name_MI">full_name_MI</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="full_name">full_name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="full_name_MI_no_space">full_name_MI_no_space</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="photos_Matched_Round2">photos_Matched_Round2</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="photos_Matched_Round3">photos_Matched_Round3</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="photos_Matched_Round4">photos_Matched_Round4</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="photo_list">photo_list</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="complete_name">complete_name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="cemetery_name">cemetery_name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="geometry">geometry</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="photos_Matched_Round1" class="gt_row gt_left">Anderson E Francis.JPG</td>
-<td headers="Surname" class="gt_row gt_left">Anderson</td>
-<td headers="First.Name" class="gt_row gt_left">E</td>
-<td headers="Middle.Name" class="gt_row gt_left">Francis</td>
-<td headers="Maiden/Title" class="gt_row gt_left">NA</td>
-<td headers="Cemetery" class="gt_row gt_left">Lebanon Cumberland Presbyterian Church</td>
-<td headers="City" class="gt_row gt_left">Saline Co.</td>
-<td headers="State" class="gt_row gt_left">IL</td>
-<td headers="DOB" class="gt_row gt_left">23 Sep 1877</td>
-<td headers="DOD" class="gt_row gt_left">24 Oct 1899</td>
-<td headers="Age" class="gt_row gt_left">22y 1m 1d</td>
-<td headers="N" class="gt_row gt_right">37  52.853</td>
-<td headers="W" class="gt_row gt_right">88  39.164</td>
-<td headers="X13" class="gt_row gt_left">Wife of AA Anderson</td>
-<td headers="X14" class="gt_row gt_left">NA</td>
-<td headers="X15" class="gt_row gt_left">NA</td>
-<td headers="N_degree" class="gt_row gt_right">37</td>
-<td headers="N_minute" class="gt_row gt_right">52</td>
-<td headers="N_second" class="gt_row gt_right">853</td>
-<td headers="W_degree" class="gt_row gt_right">88</td>
-<td headers="W_minute" class="gt_row gt_right">39</td>
-<td headers="W_second" class="gt_row gt_right">164</td>
-<td headers="DOB_date" class="gt_row gt_right">1877-09-23</td>
-<td headers="DOD_date" class="gt_row gt_right">1899-10-24</td>
-<td headers="Extra_First_Name" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name1" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name2" class="gt_row gt_left">NA</td>
-<td headers="full_name_MI" class="gt_row gt_left">Anderson E Francis</td>
-<td headers="full_name" class="gt_row gt_left">Anderson E</td>
-<td headers="full_name_MI_no_space" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round2" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round3" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round4" class="gt_row gt_left">NA</td>
-<td headers="photo_list" class="gt_row gt_left">Anderson E Francis.JPG</td>
-<td headers="complete_name" class="gt_row gt_left">E Francis Anderson</td>
-<td headers="cemetery_name" class="gt_row gt_left">Lebanon Cumberland Presbyterian Church Cemetery</td>
-<td headers="geometry" class="gt_row gt_center">c(-88.6955555555556, 38.1036111111111)</td></tr>
-    <tr><td headers="photos_Matched_Round1" class="gt_row gt_left">Brown Elizabeth Minnich.jpg</td>
-<td headers="Surname" class="gt_row gt_left">Brown</td>
-<td headers="First.Name" class="gt_row gt_left">Elizabeth</td>
-<td headers="Middle.Name" class="gt_row gt_left">Minnich</td>
-<td headers="Maiden/Title" class="gt_row gt_left">NA</td>
-<td headers="Cemetery" class="gt_row gt_left"></td>
-<td headers="City" class="gt_row gt_left">Egypt, Lehigh Co., PA</td>
-<td headers="State" class="gt_row gt_left">PA</td>
-<td headers="DOB" class="gt_row gt_left">1 July 1807</td>
-<td headers="DOD" class="gt_row gt_left">2 Feb 1888</td>
-<td headers="Age" class="gt_row gt_left">NA</td>
-<td headers="N" class="gt_row gt_right">40  40.760 </td>
-<td headers="W" class="gt_row gt_right">75  31.705 </td>
-<td headers="X13" class="gt_row gt_left">One stone for husband &amp; wife</td>
-<td headers="X14" class="gt_row gt_left">NA</td>
-<td headers="X15" class="gt_row gt_left">NA</td>
-<td headers="N_degree" class="gt_row gt_right">40</td>
-<td headers="N_minute" class="gt_row gt_right">40</td>
-<td headers="N_second" class="gt_row gt_right">760</td>
-<td headers="W_degree" class="gt_row gt_right">75</td>
-<td headers="W_minute" class="gt_row gt_right">31</td>
-<td headers="W_second" class="gt_row gt_right">705</td>
-<td headers="DOB_date" class="gt_row gt_right">1807-07-01</td>
-<td headers="DOD_date" class="gt_row gt_right">1888-02-02</td>
-<td headers="Extra_First_Name" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name1" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name2" class="gt_row gt_left">NA</td>
-<td headers="full_name_MI" class="gt_row gt_left">Brown Elizabeth Minnich</td>
-<td headers="full_name" class="gt_row gt_left">Brown Elizabeth</td>
-<td headers="full_name_MI_no_space" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round2" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round3" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round4" class="gt_row gt_left">NA</td>
-<td headers="photo_list" class="gt_row gt_left">Brown Elizabeth Minnich.jpg</td>
-<td headers="complete_name" class="gt_row gt_left">Elizabeth Minnich Brown</td>
-<td headers="cemetery_name" class="gt_row gt_left"></td>
-<td headers="geometry" class="gt_row gt_center">c(-75.7125, 40.8777777777778)</td></tr>
-    <tr><td headers="photos_Matched_Round1" class="gt_row gt_left">Doley L Earl.JPG</td>
-<td headers="Surname" class="gt_row gt_left">Doley</td>
-<td headers="First.Name" class="gt_row gt_left">L</td>
-<td headers="Middle.Name" class="gt_row gt_left">Earl</td>
-<td headers="Maiden/Title" class="gt_row gt_left">NA</td>
-<td headers="Cemetery" class="gt_row gt_left">Webber Campground</td>
-<td headers="City" class="gt_row gt_left">Galatia</td>
-<td headers="State" class="gt_row gt_left">IL</td>
-<td headers="DOB" class="gt_row gt_left">17 Apr 1889</td>
-<td headers="DOD" class="gt_row gt_left">19 Nov 1960</td>
-<td headers="Age" class="gt_row gt_left">NA</td>
-<td headers="N" class="gt_row gt_right">37  49.907</td>
-<td headers="W" class="gt_row gt_right">88  35.306</td>
-<td headers="X13" class="gt_row gt_left">One headstone</td>
-<td headers="X14" class="gt_row gt_left">NA</td>
-<td headers="X15" class="gt_row gt_left">NA</td>
-<td headers="N_degree" class="gt_row gt_right">37</td>
-<td headers="N_minute" class="gt_row gt_right">49</td>
-<td headers="N_second" class="gt_row gt_right">907</td>
-<td headers="W_degree" class="gt_row gt_right">88</td>
-<td headers="W_minute" class="gt_row gt_right">35</td>
-<td headers="W_second" class="gt_row gt_right">306</td>
-<td headers="DOB_date" class="gt_row gt_right">1889-04-17</td>
-<td headers="DOD_date" class="gt_row gt_right">1960-11-19</td>
-<td headers="Extra_First_Name" class="gt_row gt_left">[eaman]</td>
-<td headers="Extra_Middle_Name1" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name2" class="gt_row gt_left">NA</td>
-<td headers="full_name_MI" class="gt_row gt_left">Doley L Earl</td>
-<td headers="full_name" class="gt_row gt_left">Doley L</td>
-<td headers="full_name_MI_no_space" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round2" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round3" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round4" class="gt_row gt_left">NA</td>
-<td headers="photo_list" class="gt_row gt_left">Doley L Earl.JPG</td>
-<td headers="complete_name" class="gt_row gt_left">L Earl Doley</td>
-<td headers="cemetery_name" class="gt_row gt_left">Webber Campground Cemetery</td>
-<td headers="geometry" class="gt_row gt_center">c(-88.6683333333333, 38.0686111111111)</td></tr>
-    <tr><td headers="photos_Matched_Round1" class="gt_row gt_left">Doley G Clyde and D Hilda.JPG</td>
-<td headers="Surname" class="gt_row gt_left">Doley</td>
-<td headers="First.Name" class="gt_row gt_left">G</td>
-<td headers="Middle.Name" class="gt_row gt_left">Clyde</td>
-<td headers="Maiden/Title" class="gt_row gt_left">NA</td>
-<td headers="Cemetery" class="gt_row gt_left">Masonic &amp; Odd Fellows</td>
-<td headers="City" class="gt_row gt_left">Benton</td>
-<td headers="State" class="gt_row gt_left">IL</td>
-<td headers="DOB" class="gt_row gt_left">5 Aug 1894</td>
-<td headers="DOD" class="gt_row gt_left">1 June 1960</td>
-<td headers="Age" class="gt_row gt_left">NA</td>
-<td headers="N" class="gt_row gt_right">37  58.810</td>
-<td headers="W" class="gt_row gt_right">88  55.084</td>
-<td headers="X13" class="gt_row gt_left">One stone for husband &amp; wife; footstone--USNavy WWI</td>
-<td headers="X14" class="gt_row gt_left">NA</td>
-<td headers="X15" class="gt_row gt_left">NA</td>
-<td headers="N_degree" class="gt_row gt_right">37</td>
-<td headers="N_minute" class="gt_row gt_right">58</td>
-<td headers="N_second" class="gt_row gt_right">810</td>
-<td headers="W_degree" class="gt_row gt_right">88</td>
-<td headers="W_minute" class="gt_row gt_right">55</td>
-<td headers="W_second" class="gt_row gt_right">84</td>
-<td headers="DOB_date" class="gt_row gt_right">1894-08-05</td>
-<td headers="DOD_date" class="gt_row gt_right">1960-06-01</td>
-<td headers="Extra_First_Name" class="gt_row gt_left">[uilford]</td>
-<td headers="Extra_Middle_Name1" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name2" class="gt_row gt_left">NA</td>
-<td headers="full_name_MI" class="gt_row gt_left">Doley G Clyde</td>
-<td headers="full_name" class="gt_row gt_left">Doley G</td>
-<td headers="full_name_MI_no_space" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round2" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round3" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round4" class="gt_row gt_left">NA</td>
-<td headers="photo_list" class="gt_row gt_left">Doley G Clyde and D Hilda.JPG</td>
-<td headers="complete_name" class="gt_row gt_left">G Clyde Doley</td>
-<td headers="cemetery_name" class="gt_row gt_left">Masonic &amp; Odd Fellows Cemetery</td>
-<td headers="geometry" class="gt_row gt_center">c(-88.94, 38.1916666666667)</td></tr>
-    <tr><td headers="photos_Matched_Round1" class="gt_row gt_left">Hess Samuel Jackson Chapman.JPG</td>
-<td headers="Surname" class="gt_row gt_left">Hess</td>
-<td headers="First.Name" class="gt_row gt_left">Samuel</td>
-<td headers="Middle.Name" class="gt_row gt_left">Jackson Chapman</td>
-<td headers="Maiden/Title" class="gt_row gt_left">NA</td>
-<td headers="Cemetery" class="gt_row gt_left">Vienna Fraternal</td>
-<td headers="City" class="gt_row gt_left">Johnson Co</td>
-<td headers="State" class="gt_row gt_left">IL</td>
-<td headers="DOB" class="gt_row gt_left">1854</td>
-<td headers="DOD" class="gt_row gt_left">1949</td>
-<td headers="Age" class="gt_row gt_left">NA</td>
-<td headers="N" class="gt_row gt_right">37  25.693</td>
-<td headers="W" class="gt_row gt_right">88 53.949</td>
-<td headers="X13" class="gt_row gt_left">NA</td>
-<td headers="X14" class="gt_row gt_left">NA</td>
-<td headers="X15" class="gt_row gt_left">NA</td>
-<td headers="N_degree" class="gt_row gt_right">37</td>
-<td headers="N_minute" class="gt_row gt_right">25</td>
-<td headers="N_second" class="gt_row gt_right">693</td>
-<td headers="W_degree" class="gt_row gt_right">88</td>
-<td headers="W_minute" class="gt_row gt_right">53</td>
-<td headers="W_second" class="gt_row gt_right">949</td>
-<td headers="DOB_date" class="gt_row gt_right">NA</td>
-<td headers="DOD_date" class="gt_row gt_right">NA</td>
-<td headers="Extra_First_Name" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name1" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name2" class="gt_row gt_left">NA</td>
-<td headers="full_name_MI" class="gt_row gt_left">Hess Samuel Jackson Chapman</td>
-<td headers="full_name" class="gt_row gt_left">Hess Samuel</td>
-<td headers="full_name_MI_no_space" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round2" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round3" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round4" class="gt_row gt_left">NA</td>
-<td headers="photo_list" class="gt_row gt_left">Hess Samuel Jackson Chapman.JPG</td>
-<td headers="complete_name" class="gt_row gt_left">Samuel Jackson Chapman Hess</td>
-<td headers="cemetery_name" class="gt_row gt_left">Vienna Fraternal Cemetery</td>
-<td headers="geometry" class="gt_row gt_center">c(-89.1469444444445, 37.6091666666667)</td></tr>
-    <tr><td headers="photos_Matched_Round1" class="gt_row gt_left">Hess Catherine West.JPG</td>
-<td headers="Surname" class="gt_row gt_left">Hess</td>
-<td headers="First.Name" class="gt_row gt_left">Catherine</td>
-<td headers="Middle.Name" class="gt_row gt_left">West</td>
-<td headers="Maiden/Title" class="gt_row gt_left">NA</td>
-<td headers="Cemetery" class="gt_row gt_left">Vienna Fraternal</td>
-<td headers="City" class="gt_row gt_left">Johnson Co</td>
-<td headers="State" class="gt_row gt_left">IL</td>
-<td headers="DOB" class="gt_row gt_left">1856</td>
-<td headers="DOD" class="gt_row gt_left">1906</td>
-<td headers="Age" class="gt_row gt_left">NA</td>
-<td headers="N" class="gt_row gt_right">37  25.693</td>
-<td headers="W" class="gt_row gt_right">88 53.949</td>
-<td headers="X13" class="gt_row gt_left">NA</td>
-<td headers="X14" class="gt_row gt_left">NA</td>
-<td headers="X15" class="gt_row gt_left">NA</td>
-<td headers="N_degree" class="gt_row gt_right">37</td>
-<td headers="N_minute" class="gt_row gt_right">25</td>
-<td headers="N_second" class="gt_row gt_right">693</td>
-<td headers="W_degree" class="gt_row gt_right">88</td>
-<td headers="W_minute" class="gt_row gt_right">53</td>
-<td headers="W_second" class="gt_row gt_right">949</td>
-<td headers="DOB_date" class="gt_row gt_right">NA</td>
-<td headers="DOD_date" class="gt_row gt_right">NA</td>
-<td headers="Extra_First_Name" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name1" class="gt_row gt_left">NA</td>
-<td headers="Extra_Middle_Name2" class="gt_row gt_left">NA</td>
-<td headers="full_name_MI" class="gt_row gt_left">Hess Catherine West</td>
-<td headers="full_name" class="gt_row gt_left">Hess Catherine</td>
-<td headers="full_name_MI_no_space" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round2" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round3" class="gt_row gt_left">NA</td>
-<td headers="photos_Matched_Round4" class="gt_row gt_left">NA</td>
-<td headers="photo_list" class="gt_row gt_left">Hess Catherine West.JPG</td>
-<td headers="complete_name" class="gt_row gt_left">Catherine West Hess</td>
-<td headers="cemetery_name" class="gt_row gt_left">Vienna Fraternal Cemetery</td>
-<td headers="geometry" class="gt_row gt_center">c(-89.1469444444445, 37.6091666666667)</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="photos_Matched_Round1" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">photos_Matched_Round1</th>
+<th id="Surname" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Surname</th>
+<th id="First.Name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">First.Name</th>
+<th id="Middle.Name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Middle.Name</th>
+<th id="Maiden/Title" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Maiden/Title</th>
+<th id="Cemetery" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Cemetery</th>
+<th id="City" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">City</th>
+<th id="State" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">State</th>
+<th id="DOB" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">DOB</th>
+<th id="DOD" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">DOD</th>
+<th id="Age" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Age</th>
+<th id="N" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">N</th>
+<th id="W" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">W</th>
+<th id="X13" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">X13</th>
+<th id="X14" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">X14</th>
+<th id="X15" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">X15</th>
+<th id="N_degree" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">N_degree</th>
+<th id="N_minute" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">N_minute</th>
+<th id="N_second" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">N_second</th>
+<th id="W_degree" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">W_degree</th>
+<th id="W_minute" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">W_minute</th>
+<th id="W_second" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">W_second</th>
+<th id="DOB_date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">DOB_date</th>
+<th id="DOD_date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">DOD_date</th>
+<th id="Extra_First_Name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Extra_First_Name</th>
+<th id="Extra_Middle_Name1" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Extra_Middle_Name1</th>
+<th id="Extra_Middle_Name2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Extra_Middle_Name2</th>
+<th id="full_name_MI" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">full_name_MI</th>
+<th id="full_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">full_name</th>
+<th id="full_name_MI_no_space" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">full_name_MI_no_space</th>
+<th id="photos_Matched_Round2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">photos_Matched_Round2</th>
+<th id="photos_Matched_Round3" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">photos_Matched_Round3</th>
+<th id="photos_Matched_Round4" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">photos_Matched_Round4</th>
+<th id="photo_list" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">photo_list</th>
+<th id="complete_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">complete_name</th>
+<th id="cemetery_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">cemetery_name</th>
+<th id="geometry" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">geometry</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="photos_Matched_Round1">Anderson E Francis.JPG</td>
+<td class="gt_row gt_left" headers="Surname">Anderson</td>
+<td class="gt_row gt_left" headers="First.Name">E</td>
+<td class="gt_row gt_left" headers="Middle.Name">Francis</td>
+<td class="gt_row gt_left" headers="Maiden/Title">NA</td>
+<td class="gt_row gt_left" headers="Cemetery">Lebanon Cumberland Presbyterian Church</td>
+<td class="gt_row gt_left" headers="City">Saline Co.</td>
+<td class="gt_row gt_left" headers="State">IL</td>
+<td class="gt_row gt_left" headers="DOB">23 Sep 1877</td>
+<td class="gt_row gt_left" headers="DOD">24 Oct 1899</td>
+<td class="gt_row gt_left" headers="Age">22y 1m 1d</td>
+<td class="gt_row gt_right" headers="N">37 52.853</td>
+<td class="gt_row gt_right" headers="W">88 39.164</td>
+<td class="gt_row gt_left" headers="X13">Wife of AA Anderson</td>
+<td class="gt_row gt_left" headers="X14">NA</td>
+<td class="gt_row gt_left" headers="X15">NA</td>
+<td class="gt_row gt_right" headers="N_degree">37</td>
+<td class="gt_row gt_right" headers="N_minute">52</td>
+<td class="gt_row gt_right" headers="N_second">853</td>
+<td class="gt_row gt_right" headers="W_degree">88</td>
+<td class="gt_row gt_right" headers="W_minute">39</td>
+<td class="gt_row gt_right" headers="W_second">164</td>
+<td class="gt_row gt_right" headers="DOB_date">1877-09-23</td>
+<td class="gt_row gt_right" headers="DOD_date">1899-10-24</td>
+<td class="gt_row gt_left" headers="Extra_First_Name">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name1">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name2">NA</td>
+<td class="gt_row gt_left" headers="full_name_MI">Anderson E Francis</td>
+<td class="gt_row gt_left" headers="full_name">Anderson E</td>
+<td class="gt_row gt_left" headers="full_name_MI_no_space">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round2">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round3">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round4">NA</td>
+<td class="gt_row gt_left" headers="photo_list">Anderson E Francis.JPG</td>
+<td class="gt_row gt_left" headers="complete_name">E Francis Anderson</td>
+<td class="gt_row gt_left" headers="cemetery_name">Lebanon Cumberland Presbyterian Church Cemetery</td>
+<td class="gt_row gt_center" headers="geometry">c(-88.6955555555556, 38.1036111111111)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="photos_Matched_Round1">Brown Elizabeth Minnich.jpg</td>
+<td class="gt_row gt_left" headers="Surname">Brown</td>
+<td class="gt_row gt_left" headers="First.Name">Elizabeth</td>
+<td class="gt_row gt_left" headers="Middle.Name">Minnich</td>
+<td class="gt_row gt_left" headers="Maiden/Title">NA</td>
+<td class="gt_row gt_left" headers="Cemetery"></td>
+<td class="gt_row gt_left" headers="City">Egypt, Lehigh Co., PA</td>
+<td class="gt_row gt_left" headers="State">PA</td>
+<td class="gt_row gt_left" headers="DOB">1 July 1807</td>
+<td class="gt_row gt_left" headers="DOD">2 Feb 1888</td>
+<td class="gt_row gt_left" headers="Age">NA</td>
+<td class="gt_row gt_right" headers="N">40 40.760</td>
+<td class="gt_row gt_right" headers="W">75 31.705</td>
+<td class="gt_row gt_left" headers="X13">One stone for husband &amp; wife</td>
+<td class="gt_row gt_left" headers="X14">NA</td>
+<td class="gt_row gt_left" headers="X15">NA</td>
+<td class="gt_row gt_right" headers="N_degree">40</td>
+<td class="gt_row gt_right" headers="N_minute">40</td>
+<td class="gt_row gt_right" headers="N_second">760</td>
+<td class="gt_row gt_right" headers="W_degree">75</td>
+<td class="gt_row gt_right" headers="W_minute">31</td>
+<td class="gt_row gt_right" headers="W_second">705</td>
+<td class="gt_row gt_right" headers="DOB_date">1807-07-01</td>
+<td class="gt_row gt_right" headers="DOD_date">1888-02-02</td>
+<td class="gt_row gt_left" headers="Extra_First_Name">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name1">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name2">NA</td>
+<td class="gt_row gt_left" headers="full_name_MI">Brown Elizabeth Minnich</td>
+<td class="gt_row gt_left" headers="full_name">Brown Elizabeth</td>
+<td class="gt_row gt_left" headers="full_name_MI_no_space">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round2">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round3">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round4">NA</td>
+<td class="gt_row gt_left" headers="photo_list">Brown Elizabeth Minnich.jpg</td>
+<td class="gt_row gt_left" headers="complete_name">Elizabeth Minnich Brown</td>
+<td class="gt_row gt_left" headers="cemetery_name"></td>
+<td class="gt_row gt_center" headers="geometry">c(-75.7125, 40.8777777777778)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="photos_Matched_Round1">Doley L Earl.JPG</td>
+<td class="gt_row gt_left" headers="Surname">Doley</td>
+<td class="gt_row gt_left" headers="First.Name">L</td>
+<td class="gt_row gt_left" headers="Middle.Name">Earl</td>
+<td class="gt_row gt_left" headers="Maiden/Title">NA</td>
+<td class="gt_row gt_left" headers="Cemetery">Webber Campground</td>
+<td class="gt_row gt_left" headers="City">Galatia</td>
+<td class="gt_row gt_left" headers="State">IL</td>
+<td class="gt_row gt_left" headers="DOB">17 Apr 1889</td>
+<td class="gt_row gt_left" headers="DOD">19 Nov 1960</td>
+<td class="gt_row gt_left" headers="Age">NA</td>
+<td class="gt_row gt_right" headers="N">37 49.907</td>
+<td class="gt_row gt_right" headers="W">88 35.306</td>
+<td class="gt_row gt_left" headers="X13">One headstone</td>
+<td class="gt_row gt_left" headers="X14">NA</td>
+<td class="gt_row gt_left" headers="X15">NA</td>
+<td class="gt_row gt_right" headers="N_degree">37</td>
+<td class="gt_row gt_right" headers="N_minute">49</td>
+<td class="gt_row gt_right" headers="N_second">907</td>
+<td class="gt_row gt_right" headers="W_degree">88</td>
+<td class="gt_row gt_right" headers="W_minute">35</td>
+<td class="gt_row gt_right" headers="W_second">306</td>
+<td class="gt_row gt_right" headers="DOB_date">1889-04-17</td>
+<td class="gt_row gt_right" headers="DOD_date">1960-11-19</td>
+<td class="gt_row gt_left" headers="Extra_First_Name">[eaman]</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name1">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name2">NA</td>
+<td class="gt_row gt_left" headers="full_name_MI">Doley L Earl</td>
+<td class="gt_row gt_left" headers="full_name">Doley L</td>
+<td class="gt_row gt_left" headers="full_name_MI_no_space">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round2">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round3">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round4">NA</td>
+<td class="gt_row gt_left" headers="photo_list">Doley L Earl.JPG</td>
+<td class="gt_row gt_left" headers="complete_name">L Earl Doley</td>
+<td class="gt_row gt_left" headers="cemetery_name">Webber Campground Cemetery</td>
+<td class="gt_row gt_center" headers="geometry">c(-88.6683333333333, 38.0686111111111)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="photos_Matched_Round1">Doley G Clyde and D Hilda.JPG</td>
+<td class="gt_row gt_left" headers="Surname">Doley</td>
+<td class="gt_row gt_left" headers="First.Name">G</td>
+<td class="gt_row gt_left" headers="Middle.Name">Clyde</td>
+<td class="gt_row gt_left" headers="Maiden/Title">NA</td>
+<td class="gt_row gt_left" headers="Cemetery">Masonic &amp; Odd Fellows</td>
+<td class="gt_row gt_left" headers="City">Benton</td>
+<td class="gt_row gt_left" headers="State">IL</td>
+<td class="gt_row gt_left" headers="DOB">5 Aug 1894</td>
+<td class="gt_row gt_left" headers="DOD">1 June 1960</td>
+<td class="gt_row gt_left" headers="Age">NA</td>
+<td class="gt_row gt_right" headers="N">37 58.810</td>
+<td class="gt_row gt_right" headers="W">88 55.084</td>
+<td class="gt_row gt_left" headers="X13">One stone for husband &amp; wife; footstone--USNavy WWI</td>
+<td class="gt_row gt_left" headers="X14">NA</td>
+<td class="gt_row gt_left" headers="X15">NA</td>
+<td class="gt_row gt_right" headers="N_degree">37</td>
+<td class="gt_row gt_right" headers="N_minute">58</td>
+<td class="gt_row gt_right" headers="N_second">810</td>
+<td class="gt_row gt_right" headers="W_degree">88</td>
+<td class="gt_row gt_right" headers="W_minute">55</td>
+<td class="gt_row gt_right" headers="W_second">84</td>
+<td class="gt_row gt_right" headers="DOB_date">1894-08-05</td>
+<td class="gt_row gt_right" headers="DOD_date">1960-06-01</td>
+<td class="gt_row gt_left" headers="Extra_First_Name">[uilford]</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name1">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name2">NA</td>
+<td class="gt_row gt_left" headers="full_name_MI">Doley G Clyde</td>
+<td class="gt_row gt_left" headers="full_name">Doley G</td>
+<td class="gt_row gt_left" headers="full_name_MI_no_space">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round2">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round3">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round4">NA</td>
+<td class="gt_row gt_left" headers="photo_list">Doley G Clyde and D Hilda.JPG</td>
+<td class="gt_row gt_left" headers="complete_name">G Clyde Doley</td>
+<td class="gt_row gt_left" headers="cemetery_name">Masonic &amp; Odd Fellows Cemetery</td>
+<td class="gt_row gt_center" headers="geometry">c(-88.94, 38.1916666666667)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="photos_Matched_Round1">Hess Samuel Jackson Chapman.JPG</td>
+<td class="gt_row gt_left" headers="Surname">Hess</td>
+<td class="gt_row gt_left" headers="First.Name">Samuel</td>
+<td class="gt_row gt_left" headers="Middle.Name">Jackson Chapman</td>
+<td class="gt_row gt_left" headers="Maiden/Title">NA</td>
+<td class="gt_row gt_left" headers="Cemetery">Vienna Fraternal</td>
+<td class="gt_row gt_left" headers="City">Johnson Co</td>
+<td class="gt_row gt_left" headers="State">IL</td>
+<td class="gt_row gt_left" headers="DOB">1854</td>
+<td class="gt_row gt_left" headers="DOD">1949</td>
+<td class="gt_row gt_left" headers="Age">NA</td>
+<td class="gt_row gt_right" headers="N">37 25.693</td>
+<td class="gt_row gt_right" headers="W">88 53.949</td>
+<td class="gt_row gt_left" headers="X13">NA</td>
+<td class="gt_row gt_left" headers="X14">NA</td>
+<td class="gt_row gt_left" headers="X15">NA</td>
+<td class="gt_row gt_right" headers="N_degree">37</td>
+<td class="gt_row gt_right" headers="N_minute">25</td>
+<td class="gt_row gt_right" headers="N_second">693</td>
+<td class="gt_row gt_right" headers="W_degree">88</td>
+<td class="gt_row gt_right" headers="W_minute">53</td>
+<td class="gt_row gt_right" headers="W_second">949</td>
+<td class="gt_row gt_right" headers="DOB_date">NA</td>
+<td class="gt_row gt_right" headers="DOD_date">NA</td>
+<td class="gt_row gt_left" headers="Extra_First_Name">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name1">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name2">NA</td>
+<td class="gt_row gt_left" headers="full_name_MI">Hess Samuel Jackson Chapman</td>
+<td class="gt_row gt_left" headers="full_name">Hess Samuel</td>
+<td class="gt_row gt_left" headers="full_name_MI_no_space">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round2">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round3">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round4">NA</td>
+<td class="gt_row gt_left" headers="photo_list">Hess Samuel Jackson Chapman.JPG</td>
+<td class="gt_row gt_left" headers="complete_name">Samuel Jackson Chapman Hess</td>
+<td class="gt_row gt_left" headers="cemetery_name">Vienna Fraternal Cemetery</td>
+<td class="gt_row gt_center" headers="geometry">c(-89.1469444444445, 37.6091666666667)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="photos_Matched_Round1">Hess Catherine West.JPG</td>
+<td class="gt_row gt_left" headers="Surname">Hess</td>
+<td class="gt_row gt_left" headers="First.Name">Catherine</td>
+<td class="gt_row gt_left" headers="Middle.Name">West</td>
+<td class="gt_row gt_left" headers="Maiden/Title">NA</td>
+<td class="gt_row gt_left" headers="Cemetery">Vienna Fraternal</td>
+<td class="gt_row gt_left" headers="City">Johnson Co</td>
+<td class="gt_row gt_left" headers="State">IL</td>
+<td class="gt_row gt_left" headers="DOB">1856</td>
+<td class="gt_row gt_left" headers="DOD">1906</td>
+<td class="gt_row gt_left" headers="Age">NA</td>
+<td class="gt_row gt_right" headers="N">37 25.693</td>
+<td class="gt_row gt_right" headers="W">88 53.949</td>
+<td class="gt_row gt_left" headers="X13">NA</td>
+<td class="gt_row gt_left" headers="X14">NA</td>
+<td class="gt_row gt_left" headers="X15">NA</td>
+<td class="gt_row gt_right" headers="N_degree">37</td>
+<td class="gt_row gt_right" headers="N_minute">25</td>
+<td class="gt_row gt_right" headers="N_second">693</td>
+<td class="gt_row gt_right" headers="W_degree">88</td>
+<td class="gt_row gt_right" headers="W_minute">53</td>
+<td class="gt_row gt_right" headers="W_second">949</td>
+<td class="gt_row gt_right" headers="DOB_date">NA</td>
+<td class="gt_row gt_right" headers="DOD_date">NA</td>
+<td class="gt_row gt_left" headers="Extra_First_Name">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name1">NA</td>
+<td class="gt_row gt_left" headers="Extra_Middle_Name2">NA</td>
+<td class="gt_row gt_left" headers="full_name_MI">Hess Catherine West</td>
+<td class="gt_row gt_left" headers="full_name">Hess Catherine</td>
+<td class="gt_row gt_left" headers="full_name_MI_no_space">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round2">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round3">NA</td>
+<td class="gt_row gt_left" headers="photos_Matched_Round4">NA</td>
+<td class="gt_row gt_left" headers="photo_list">Hess Catherine West.JPG</td>
+<td class="gt_row gt_left" headers="complete_name">Catherine West Hess</td>
+<td class="gt_row gt_left" headers="cemetery_name">Vienna Fraternal Cemetery</td>
+<td class="gt_row gt_center" headers="geometry">c(-89.1469444444445, 37.6091666666667)</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1257,7 +1489,6 @@ cookieconsent.run({
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>test <span class="sc">%&gt;%</span> <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">container.height =</span> <span class="fu">px</span>(<span class="dv">300</span>), <span class="at">container.padding.y =</span> <span class="fu">px</span>(<span class="dv">24</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="rbuhozzhop" style="padding-left:0px;padding-right:0px;padding-top:24px;padding-bottom:24px;overflow-x:auto;overflow-y:auto;width:auto;height:300px;">
 <style>#rbuhozzhop table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1698,73 +1929,126 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="geometry">geometry</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n">n</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.865, 37.9888888888889)</td>
-<td headers="n" class="gt_row gt_right">3</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-75.7125, 40.8777777777778)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.6683333333333, 38.0686111111111)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.1469444444445, 37.6091666666667)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.9752777777778, 38.1669444444444)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.6952777777778, 38.1044444444444)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.0463888888889, 37.8788888888889)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-86.7688888888889, 36.6922222222222)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.1477777777778, 37.6080555555556)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.7008333333333, 38.1088888888889)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.0233333333333, 38.0594444444444)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-83.2383333333333, 38.895)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.6983333333333, 38.1036111111111)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.0361111111111, 38.0386111111111)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.0194444444444, 38.0566666666667)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.1330555555556, 37.9472222222222)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-87.1911111111111, 38.5569444444444)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.8675, 37.6602777777778)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.6944444444445, 38.1036111111111)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.1475, 37.6088888888889)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-87.1908333333333, 38.5572222222222)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-75.5988888888889, 40.7125)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.015, 37.8511111111111)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.9466666666667, 37.9655555555556)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.6794444444444, 38.0466666666667)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-89.1938888888889, 37.9288888888889)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-    <tr><td headers="geometry" class="gt_row gt_center">c(-88.7016666666667, 38.1044444444444)</td>
-<td headers="n" class="gt_row gt_right">2</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="geometry" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">geometry</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-88.865, 37.9888888888889)</td>
+<td class="gt_row gt_right" headers="n">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-75.7125, 40.8777777777778)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-88.6683333333333, 38.0686111111111)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-89.1469444444445, 37.6091666666667)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-88.9752777777778, 38.1669444444444)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-88.6952777777778, 38.1044444444444)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-89.0463888888889, 37.8788888888889)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-86.7688888888889, 36.6922222222222)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-89.1477777777778, 37.6080555555556)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-88.7008333333333, 38.1088888888889)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-89.0233333333333, 38.0594444444444)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-83.2383333333333, 38.895)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-88.6983333333333, 38.1036111111111)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-89.0361111111111, 38.0386111111111)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-89.0194444444444, 38.0566666666667)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-89.1330555555556, 37.9472222222222)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-87.1911111111111, 38.5569444444444)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-88.8675, 37.6602777777778)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-88.6944444444445, 38.1036111111111)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-89.1475, 37.6088888888889)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-87.1908333333333, 38.5572222222222)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-75.5988888888889, 40.7125)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-89.015, 37.8511111111111)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-88.9466666666667, 37.9655555555556)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-88.6794444444444, 38.0466666666667)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="geometry">c(-89.1938888888889, 37.9288888888889)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="geometry">c(-88.7016666666667, 38.1044444444444)</td>
+<td class="gt_row gt_right" headers="n">2</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2108,7 +2392,7 @@ Geodetic CRS:  WGS 84
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
   author = {Sinks, Louise E.},
   title = {Mapping for the {Tombstone} {Project}},
   date = {2023-08-15},
@@ -2154,18 +2438,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2197,11 +2470,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/lsinks\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2211,8 +2521,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2224,7 +2543,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2268,6 +2709,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2293,6 +2735,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2360,12 +2828,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

@@ -3,15 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "Louise E. Sinks"
-  site-url: https://lsinks.github.io
-  description: "Data Science Blog and Portfolio of Louise Sinks"
+  title: "Sarah Smith-Tripp"
+  site-url: https://sarahsmithtripp.github.io
+  description: "Personal Website for Sarah Smith-Tripp"
   navbar:
-    title: "Louise E. Sinks"
+    title: "Sarah Smith-Tripp"
     right:
       - href: index.qmd
         text: Home
-      - portfolio.qmd
+      - research.qmd
       - about.qmd
       - posts.qmd
       - currentprojects.qmd
@@ -22,7 +22,7 @@ website:
   google-analytics: "G-WR4VFC0MC2"
   cookie-consent: true
   twitter-card:
-    creator: "@LouiseSinks"
+    creator: "@smithtripp21"
 
 format:
   html:

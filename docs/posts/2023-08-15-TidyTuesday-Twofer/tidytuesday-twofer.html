@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-08-15">
 <meta name="description" content="Looking at how heat levels increase on the show The Hot Ones. Then doing some EDA on a data set on spam emails.">
 
-<title>Louise E. Sinks - Tidy Tuesday Twofer (32 and 33)</title>
+<title>Tidy Tuesday Twofer (32 and 33) – Louise E. Sinks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -74,17 +74,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -119,6 +126,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -126,7 +135,7 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Louise E. Sinks - Tidy Tuesday Twofer (32 and 33)">
+<meta name="twitter:title" content="Tidy Tuesday Twofer (32 and 33) – Louise E. Sinks">
 <meta name="twitter:description" content="Looking at how heat levels increase on the show The Hot Ones. Then doing some EDA on a data set on spam emails.">
 <meta name="twitter:image" content="https://lsinks.github.io/posts/2023-08-15-TidyTuesday-Twofer/thumbnail.jpg">
 <meta name="twitter:creator" content="@LouiseSinks">
@@ -137,52 +146,52 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Louise E. Sinks</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../portfolio.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me/ CV</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me/ CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Blog Entries</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Blog Entries</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../currentprojects.html" rel="" target="">
- <span class="menu-text">Current Projects</span></a>
+    <a class="nav-link" href="../../currentprojects.html"> 
+<span class="menu-text">Current Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogroll.html" rel="" target="">
- <span class="menu-text">Blog Roll</span></a>
+    <a class="nav-link" href="../../blogroll.html"> 
+<span class="menu-text">Blog Roll</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../posts.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -229,8 +238,8 @@ cookieconsent.run({
   <div class="quarto-categories">
     <div class="quarto-category">R</div>
     <div class="quarto-category">R-code</div>
-    <div class="quarto-category">Code-Along</div>
-    <div class="quarto-category">TidyTuesday</div>
+    <div class="quarto-category">code-along</div>
+    <div class="quarto-category">tidyTuesday</div>
     <div class="quarto-category">corrplot</div>
   </div>
   </div>
@@ -261,14 +270,16 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 3, 2023</p>
+      <p class="date-modified">December 21, 2024</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <p>Last week I played around with the <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-08/readme.md">TidyTuesday data on hot sauces</a>, but I didn’t polish anything or write any text. This week’s <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-15/readme.md">TidyTuesday data concerns spam email</a>. I’m going to cover them both in this blog post.</p>
 <section id="loading-libraries" class="level1">
@@ -339,13 +350,21 @@ cookieconsent.run({
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sauces, <span class="fu">aes</span>(sauce_number, scoville, <span class="at">color =</span> season)) <span class="sc">+</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#factor</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sauces, <span class="fu">aes</span>(sauce_number2, scoville, <span class="at">color =</span> season)) <span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>And having that variable as a factor allows for a really nice box plot as well. ggplot generates a box plot for each level of the factor and displays them in a single plot. Using the numeric form of the variable gives a warning that it is expecting a group and puts everything into a single box plot. (You can add <code>group = sauce_number</code> to the <code>aes</code> to recreate the plot you get straight out of the box with the factor version.)</p>
@@ -362,14 +381,22 @@ cookieconsent.run({
 ℹ did you forget `aes(group = ...)`?</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#factor</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(sauces, <span class="fu">aes</span>(sauce_number2, scoville)) <span class="sc">+</span> </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_log10</span>() <span class="sc">+</span> </span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The increase in heat level as the questions proceed looks like it has exponential behavior to me. Also looks like some questions # have more variation in the heat level. Questions 8 and 10 seem to have settled in on a specific sauce after the first few seasons.</p>
@@ -381,7 +408,6 @@ cookieconsent.run({
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(season, sauce_name, scoville) <span class="sc">%&gt;%</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="xzofpysrol" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#xzofpysrol table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -822,83 +848,124 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="season">season</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="sauce_name">sauce_name</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="scoville">scoville</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="season" class="gt_row gt_right">1</td>
-<td headers="sauce_name" class="gt_row gt_left">Mad Dog 357</td>
-<td headers="scoville" class="gt_row gt_right">357000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">2</td>
-<td headers="sauce_name" class="gt_row gt_left">Blair's Mega Death Sauce</td>
-<td headers="scoville" class="gt_row gt_right">550000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">3</td>
-<td headers="sauce_name" class="gt_row gt_left">Blair's Mega Death Sauce</td>
-<td headers="scoville" class="gt_row gt_right">550000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">4</td>
-<td headers="sauce_name" class="gt_row gt_left">The Last Dab</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">5</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab (Reaper Edition)</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">6</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab Reduxx</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">7</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab Reduxx</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">8</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Reduxx</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">9</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab Reduxx</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">10</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab XXX</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">11</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab XXX</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">12</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab XXX</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">13</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">14</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">15</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">16</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">17</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">18</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">19</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">20</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-    <tr><td headers="season" class="gt_row gt_right">21</td>
-<td headers="sauce_name" class="gt_row gt_left">Hot Ones – The Last Dab: Apollo</td>
-<td headers="scoville" class="gt_row gt_right">2000000</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="season" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">season</th>
+<th id="sauce_name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sauce_name</th>
+<th id="scoville" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">scoville</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">1</td>
+<td class="gt_row gt_left" headers="sauce_name">Mad Dog 357</td>
+<td class="gt_row gt_right" headers="scoville">357000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">2</td>
+<td class="gt_row gt_left" headers="sauce_name">Blair's Mega Death Sauce</td>
+<td class="gt_row gt_right" headers="scoville">550000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">3</td>
+<td class="gt_row gt_left" headers="sauce_name">Blair's Mega Death Sauce</td>
+<td class="gt_row gt_right" headers="scoville">550000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">4</td>
+<td class="gt_row gt_left" headers="sauce_name">The Last Dab</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">5</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab (Reaper Edition)</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">6</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab Reduxx</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">7</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab Reduxx</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">8</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Reduxx</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">9</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab Reduxx</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">10</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab XXX</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">11</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab XXX</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">12</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab XXX</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">13</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">14</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">15</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">16</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">17</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">18</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">19</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="season">20</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="season">21</td>
+<td class="gt_row gt_left" headers="sauce_name">Hot Ones – The Last Dab: Apollo</td>
+<td class="gt_row gt_right" headers="scoville">2000000</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -912,7 +979,11 @@ cookieconsent.run({
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge2"</span>) <span class="sc">+</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>It looks like there are a few different regimes. The first three or four questions, the heat level rises sharply with each question. Then for the middle questions, the increase is somewhat more gradual. For the last two or three questions, the heat level again rises steeply.</p>
@@ -927,7 +998,11 @@ cookieconsent.run({
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_y_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That seems pretty clear that there are 3 regions.</p>
@@ -940,13 +1015,21 @@ cookieconsent.run({
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> (y <span class="sc">~</span> <span class="fu">exp</span>(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(average_sauce, <span class="fu">aes</span>(<span class="at">x =</span> sauce_number, <span class="at">y =</span> hot)) <span class="sc">+</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">formula =</span> (y <span class="sc">~</span> <span class="fu">exp</span>(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -981,7 +1064,7 @@ cookieconsent.run({
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>spam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>All the variables are complete. This is a subset of the data submitted to the <a href="https://archive.ics.uci.edu/dataset/94/spambase">UCI Machine Learning Repository</a>. Looking at <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-15/readme.md#data-dictionary">the data dictionary</a>, we might expect all the variable to be positively correlated with spam.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 11%">
@@ -1036,7 +1119,7 @@ cookieconsent.run({
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
@@ -1078,7 +1161,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: character</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 13%">
@@ -1115,7 +1198,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 16%">
 <col style="width: 11%">
@@ -1234,7 +1317,11 @@ cookieconsent.run({
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(spam, <span class="fu">aes</span>(yesno)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That’s not too bad. I’m going to calculate the percentage of spam messages by converting this to a numerical variable and taking the mean. I need a number anyway for my correlation plot.</p>
@@ -1276,7 +1363,11 @@ cookieconsent.run({
 <span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">title</span>(<span class="at">sub=</span> <span class="st">"Data from UCI Machine Learning Repository via Rdatasets"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday-twofer_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>All of them have some positive correlation. None of the predictors look strongly correlated with each other either.</p>
@@ -1290,7 +1381,7 @@ cookieconsent.run({
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
   author = {Sinks, Louise E.},
   title = {Tidy {Tuesday} {Twofer} (32 and 33)},
   date = {2023-08-15},
@@ -1336,18 +1427,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1379,11 +1459,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/lsinks\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1393,8 +1510,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1406,7 +1532,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1450,6 +1698,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1475,6 +1724,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1542,12 +1817,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

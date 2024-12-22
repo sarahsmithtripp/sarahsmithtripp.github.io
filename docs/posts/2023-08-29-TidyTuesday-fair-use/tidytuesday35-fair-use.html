@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2023-08-29">
 <meta name="description" content="Using stringr::str_detect() functions to explore why variables from different datasets don’t exactly match.">
 
-<title>Louise E. Sinks - TidyTuesday 35: Exploring Fair Use Cases</title>
+<title>TidyTuesday 35: Exploring Fair Use Cases – Louise E. Sinks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -74,17 +74,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -119,6 +126,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -126,7 +135,7 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Louise E. Sinks - TidyTuesday 35: Exploring Fair Use Cases">
+<meta name="twitter:title" content="TidyTuesday 35: Exploring Fair Use Cases – Louise E. Sinks">
 <meta name="twitter:description" content="Using stringr::str_detect() functions to explore why variables from different datasets don’t exactly match.">
 <meta name="twitter:image" content="https://lsinks.github.io/posts/2023-08-29-TidyTuesday-fair-use/thumbnail.jpg">
 <meta name="twitter:creator" content="@LouiseSinks">
@@ -137,52 +146,52 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Louise E. Sinks</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../portfolio.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me/ CV</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me/ CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Blog Entries</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Blog Entries</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../currentprojects.html" rel="" target="">
- <span class="menu-text">Current Projects</span></a>
+    <a class="nav-link" href="../../currentprojects.html"> 
+<span class="menu-text">Current Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogroll.html" rel="" target="">
- <span class="menu-text">Blog Roll</span></a>
+    <a class="nav-link" href="../../blogroll.html"> 
+<span class="menu-text">Blog Roll</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../posts.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -225,15 +234,15 @@ cookieconsent.run({
 <div class="quarto-title">
 <h1 class="title">TidyTuesday 35: Exploring Fair Use Cases</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Data-Viz</div>
+    <div class="quarto-category">data visualization</div>
     <div class="quarto-category">R</div>
     <div class="quarto-category">R-code</div>
-    <div class="quarto-category">Code-Along</div>
-    <div class="quarto-category">TidyTuesday</div>
+    <div class="quarto-category">code-along</div>
+    <div class="quarto-category">tidyTuesday</div>
     <div class="quarto-category">stringr</div>
     <div class="quarto-category">data cleaning</div>
     <div class="quarto-category">dual axis plot</div>
-    <div class="quarto-category">ggplot2</div>
+    <div class="quarto-category">ggplot</div>
     <div class="quarto-category">cowplot</div>
   </div>
   </div>
@@ -264,14 +273,16 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 3, 2023</p>
+      <p class="date-modified">December 21, 2024</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <section id="introoverview" class="level2">
 <h2 class="anchored" data-anchor-id="introoverview">Intro/Overview</h2>
@@ -327,7 +338,6 @@ cookieconsent.run({
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="vkzchwdwgs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#vkzchwdwgs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -768,66 +778,77 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="case">case</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="year">year</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="court">court</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="jurisdiction">jurisdiction</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="categories">categories</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="outcome">outcome</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="fair_use_found">fair_use_found</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="case" class="gt_row gt_left">De Fontbrune v. Wofsy, 39 F.4th 1214 (9th Cir. 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">9th Circuit</td>
-<td headers="jurisdiction" class="gt_row gt_left">9th Circuit</td>
-<td headers="categories" class="gt_row gt_left">Education/Scholarship/Research; Photograph</td>
-<td headers="outcome" class="gt_row gt_left">Fair use not found</td>
-<td headers="fair_use_found" class="gt_row gt_center">FALSE</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Sedlik v. Von Drachenberg, No. CV 21-1102 (C.D. Cal. May 31, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">C.D. Cal.</td>
-<td headers="jurisdiction" class="gt_row gt_left">9th Circuit</td>
-<td headers="categories" class="gt_row gt_left">Painting/Drawing/Graphic; Photograph</td>
-<td headers="outcome" class="gt_row gt_left">Preliminary finding; Fair use not found</td>
-<td headers="fair_use_found" class="gt_row gt_center">FALSE</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Sketchworks Indus. Strength Comedy, Inc. v. Jacobs, No. 19-CV-7470-LTS-VF (S.D.N.Y. May 12, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">S.D.N.Y.</td>
-<td headers="jurisdiction" class="gt_row gt_left">2nd Circuit</td>
-<td headers="categories" class="gt_row gt_left">Film/Audiovisual; Music; Parody/Satire; Review/Commentary</td>
-<td headers="outcome" class="gt_row gt_left">Fair use found</td>
-<td headers="fair_use_found" class="gt_row gt_center">TRUE</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Am. Soc'y for Testing &amp; Materials v. Public.Resource.Org, Inc., No. 13-cv-1215 (D.D.C. Mar. 31, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">D.D.C.</td>
-<td headers="jurisdiction" class="gt_row gt_left">District of Columbia Circuit</td>
-<td headers="categories" class="gt_row gt_left">Education/Scholarship/Research; Textual Work; Used in government proceeding</td>
-<td headers="outcome" class="gt_row gt_left">Mixed Result</td>
-<td headers="fair_use_found" class="gt_row gt_center">FALSE</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Yang v. Mic Network Inc., Nos. 20-4097-cv, 20-4201-cv (2d Cir. Mar. 29, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">2d Circuit</td>
-<td headers="jurisdiction" class="gt_row gt_left">2nd Circuit</td>
-<td headers="categories" class="gt_row gt_left">News reporting; Photography</td>
-<td headers="outcome" class="gt_row gt_left">Fair use found</td>
-<td headers="fair_use_found" class="gt_row gt_center">TRUE</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Viacom Int’l v. Pixi Universal, Civ. Action No H-21-2612 (S.D. Tex. Mar. 25, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">S.D. Tex.</td>
-<td headers="jurisdiction" class="gt_row gt_left">5th Circuit</td>
-<td headers="categories" class="gt_row gt_left">Painting/Drawing/Graphic; Parody/Satire</td>
-<td headers="outcome" class="gt_row gt_left">Fair use not found</td>
-<td headers="fair_use_found" class="gt_row gt_center">FALSE</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="case" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">case</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="court" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">court</th>
+<th id="jurisdiction" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">jurisdiction</th>
+<th id="categories" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">categories</th>
+<th id="outcome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">outcome</th>
+<th id="fair_use_found" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">fair_use_found</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="case">De Fontbrune v. Wofsy, 39 F.4th 1214 (9th Cir. 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">9th Circuit</td>
+<td class="gt_row gt_left" headers="jurisdiction">9th Circuit</td>
+<td class="gt_row gt_left" headers="categories">Education/Scholarship/Research; Photograph</td>
+<td class="gt_row gt_left" headers="outcome">Fair use not found</td>
+<td class="gt_row gt_center" headers="fair_use_found">FALSE</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="case">Sedlik v. Von Drachenberg, No. CV 21-1102 (C.D. Cal. May 31, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">C.D. Cal.</td>
+<td class="gt_row gt_left" headers="jurisdiction">9th Circuit</td>
+<td class="gt_row gt_left" headers="categories">Painting/Drawing/Graphic; Photograph</td>
+<td class="gt_row gt_left" headers="outcome">Preliminary finding; Fair use not found</td>
+<td class="gt_row gt_center" headers="fair_use_found">FALSE</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="case">Sketchworks Indus. Strength Comedy, Inc. v. Jacobs, No. 19-CV-7470-LTS-VF (S.D.N.Y. May 12, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">S.D.N.Y.</td>
+<td class="gt_row gt_left" headers="jurisdiction">2nd Circuit</td>
+<td class="gt_row gt_left" headers="categories">Film/Audiovisual; Music; Parody/Satire; Review/Commentary</td>
+<td class="gt_row gt_left" headers="outcome">Fair use found</td>
+<td class="gt_row gt_center" headers="fair_use_found">TRUE</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="case">Am. Soc'y for Testing &amp; Materials v. Public.Resource.Org, Inc., No. 13-cv-1215 (D.D.C. Mar. 31, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">D.D.C.</td>
+<td class="gt_row gt_left" headers="jurisdiction">District of Columbia Circuit</td>
+<td class="gt_row gt_left" headers="categories">Education/Scholarship/Research; Textual Work; Used in government proceeding</td>
+<td class="gt_row gt_left" headers="outcome">Mixed Result</td>
+<td class="gt_row gt_center" headers="fair_use_found">FALSE</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="case">Yang v. Mic Network Inc., Nos. 20-4097-cv, 20-4201-cv (2d Cir. Mar. 29, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">2d Circuit</td>
+<td class="gt_row gt_left" headers="jurisdiction">2nd Circuit</td>
+<td class="gt_row gt_left" headers="categories">News reporting; Photography</td>
+<td class="gt_row gt_left" headers="outcome">Fair use found</td>
+<td class="gt_row gt_center" headers="fair_use_found">TRUE</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="case">Viacom Int’l v. Pixi Universal, Civ. Action No H-21-2612 (S.D. Tex. Mar. 25, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">S.D. Tex.</td>
+<td class="gt_row gt_left" headers="jurisdiction">5th Circuit</td>
+<td class="gt_row gt_left" headers="categories">Painting/Drawing/Graphic; Parody/Satire</td>
+<td class="gt_row gt_left" headers="outcome">Fair use not found</td>
+<td class="gt_row gt_center" headers="fair_use_found">FALSE</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -838,7 +859,6 @@ cookieconsent.run({
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">container.height =</span> <span class="fu">px</span>(<span class="dv">300</span>), <span class="at">container.padding.y =</span> <span class="fu">px</span>(<span class="dv">24</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="owmwcudnan" style="padding-left:0px;padding-right:0px;padding-top:24px;padding-bottom:24px;overflow-x:auto;overflow-y:auto;width:auto;height:300px;">
 <style>#owmwcudnan table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1279,80 +1299,91 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="title">title</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="case_number">case_number</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="year">year</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="court">court</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="key_facts">key_facts</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="issue">issue</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="holding">holding</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="tags">tags</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="outcome">outcome</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="title" class="gt_row gt_left">De Fontbrune v. Wofsy</td>
-<td headers="case_number" class="gt_row gt_left">39 F.4th 1214 (9th Cir. 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">United States Court of Appeals for the Ninth Circuit</td>
-<td headers="key_facts" class="gt_row gt_left">Plaintiffs own the rights to a catalogue comprised of 16,000 photographs of Pablo Picasso’s work, which was originally compiled by Picasso’s friend in 1932 (the “Zervos Catalogue”). In 1995, after obtaining permission from Picasso’s estate to publish a work illustrating and describing works by Picasso, Defendants Alan Wofsy and his company Alan Wofsy &amp; Associates began publishing The Picasso Project—–a series of volumes reproducing images of Picasso’s work, including 1,492 photographs from the Zervos Catalogue. Plaintiffs sued for copyright infringement. A French court held the photographs were protected by copyright because they “added creative features through deliberate choices of lighting, the lens, filters, [and] framing or angle of view.” In 2001, Plaintiffs obtained a judgment in France that subjected Defendants to damages for any further acts of infringement. In 2012, after discovering copies of The Picasso Project in a French bookstore, Plaintiffs enforced their judgment in France and were awarded €2 million. Plaintiffs sought recognition of the judgment in the U.S. courts. The district court granted summary judgment for Defendants, determining that the French judgment was “repugnant to U.S. public policy protecting free expression” because it failed to provide a fair use defense. Plaintiffs appealed; and Defendants cross-appealed on other defenses.</td>
-<td headers="issue" class="gt_row gt_left">Whether reproduction of photographs documenting artwork in a reference book that was sold commercially is a fair use.</td>
-<td headers="holding" class="gt_row gt_left">The panel held that the first factor, the purpose and character of the use, weighed against fair use because Defendants conceded that The Picasso Project was a commercial venture and the use at issue—reproduction of the photographs in a book illustrating Picasso’s works—was not transformative. Specifically, the court noted that Defendants’ use “did not serve an ‘entirely different function’ than the originals,” but had overlapping purposes, and the insertion of informative captions did not “necessarily” transform the works. The second factor, the nature of the copyrighted work, did not favor fair use because, although the works were published and documentary in nature, the French court had concluded that the photographs exhibited creative elements. The court determined that the third factor, the amount and substantiality of the work used, weighed against fair use because Defendants failed to demonstrate that “copying the entirety of each photograph was necessary.” The fourth factor, the effect of the use upon the potential market for or value of the copyrighted work, also weighed against fair use because there is a presumption of market harm when the use is commercial and non-transformative. Although Defendants presented evidence that auction prices for the Zervos Catalogue increased while The Picasso Project was on the market, Defendants had not provided evidence that “widespread appropriation” of the works would not harm the market for the photographs. Weighing all the factors, the court had “serious doubts” that fair use would protect Defendants’ use, and, accordingly, granted summary judgment to Plaintiffs on the public policy defense.</td>
-<td headers="tags" class="gt_row gt_left">Education/Scholarship/Research; Photograph</td>
-<td headers="outcome" class="gt_row gt_left">Fair use not found</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Sedlik v. Von Drachenberg</td>
-<td headers="case_number" class="gt_row gt_left">No. CV 21-1102, 2022 WL 2784818 (C.D. Cal. May 31, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">United States District Court for the Southern District of New York</td>
-<td headers="key_facts" class="gt_row gt_left">Plaintiff Jeffrey Sedlik is a photographer who created an iconic portrait of musician Miles Davis, which he has licensed for various uses (the “Portrait”). Defendant Katherine Von Drachenberg, professionally known as Kat Von D, is a celebrity tattooist. In 2017, Kat Von D inked a tattoo on the arm of a friend, Blake Farmer, as a gift. Farmer chose the Portrait as the reference image for his tattoo. Kat Von D traced a printout of the Portrait to create a line drawing and stencil to transfer to Farmer’s arm, then completed the tattoo freehand. Kat Von D and the tattoo shop hosting her both posted a photograph of Kat Von D tattooing Farmer’s arm with the Portrait in the background, as well as a photograph of the finished tattoo. Kat Von D also posted a short video of herself inking the tattoo. Sedlik sued and moved for summary judgment on his claim of copyright infringement. Defendants moved for summary judgment, asserting fair use.</td>
-<td headers="issue" class="gt_row gt_left">Whether use of a photograph as the reference image for a realistic tattoo is fair use.</td>
-<td headers="holding" class="gt_row gt_left">Considering the first fair use factor, the purpose and character of the use, the court found triable issues as to the transformativeness and commercial nature of the work. The court rejected Kat Von D’s arguments that the tattoo was transformative because of Farmer’s personal connection to the image in the Portrait and by nature of it being permanently imprinted on Farmer’s body. The court concluded that a jury should determine whether the visual differences between the Portrait and the tattoo, such as additional shading and the elimination of the black background, are significant enough to render the tattoo transformative. The court also stated that a jury should decide whether Kat Von D’s use of the work was commercial, noting that she did not charge Farmer for the tattoo but could have derived an indirect economic benefit from promotion of the tattoo on social media. The court found that the second factor, the nature of the copyrighted work, favored fair use because although the Portrait is creative, it was published several decades ago and has been widely disseminated. The third factor, the amount and substantiality of the portion used, weighed against fair use because Kat Von D chose to copy certain expressive elements of the Portrait that were not necessary to achieve her stated purpose of expressing “a sentiment of melancholy.” On the fourth factor, the effect of the use upon the potential market for or value of the copyrighted work, while the court concluded the tattoo was not a substitute in the primary market for the Portrait, it found that Sedlik raised a triable issue as to whether a future market exists for licensing the Portrait for use in creating tattoos. Because the court found triable issues concerning the statutory factors, it declined to address a non-statutory factor raised by defendants—“fundamental rights of bodily integrity and personal expression”—and concluded that fair use in this case should be decided by a jury.</td>
-<td headers="tags" class="gt_row gt_left">Painting/Drawing/Graphic; Photograph</td>
-<td headers="outcome" class="gt_row gt_left">Preliminary finding; Fair use not found</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Sketchworks Indus. Strength Comedy, Inc. v. Jacobs</td>
-<td headers="case_number" class="gt_row gt_left">No. 19-CV-7470-LTS-VF, 2022 U.S. Dist. LEXIS 86331 (S.D.N.Y. May 12, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">United States District Court for the Southern District of New York</td>
-<td headers="key_facts" class="gt_row gt_left">Plaintiff Sketchworks Industrial Strength Comedy, Inc. (“Sketchworks”) is a sketch comedy company that created and owns a copyright in Vape, a stage musical that is an alleged parody of the theatrical work and film, Grease. Vape follows the same characters along roughly the same story-arc and in the same setting as Grease and incorporates portions of the film’s music. Defendants are the trustees for the individual trusts of the co-authors of Grease. Just before Vape was scheduled to be performed, Defendants sent Sketchworks and the theater where Vape was to be performed cease and desist letters, and the performances were cancelled. Sketchworks brought an action against Defendants seeking a declaratory judgment that Vape constitutes fair use of Grease, asserting that Vape is a parody that uses millennial slang, pop culture references, and exaggeration to comment on Grease and criticize its misogynistic and sexist elements. Defendants disputed that Vape is a parody and asserted that it infringes their copyright in Grease. The parties cross- moved for judgment on the pleadings.</td>
-<td headers="issue" class="gt_row gt_left">Whether the use of protected elements, including music, plot, characters, dialogue, and setting, from a theatrical work and film to create a parodic stage musical is fair use.</td>
-<td headers="holding" class="gt_row gt_left">The court found that the first factor, the purpose and character of the use, favored fair use because Vape is a parody of Grease and is therefore transformative. Critical to this determination, the court found that Vape juxtaposed “familiar elements from Grease, such as the main characters and the plot arc, with alterations to the script and song lyrics” to highlight the experiences of Grease’s female characters and “comment on how misogynistic tendencies have both evolved since Grease was developed and remain the same.” The second factor, the nature of the copyrighted work, disfavored fair use because Grease’s creative expression fell “within the core of the copyright’s protective purposes.” The court, however, declined to give this factor much weight, reasoning that parodies typically copy publicly known, expressive works. The third factor, the amount and substantiality of the use, weighed in favor of fair use. Although Vape took “substantial elements” from Grease, the court found that “the taking was not excessive” because use of those elements was necessary to achieve Vape’s parodic purpose and communicate its criticism of certain aspects of Grease. The fourth factor, the effect of the use on the potential market for or value of the copyrighted work, also weighed in favor of fair use because any potential harm to Grease’s market value for derivatives was likely “minimal.” While Vape updated some of the language and cultural references from Grease, the court found that Vape “cannot be reasonably viewed as a derivative ‘sequel to, . . . or updated remake, of Grease,’” because its updates were done “in a spirit of mockery.” Further, the court commented that any effect on the demand for derivatives attributable to Vape’s “critical nature” is not remediable under copyright law. Weighing the four factors together, the court concluded that Vape constitutes a fair use of Grease and granted Sketchworks’ motion for judgment on the pleadings.</td>
-<td headers="tags" class="gt_row gt_left">Film/Audiovisual; Music; Parody/Satire; Review/Commentary</td>
-<td headers="outcome" class="gt_row gt_left">Fair use found</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Am. Soc'y for Testing &amp; Materials v. Public.Resource.Org, Inc.</td>
-<td headers="case_number" class="gt_row gt_left">No. 13-cv-1215 (TSC), 2022 U.S. Dist. LEXIS 60922 (D.D.C. Mar. 31, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">United States District Court for the District of Columbia</td>
-<td headers="key_facts" class="gt_row gt_left">Defendant Public.Resource.Org, Inc., a non-profit organization, has a mission to make the “law and other government materials more widely available so that people, businesses, and organizations can easily read and discuss [the] laws and the operations of government.” Plaintiffs consist of three non-profit standards-developing organizations: (1) “ASTM,” which is focused on industry-related technical and safety standards; (2) “NFPA,” which is focused on safety standards; and (3) “ASHRAE,” which is focused on construction-related standards. Plaintiffs own copyrights in various “voluntary consensus standards,” which are developed by numerous subject matter experts under Plaintiffs’ guidance. Plaintiffs sell PDFs and hard copies of their standards and maintain reading rooms for viewing the standards. Defendant purchased hard copies of Plaintiffs’ standards and, without authorization, scanned and made digital, verbatim, copies freely available online to the public. This case concerns 191 ASTM standards, 23 NFPA standards, and 3 ASHRAE standards that Defendant claims have been incorporated by reference into federal law. Plaintiffs brought copyright, trademark, and unfair competition claims; Defendant countersued, seeking declaratory judgment. The parties filed motions for summary judgment. In 2017, the district court found that all factors weighed against fair use. On appeal, the court of appeals reversed in part and remanded the case back to the district court without a detailed discussion of the fair use factors for additional factual development. On remand, both parties again moved for summary judgment.</td>
-<td headers="issue" class="gt_row gt_left">Whether it is fair use to make available online for free a verbatim copy of privately developed standards, which have been incorporated by reference into law, without obtaining authorization from the copyright owner.</td>
-<td headers="holding" class="gt_row gt_left">As directed by the court of appeals, the district court conducted a four-step fair use analysis for each of the 217 allegations of infringement, concluding that Defendant’s reproduction of 184 standards was fair use, reproduction of 32 standards was not fair use, and that portions of the reproduction of 1 standard was fair use. For all 217 standards, the court found that the fourth factor, the effect of the use upon the potential market for or value of the work, favored fair use. Having found that Defendant’s use was noncommercial, the court determined that Plaintiffs did not provide sufficient evidence to show some meaningful likelihood of future harm exists. The court noted that it was “less deferential” to Plaintiffs’ “conclusory opinions” about market harm given that, during the elapsed time since the alleged infringement and the commencement of the litigation Plaintiffs could have provided “economic data and analysis” supporting their arguments. The court also found that Defendant’s reproductions did not have a “substantially adverse impact on the potential market for the originals.” Regarding the 184 standards that the court found Defendant reproduced fairly, the court determined that 153 were incorporated by reference into law and that the other 31 were identical in text to standards incorporated by reference. The court concluded that the first factor, the purpose and character of the use, generally favored fair use because Defendant did not “stand to profit” from the reproduction and that its purpose was “to inform the public about the law and facilitate public debate.” The court noted that Defendant’s use qualified as one that “furthere[d] the purposes” of fair use, and generally provided information “essential for a private entity to comprehend its legal duties,” which weighed “heavily in favor” of fair use. In assessing the second factor, the nature of the copyrighted work, the court considered that “the express text of the law falls plainly outside the realm of copyright protection” and determined that consequently the standards incorporated by reference “are, at best, at the outer edge of ‘copyright's protective purposes.’” Thus, this factor weighed “heavily in favor” of fair use. The court explained that the 184 standards were incorporated into law “without limitation” such that “the consequence of the incorporation by reference is virtually indistinguishable from a situation in which the standard had been expressly copied into law.” The third factor, the amount and substantiality of the portion used, also favored fair use as the court found that “a greater amount of the standard's text might be fairly reproduced” because the incorporating regulations did “not specify” whether certain provisions, or the entire text, of the standards were incorporated by reference into law and did not indicate which specific provisions were “relevant for regulatory guidance.” Balancing the factors, the court found fair use and denied Plaintiffs’ motion for summary judgment regarding these 184 standards. Regarding the 32 standards that the court found were not reproduced fairly, the court noted that these standards were not shown to be incorporated by reference into law and “differ[ed] in substantive ways from those incorporated by reference into law.” Discussing the first factor, the court found that this factor weighed slightly against fair use because Defendant’s purpose of “inform[ing] the public about the law” was not “significantly furthered” by publishing standards with substantive differences from the standards that were incorporated by reference. The second factor weighed against fair use because there was no evidence showing that the standards were incorporated into law. And, although the standards were more factual than creative, the court concluded that these works “fall more squarely within the realm of copyright protection” than standards incorporated into law. The third factor weighed against fair use, as Defendant’s purpose of informing the public about the law “could be achieved with a paraphrase or summary.” The court also noted that “[i]ncorporating one standard by reference does not justify posting provisions of a different version that has not been incorporated into law.” Balancing these factors, the court did not find fair use and denied Defendant’s motion for summary judgment regarding these 32 standards. Regarding the 1 standard where the court found that portions of the reproduced standard were used fairly, only the parts incorporated by reference into a regulation were found to be fair use. In its second factor analysis, distinguishing the portions not incorporated into law, the court found that Defendant’s “wholesale reproduction” of the standard was “harder to justify” because only parts of the standard were incorporated into law.</td>
-<td headers="tags" class="gt_row gt_left">Education/Scholarship/Research; Textual Work; Used in government proceeding</td>
-<td headers="outcome" class="gt_row gt_left">Mixed Result</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Yang v. Mic Network Inc.</td>
-<td headers="case_number" class="gt_row gt_left">Nos. 20-4097-cv(L), 20-4201-cv (XAP), 2022 U.S. App. LEXIS 8195 (2d Cir. Mar. 29, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">United States Court of Appeals for the Second Circuit</td>
-<td headers="key_facts" class="gt_row gt_left">Plaintiff Stephen Yang (“Yang”) licensed a photograph he took of Dan Rochkind (“Rochkind”) to the New York Post, which ran the photograph in an article about Rochkind entitled “Why I Won’t Date Hot Women Anymore.” Defendant Mic Network, Inc. (“Mic”) posted its own article entitled “Twitter Is Skewering the 'New York Post' for a Piece on Why a Man ‘Won't Date Hot Women’.” The Mic article included a screenshot of the Post article that captured the headline and a portion of Yang’s photograph. Mic did not obtain a license to use the photograph. In response, Yang sued Mic for copyright infringement, and Mic moved to dismiss, asserting fair use. The district court granted Mic’s motion, concluding that its use of Yang’s photograph was fair use. Yang appealed the order and judgment.</td>
-<td headers="issue" class="gt_row gt_left">Whether using a screenshot from an article, including part of a photograph, to report on and criticize the article constitutes fair use of the photograph.</td>
-<td headers="holding" class="gt_row gt_left">On appeal, the court decided that the first factor, the purpose and character of the use, weighed in favor of fair use. As an initial matter, the panel held that it was not error for the district to decide transformativeness on a motion to dismiss in this case because the only two pieces of evidence needed were the original and secondary works. The court held that, in addition to identifying the subject of Mic’s criticism, Mic, also transformed the photograph by critiquing and providing commentary on the Post article. Mic did not use the photograph “merely as an illustrative aid,” and thus its use was for different purpose than the original. The second factor, the nature of the copyrighted work, had limited weight in the court’s analysis after it held that the use was transformative and thus “d[id] not counsel against a finding of fair use.” Likewise, the third factor, the amount and substantiality of the work used, did not disfavor fair use as the court agreed with the district court’s conclusion that Mic’s use of the image was reasonable to satirize the Post article. The court determined that the fourth factor, the effect of the use on the potential market for or value of the work, also favored fair use. The court concluded that Mic’s screenshot was not a competing substitute for Yang’s work because Mic did not simply republish the photograph, but instead used a screenshot consisting of a “significantly” cropped version of the work along with the Post headline. Further, Yang failed to plausibly allege that a market exists for “photographs that happen to be featured in news articles criticizing the original article in which the photograph appeared.” Weighing the factors together, the court concluded that the district court properly dismissed Yang’s copyright infringement claim on fair use grounds.</td>
-<td headers="tags" class="gt_row gt_left">News Reporting; Photography</td>
-<td headers="outcome" class="gt_row gt_left">Fair use found</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Viacom Int’l v. Pixi Universal</td>
-<td headers="case_number" class="gt_row gt_left">Civ. Action No H-21-2612, 2022 U.S. Dist. LEXIS 57400 (S.D. Tex. Mar. 25, 2022)</td>
-<td headers="year" class="gt_row gt_right">2022</td>
-<td headers="court" class="gt_row gt_left">United States District Court for the Southern District of Texas</td>
-<td headers="key_facts" class="gt_row gt_left">Plaintiff Viacom International Inc. (“Viacom”) is the owner of the SpongeBob SquarePants (“SpongeBob”) entertainment franchise and holds over 400 copyright registrations for SpongeBob works, including the animated television series, feature films, two-dimensional drawings, and stylebooks featuring extensive artwork from the franchise (the “Works”). The SpongeBob television series features a fictional fast-food restaurant called the “Krusty Krab,” which Viacom once recreated as an immersive experience at a comics convention in 2019. Defendant Pixi Universal, LLC (“Pixi”) operates themed “pop-up” restaurants and bars. In 2021, Pixi recreated the Krusty Krab as a pop-up called “The Rusty Krab,” which featured recreations of the fictional restaurant and other elements of the SpongeBob series. Pixi charged a fee for admission and for food and drink. After demanding that Pixi cease using SpongeBob intellectual property, Viacom brought copyright and trademark infringement claims and sought injunctive relief. Pixi asserted fair use as its sole defense to the copyright claim.</td>
-<td headers="issue" class="gt_row gt_left">Whether using elements of copyrighted works to create a themed “pop-up” business based on those works is fair use.</td>
-<td headers="holding" class="gt_row gt_left">The court decided that the first factor, the purpose and character of the use, weighed against fair use. The court found that Pixi’s use was wholly commercial and that it did not transform the Works by merely changing the medium of expression. Instead, Pixi’s use shared the same purpose as the original, that is, “light-hearted entertainment.” Rejecting Pixi’s “post-hoc characterization” of its pop-up as a parody, the court found that Pixi embraced, replicated, and intended to profit from the Works. The second factor, the nature of the copyrighted work, also weighed against fair use because of the “fictional, imaginative nature” of the Works. The third factor, the amount and substantiality of the work used, likewise weighed against fair use. The court determined that, although Pixi did not copy all the details of the SpongeBob universe or even specific episode storylines, Pixi’s use of “central, principal characters and iconic locals and backgrounds from the series” was nonetheless “substantial” as it used the “heart” of the Works. Lastly, the court determined that the fourth factor, the effect of the use on the potential market for or value of the work, also weighed against fair use. The court found that the type of immersive experience that Pixi created, which was based exclusively on Viacom’s SpongeBob franchise, affected the potential market for Viacom to venture into creating or licensing derivative immersive works. Because the factors together weighed against a finding of fair use, the court concluded that Viacom was likely to succeed on its copyright infringement claim and granted its motion for preliminary injunctive relief.</td>
-<td headers="tags" class="gt_row gt_left">Painting/Drawing/Graphic; Parody/Satire</td>
-<td headers="outcome" class="gt_row gt_left">Fair use not found</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="title" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">title</th>
+<th id="case_number" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">case_number</th>
+<th id="year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">year</th>
+<th id="court" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">court</th>
+<th id="key_facts" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">key_facts</th>
+<th id="issue" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">issue</th>
+<th id="holding" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">holding</th>
+<th id="tags" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">tags</th>
+<th id="outcome" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">outcome</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="title">De Fontbrune v. Wofsy</td>
+<td class="gt_row gt_left" headers="case_number">39 F.4th 1214 (9th Cir. 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">United States Court of Appeals for the Ninth Circuit</td>
+<td class="gt_row gt_left" headers="key_facts">Plaintiffs own the rights to a catalogue comprised of 16,000 photographs of Pablo Picasso’s work, which was originally compiled by Picasso’s friend in 1932 (the “Zervos Catalogue”). In 1995, after obtaining permission from Picasso’s estate to publish a work illustrating and describing works by Picasso, Defendants Alan Wofsy and his company Alan Wofsy &amp; Associates began publishing The Picasso Project—–a series of volumes reproducing images of Picasso’s work, including 1,492 photographs from the Zervos Catalogue. Plaintiffs sued for copyright infringement. A French court held the photographs were protected by copyright because they “added creative features through deliberate choices of lighting, the lens, filters, [and] framing or angle of view.” In 2001, Plaintiffs obtained a judgment in France that subjected Defendants to damages for any further acts of infringement. In 2012, after discovering copies of The Picasso Project in a French bookstore, Plaintiffs enforced their judgment in France and were awarded €2 million. Plaintiffs sought recognition of the judgment in the U.S. courts. The district court granted summary judgment for Defendants, determining that the French judgment was “repugnant to U.S. public policy protecting free expression” because it failed to provide a fair use defense. Plaintiffs appealed; and Defendants cross-appealed on other defenses.</td>
+<td class="gt_row gt_left" headers="issue">Whether reproduction of photographs documenting artwork in a reference book that was sold commercially is a fair use.</td>
+<td class="gt_row gt_left" headers="holding">The panel held that the first factor, the purpose and character of the use, weighed against fair use because Defendants conceded that The Picasso Project was a commercial venture and the use at issue—reproduction of the photographs in a book illustrating Picasso’s works—was not transformative. Specifically, the court noted that Defendants’ use “did not serve an ‘entirely different function’ than the originals,” but had overlapping purposes, and the insertion of informative captions did not “necessarily” transform the works. The second factor, the nature of the copyrighted work, did not favor fair use because, although the works were published and documentary in nature, the French court had concluded that the photographs exhibited creative elements. The court determined that the third factor, the amount and substantiality of the work used, weighed against fair use because Defendants failed to demonstrate that “copying the entirety of each photograph was necessary.” The fourth factor, the effect of the use upon the potential market for or value of the copyrighted work, also weighed against fair use because there is a presumption of market harm when the use is commercial and non-transformative. Although Defendants presented evidence that auction prices for the Zervos Catalogue increased while The Picasso Project was on the market, Defendants had not provided evidence that “widespread appropriation” of the works would not harm the market for the photographs. Weighing all the factors, the court had “serious doubts” that fair use would protect Defendants’ use, and, accordingly, granted summary judgment to Plaintiffs on the public policy defense.</td>
+<td class="gt_row gt_left" headers="tags">Education/Scholarship/Research; Photograph</td>
+<td class="gt_row gt_left" headers="outcome">Fair use not found</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="title">Sedlik v. Von Drachenberg</td>
+<td class="gt_row gt_left" headers="case_number">No. CV 21-1102, 2022 WL 2784818 (C.D. Cal. May 31, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">United States District Court for the Southern District of New York</td>
+<td class="gt_row gt_left" headers="key_facts">Plaintiff Jeffrey Sedlik is a photographer who created an iconic portrait of musician Miles Davis, which he has licensed for various uses (the “Portrait”). Defendant Katherine Von Drachenberg, professionally known as Kat Von D, is a celebrity tattooist. In 2017, Kat Von D inked a tattoo on the arm of a friend, Blake Farmer, as a gift. Farmer chose the Portrait as the reference image for his tattoo. Kat Von D traced a printout of the Portrait to create a line drawing and stencil to transfer to Farmer’s arm, then completed the tattoo freehand. Kat Von D and the tattoo shop hosting her both posted a photograph of Kat Von D tattooing Farmer’s arm with the Portrait in the background, as well as a photograph of the finished tattoo. Kat Von D also posted a short video of herself inking the tattoo. Sedlik sued and moved for summary judgment on his claim of copyright infringement. Defendants moved for summary judgment, asserting fair use.</td>
+<td class="gt_row gt_left" headers="issue">Whether use of a photograph as the reference image for a realistic tattoo is fair use.</td>
+<td class="gt_row gt_left" headers="holding">Considering the first fair use factor, the purpose and character of the use, the court found triable issues as to the transformativeness and commercial nature of the work. The court rejected Kat Von D’s arguments that the tattoo was transformative because of Farmer’s personal connection to the image in the Portrait and by nature of it being permanently imprinted on Farmer’s body. The court concluded that a jury should determine whether the visual differences between the Portrait and the tattoo, such as additional shading and the elimination of the black background, are significant enough to render the tattoo transformative. The court also stated that a jury should decide whether Kat Von D’s use of the work was commercial, noting that she did not charge Farmer for the tattoo but could have derived an indirect economic benefit from promotion of the tattoo on social media. The court found that the second factor, the nature of the copyrighted work, favored fair use because although the Portrait is creative, it was published several decades ago and has been widely disseminated. The third factor, the amount and substantiality of the portion used, weighed against fair use because Kat Von D chose to copy certain expressive elements of the Portrait that were not necessary to achieve her stated purpose of expressing “a sentiment of melancholy.” On the fourth factor, the effect of the use upon the potential market for or value of the copyrighted work, while the court concluded the tattoo was not a substitute in the primary market for the Portrait, it found that Sedlik raised a triable issue as to whether a future market exists for licensing the Portrait for use in creating tattoos. Because the court found triable issues concerning the statutory factors, it declined to address a non-statutory factor raised by defendants—“fundamental rights of bodily integrity and personal expression”—and concluded that fair use in this case should be decided by a jury.</td>
+<td class="gt_row gt_left" headers="tags">Painting/Drawing/Graphic; Photograph</td>
+<td class="gt_row gt_left" headers="outcome">Preliminary finding; Fair use not found</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="title">Sketchworks Indus. Strength Comedy, Inc. v. Jacobs</td>
+<td class="gt_row gt_left" headers="case_number">No. 19-CV-7470-LTS-VF, 2022 U.S. Dist. LEXIS 86331 (S.D.N.Y. May 12, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">United States District Court for the Southern District of New York</td>
+<td class="gt_row gt_left" headers="key_facts">Plaintiff Sketchworks Industrial Strength Comedy, Inc. (“Sketchworks”) is a sketch comedy company that created and owns a copyright in Vape, a stage musical that is an alleged parody of the theatrical work and film, Grease. Vape follows the same characters along roughly the same story-arc and in the same setting as Grease and incorporates portions of the film’s music. Defendants are the trustees for the individual trusts of the co-authors of Grease. Just before Vape was scheduled to be performed, Defendants sent Sketchworks and the theater where Vape was to be performed cease and desist letters, and the performances were cancelled. Sketchworks brought an action against Defendants seeking a declaratory judgment that Vape constitutes fair use of Grease, asserting that Vape is a parody that uses millennial slang, pop culture references, and exaggeration to comment on Grease and criticize its misogynistic and sexist elements. Defendants disputed that Vape is a parody and asserted that it infringes their copyright in Grease. The parties cross- moved for judgment on the pleadings.</td>
+<td class="gt_row gt_left" headers="issue">Whether the use of protected elements, including music, plot, characters, dialogue, and setting, from a theatrical work and film to create a parodic stage musical is fair use.</td>
+<td class="gt_row gt_left" headers="holding">The court found that the first factor, the purpose and character of the use, favored fair use because Vape is a parody of Grease and is therefore transformative. Critical to this determination, the court found that Vape juxtaposed “familiar elements from Grease, such as the main characters and the plot arc, with alterations to the script and song lyrics” to highlight the experiences of Grease’s female characters and “comment on how misogynistic tendencies have both evolved since Grease was developed and remain the same.” The second factor, the nature of the copyrighted work, disfavored fair use because Grease’s creative expression fell “within the core of the copyright’s protective purposes.” The court, however, declined to give this factor much weight, reasoning that parodies typically copy publicly known, expressive works. The third factor, the amount and substantiality of the use, weighed in favor of fair use. Although Vape took “substantial elements” from Grease, the court found that “the taking was not excessive” because use of those elements was necessary to achieve Vape’s parodic purpose and communicate its criticism of certain aspects of Grease. The fourth factor, the effect of the use on the potential market for or value of the copyrighted work, also weighed in favor of fair use because any potential harm to Grease’s market value for derivatives was likely “minimal.” While Vape updated some of the language and cultural references from Grease, the court found that Vape “cannot be reasonably viewed as a derivative ‘sequel to, . . . or updated remake, of Grease,’” because its updates were done “in a spirit of mockery.” Further, the court commented that any effect on the demand for derivatives attributable to Vape’s “critical nature” is not remediable under copyright law. Weighing the four factors together, the court concluded that Vape constitutes a fair use of Grease and granted Sketchworks’ motion for judgment on the pleadings.</td>
+<td class="gt_row gt_left" headers="tags">Film/Audiovisual; Music; Parody/Satire; Review/Commentary</td>
+<td class="gt_row gt_left" headers="outcome">Fair use found</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="title">Am. Soc'y for Testing &amp; Materials v. Public.Resource.Org, Inc.</td>
+<td class="gt_row gt_left" headers="case_number">No. 13-cv-1215 (TSC), 2022 U.S. Dist. LEXIS 60922 (D.D.C. Mar. 31, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">United States District Court for the District of Columbia</td>
+<td class="gt_row gt_left" headers="key_facts">Defendant Public.Resource.Org, Inc., a non-profit organization, has a mission to make the “law and other government materials more widely available so that people, businesses, and organizations can easily read and discuss [the] laws and the operations of government.” Plaintiffs consist of three non-profit standards-developing organizations: (1) “ASTM,” which is focused on industry-related technical and safety standards; (2) “NFPA,” which is focused on safety standards; and (3) “ASHRAE,” which is focused on construction-related standards. Plaintiffs own copyrights in various “voluntary consensus standards,” which are developed by numerous subject matter experts under Plaintiffs’ guidance. Plaintiffs sell PDFs and hard copies of their standards and maintain reading rooms for viewing the standards. Defendant purchased hard copies of Plaintiffs’ standards and, without authorization, scanned and made digital, verbatim, copies freely available online to the public. This case concerns 191 ASTM standards, 23 NFPA standards, and 3 ASHRAE standards that Defendant claims have been incorporated by reference into federal law. Plaintiffs brought copyright, trademark, and unfair competition claims; Defendant countersued, seeking declaratory judgment. The parties filed motions for summary judgment. In 2017, the district court found that all factors weighed against fair use. On appeal, the court of appeals reversed in part and remanded the case back to the district court without a detailed discussion of the fair use factors for additional factual development. On remand, both parties again moved for summary judgment.</td>
+<td class="gt_row gt_left" headers="issue">Whether it is fair use to make available online for free a verbatim copy of privately developed standards, which have been incorporated by reference into law, without obtaining authorization from the copyright owner.</td>
+<td class="gt_row gt_left" headers="holding">As directed by the court of appeals, the district court conducted a four-step fair use analysis for each of the 217 allegations of infringement, concluding that Defendant’s reproduction of 184 standards was fair use, reproduction of 32 standards was not fair use, and that portions of the reproduction of 1 standard was fair use. For all 217 standards, the court found that the fourth factor, the effect of the use upon the potential market for or value of the work, favored fair use. Having found that Defendant’s use was noncommercial, the court determined that Plaintiffs did not provide sufficient evidence to show some meaningful likelihood of future harm exists. The court noted that it was “less deferential” to Plaintiffs’ “conclusory opinions” about market harm given that, during the elapsed time since the alleged infringement and the commencement of the litigation Plaintiffs could have provided “economic data and analysis” supporting their arguments. The court also found that Defendant’s reproductions did not have a “substantially adverse impact on the potential market for the originals.” Regarding the 184 standards that the court found Defendant reproduced fairly, the court determined that 153 were incorporated by reference into law and that the other 31 were identical in text to standards incorporated by reference. The court concluded that the first factor, the purpose and character of the use, generally favored fair use because Defendant did not “stand to profit” from the reproduction and that its purpose was “to inform the public about the law and facilitate public debate.” The court noted that Defendant’s use qualified as one that “furthere[d] the purposes” of fair use, and generally provided information “essential for a private entity to comprehend its legal duties,” which weighed “heavily in favor” of fair use. In assessing the second factor, the nature of the copyrighted work, the court considered that “the express text of the law falls plainly outside the realm of copyright protection” and determined that consequently the standards incorporated by reference “are, at best, at the outer edge of ‘copyright's protective purposes.’” Thus, this factor weighed “heavily in favor” of fair use. The court explained that the 184 standards were incorporated into law “without limitation” such that “the consequence of the incorporation by reference is virtually indistinguishable from a situation in which the standard had been expressly copied into law.” The third factor, the amount and substantiality of the portion used, also favored fair use as the court found that “a greater amount of the standard's text might be fairly reproduced” because the incorporating regulations did “not specify” whether certain provisions, or the entire text, of the standards were incorporated by reference into law and did not indicate which specific provisions were “relevant for regulatory guidance.” Balancing the factors, the court found fair use and denied Plaintiffs’ motion for summary judgment regarding these 184 standards. Regarding the 32 standards that the court found were not reproduced fairly, the court noted that these standards were not shown to be incorporated by reference into law and “differ[ed] in substantive ways from those incorporated by reference into law.” Discussing the first factor, the court found that this factor weighed slightly against fair use because Defendant’s purpose of “inform[ing] the public about the law” was not “significantly furthered” by publishing standards with substantive differences from the standards that were incorporated by reference. The second factor weighed against fair use because there was no evidence showing that the standards were incorporated into law. And, although the standards were more factual than creative, the court concluded that these works “fall more squarely within the realm of copyright protection” than standards incorporated into law. The third factor weighed against fair use, as Defendant’s purpose of informing the public about the law “could be achieved with a paraphrase or summary.” The court also noted that “[i]ncorporating one standard by reference does not justify posting provisions of a different version that has not been incorporated into law.” Balancing these factors, the court did not find fair use and denied Defendant’s motion for summary judgment regarding these 32 standards. Regarding the 1 standard where the court found that portions of the reproduced standard were used fairly, only the parts incorporated by reference into a regulation were found to be fair use. In its second factor analysis, distinguishing the portions not incorporated into law, the court found that Defendant’s “wholesale reproduction” of the standard was “harder to justify” because only parts of the standard were incorporated into law.</td>
+<td class="gt_row gt_left" headers="tags">Education/Scholarship/Research; Textual Work; Used in government proceeding</td>
+<td class="gt_row gt_left" headers="outcome">Mixed Result</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="title">Yang v. Mic Network Inc.</td>
+<td class="gt_row gt_left" headers="case_number">Nos. 20-4097-cv(L), 20-4201-cv (XAP), 2022 U.S. App. LEXIS 8195 (2d Cir. Mar. 29, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">United States Court of Appeals for the Second Circuit</td>
+<td class="gt_row gt_left" headers="key_facts">Plaintiff Stephen Yang (“Yang”) licensed a photograph he took of Dan Rochkind (“Rochkind”) to the New York Post, which ran the photograph in an article about Rochkind entitled “Why I Won’t Date Hot Women Anymore.” Defendant Mic Network, Inc. (“Mic”) posted its own article entitled “Twitter Is Skewering the 'New York Post' for a Piece on Why a Man ‘Won't Date Hot Women’.” The Mic article included a screenshot of the Post article that captured the headline and a portion of Yang’s photograph. Mic did not obtain a license to use the photograph. In response, Yang sued Mic for copyright infringement, and Mic moved to dismiss, asserting fair use. The district court granted Mic’s motion, concluding that its use of Yang’s photograph was fair use. Yang appealed the order and judgment.</td>
+<td class="gt_row gt_left" headers="issue">Whether using a screenshot from an article, including part of a photograph, to report on and criticize the article constitutes fair use of the photograph.</td>
+<td class="gt_row gt_left" headers="holding">On appeal, the court decided that the first factor, the purpose and character of the use, weighed in favor of fair use. As an initial matter, the panel held that it was not error for the district to decide transformativeness on a motion to dismiss in this case because the only two pieces of evidence needed were the original and secondary works. The court held that, in addition to identifying the subject of Mic’s criticism, Mic, also transformed the photograph by critiquing and providing commentary on the Post article. Mic did not use the photograph “merely as an illustrative aid,” and thus its use was for different purpose than the original. The second factor, the nature of the copyrighted work, had limited weight in the court’s analysis after it held that the use was transformative and thus “d[id] not counsel against a finding of fair use.” Likewise, the third factor, the amount and substantiality of the work used, did not disfavor fair use as the court agreed with the district court’s conclusion that Mic’s use of the image was reasonable to satirize the Post article. The court determined that the fourth factor, the effect of the use on the potential market for or value of the work, also favored fair use. The court concluded that Mic’s screenshot was not a competing substitute for Yang’s work because Mic did not simply republish the photograph, but instead used a screenshot consisting of a “significantly” cropped version of the work along with the Post headline. Further, Yang failed to plausibly allege that a market exists for “photographs that happen to be featured in news articles criticizing the original article in which the photograph appeared.” Weighing the factors together, the court concluded that the district court properly dismissed Yang’s copyright infringement claim on fair use grounds.</td>
+<td class="gt_row gt_left" headers="tags">News Reporting; Photography</td>
+<td class="gt_row gt_left" headers="outcome">Fair use found</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="title">Viacom Int’l v. Pixi Universal</td>
+<td class="gt_row gt_left" headers="case_number">Civ. Action No H-21-2612, 2022 U.S. Dist. LEXIS 57400 (S.D. Tex. Mar. 25, 2022)</td>
+<td class="gt_row gt_right" headers="year">2022</td>
+<td class="gt_row gt_left" headers="court">United States District Court for the Southern District of Texas</td>
+<td class="gt_row gt_left" headers="key_facts">Plaintiff Viacom International Inc. (“Viacom”) is the owner of the SpongeBob SquarePants (“SpongeBob”) entertainment franchise and holds over 400 copyright registrations for SpongeBob works, including the animated television series, feature films, two-dimensional drawings, and stylebooks featuring extensive artwork from the franchise (the “Works”). The SpongeBob television series features a fictional fast-food restaurant called the “Krusty Krab,” which Viacom once recreated as an immersive experience at a comics convention in 2019. Defendant Pixi Universal, LLC (“Pixi”) operates themed “pop-up” restaurants and bars. In 2021, Pixi recreated the Krusty Krab as a pop-up called “The Rusty Krab,” which featured recreations of the fictional restaurant and other elements of the SpongeBob series. Pixi charged a fee for admission and for food and drink. After demanding that Pixi cease using SpongeBob intellectual property, Viacom brought copyright and trademark infringement claims and sought injunctive relief. Pixi asserted fair use as its sole defense to the copyright claim.</td>
+<td class="gt_row gt_left" headers="issue">Whether using elements of copyrighted works to create a themed “pop-up” business based on those works is fair use.</td>
+<td class="gt_row gt_left" headers="holding">The court decided that the first factor, the purpose and character of the use, weighed against fair use. The court found that Pixi’s use was wholly commercial and that it did not transform the Works by merely changing the medium of expression. Instead, Pixi’s use shared the same purpose as the original, that is, “light-hearted entertainment.” Rejecting Pixi’s “post-hoc characterization” of its pop-up as a parody, the court found that Pixi embraced, replicated, and intended to profit from the Works. The second factor, the nature of the copyrighted work, also weighed against fair use because of the “fictional, imaginative nature” of the Works. The third factor, the amount and substantiality of the work used, likewise weighed against fair use. The court determined that, although Pixi did not copy all the details of the SpongeBob universe or even specific episode storylines, Pixi’s use of “central, principal characters and iconic locals and backgrounds from the series” was nonetheless “substantial” as it used the “heart” of the Works. Lastly, the court determined that the fourth factor, the effect of the use on the potential market for or value of the work, also weighed against fair use. The court found that the type of immersive experience that Pixi created, which was based exclusively on Viacom’s SpongeBob franchise, affected the potential market for Viacom to venture into creating or licensing derivative immersive works. Because the factors together weighed against a finding of fair use, the court concluded that Viacom was likely to succeed on its copyright infringement claim and granted its motion for preliminary injunctive relief.</td>
+<td class="gt_row gt_left" headers="tags">Painting/Drawing/Graphic; Parody/Satire</td>
+<td class="gt_row gt_left" headers="outcome">Fair use not found</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1364,7 +1395,6 @@ cookieconsent.run({
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="ikpalqamsq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#ikpalqamsq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1805,24 +1835,35 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="case">case</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="case" class="gt_row gt_left">De Fontbrune v. Wofsy, 39 F.4th 1214 (9th Cir. 2022)</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Sedlik v. Von Drachenberg, No. CV 21-1102 (C.D. Cal. May 31, 2022)</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Sketchworks Indus. Strength Comedy, Inc. v. Jacobs, No. 19-CV-7470-LTS-VF (S.D.N.Y. May 12, 2022)</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Am. Soc'y for Testing &amp; Materials v. Public.Resource.Org, Inc., No. 13-cv-1215 (D.D.C. Mar. 31, 2022)</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Yang v. Mic Network Inc., Nos. 20-4097-cv, 20-4201-cv (2d Cir. Mar. 29, 2022)</td></tr>
-    <tr><td headers="case" class="gt_row gt_left">Viacom Int’l v. Pixi Universal, Civ. Action No H-21-2612 (S.D. Tex. Mar. 25, 2022)</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="case" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">case</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="case">De Fontbrune v. Wofsy, 39 F.4th 1214 (9th Cir. 2022)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="case">Sedlik v. Von Drachenberg, No. CV 21-1102 (C.D. Cal. May 31, 2022)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="case">Sketchworks Indus. Strength Comedy, Inc. v. Jacobs, No. 19-CV-7470-LTS-VF (S.D.N.Y. May 12, 2022)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="case">Am. Soc'y for Testing &amp; Materials v. Public.Resource.Org, Inc., No. 13-cv-1215 (D.D.C. Mar. 31, 2022)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="case">Yang v. Mic Network Inc., Nos. 20-4097-cv, 20-4201-cv (2d Cir. Mar. 29, 2022)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="case">Viacom Int’l v. Pixi Universal, Civ. Action No H-21-2612 (S.D. Tex. Mar. 25, 2022)</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1834,7 +1875,6 @@ cookieconsent.run({
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="frqkjfshni" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#frqkjfshni table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -2275,31 +2315,42 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="title">title</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="case_number">case_number</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="title" class="gt_row gt_left">De Fontbrune v. Wofsy</td>
-<td headers="case_number" class="gt_row gt_left">39 F.4th 1214 (9th Cir. 2022)</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Sedlik v. Von Drachenberg</td>
-<td headers="case_number" class="gt_row gt_left">No. CV 21-1102, 2022 WL 2784818 (C.D. Cal. May 31, 2022)</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Sketchworks Indus. Strength Comedy, Inc. v. Jacobs</td>
-<td headers="case_number" class="gt_row gt_left">No. 19-CV-7470-LTS-VF, 2022 U.S. Dist. LEXIS 86331 (S.D.N.Y. May 12, 2022)</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Am. Soc'y for Testing &amp; Materials v. Public.Resource.Org, Inc.</td>
-<td headers="case_number" class="gt_row gt_left">No. 13-cv-1215 (TSC), 2022 U.S. Dist. LEXIS 60922 (D.D.C. Mar. 31, 2022)</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Yang v. Mic Network Inc.</td>
-<td headers="case_number" class="gt_row gt_left">Nos. 20-4097-cv(L), 20-4201-cv (XAP), 2022 U.S. App. LEXIS 8195 (2d Cir. Mar. 29, 2022)</td></tr>
-    <tr><td headers="title" class="gt_row gt_left">Viacom Int’l v. Pixi Universal</td>
-<td headers="case_number" class="gt_row gt_left">Civ. Action No H-21-2612, 2022 U.S. Dist. LEXIS 57400 (S.D. Tex. Mar. 25, 2022)</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="title" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">title</th>
+<th id="case_number" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">case_number</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="title">De Fontbrune v. Wofsy</td>
+<td class="gt_row gt_left" headers="case_number">39 F.4th 1214 (9th Cir. 2022)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="title">Sedlik v. Von Drachenberg</td>
+<td class="gt_row gt_left" headers="case_number">No. CV 21-1102, 2022 WL 2784818 (C.D. Cal. May 31, 2022)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="title">Sketchworks Indus. Strength Comedy, Inc. v. Jacobs</td>
+<td class="gt_row gt_left" headers="case_number">No. 19-CV-7470-LTS-VF, 2022 U.S. Dist. LEXIS 86331 (S.D.N.Y. May 12, 2022)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="title">Am. Soc'y for Testing &amp; Materials v. Public.Resource.Org, Inc.</td>
+<td class="gt_row gt_left" headers="case_number">No. 13-cv-1215 (TSC), 2022 U.S. Dist. LEXIS 60922 (D.D.C. Mar. 31, 2022)</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="title">Yang v. Mic Network Inc.</td>
+<td class="gt_row gt_left" headers="case_number">Nos. 20-4097-cv(L), 20-4201-cv (XAP), 2022 U.S. App. LEXIS 8195 (2d Cir. Mar. 29, 2022)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="title">Viacom Int’l v. Pixi Universal</td>
+<td class="gt_row gt_left" headers="case_number">Civ. Action No H-21-2612, 2022 U.S. Dist. LEXIS 57400 (S.D. Tex. Mar. 25, 2022)</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2507,7 +2558,11 @@ cookieconsent.run({
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(title_length)) <span class="sc">+</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday35-fair-use_files/figure-html/bar-plot-length-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday35-fair-use_files/figure-html/bar-plot-length-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>I probably need to bin the lengths. I’m using floor, but you could use ceiling or round as well.</p>
@@ -2521,7 +2576,11 @@ cookieconsent.run({
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(title_length_floor <span class="sc">*</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday35-fair-use_files/figure-html/bar-plot-length-floor-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday35-fair-use_files/figure-html/bar-plot-length-floor-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That’s not a terrible distribution.</p>
@@ -2568,14 +2627,17 @@ cookieconsent.run({
 <span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday35-fair-use_files/figure-html/dual-axis-plot-count-rate-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday35-fair-use_files/figure-html/dual-axis-plot-count-rate-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The two largest bins have very few records, so I wouldn’t expect that extremely high error rate to persist as more data is added. However, there does seem to be an increasing mismatch rate with length of the title.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>combined2 <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="opbsvjmpss" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#opbsvjmpss table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -3016,53 +3078,68 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="title_length_floor">title_length_floor</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mismatch_rate">mismatch_rate</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="n">n</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mismatch_count">mismatch_count</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="title_length_floor" class="gt_row gt_right">1</td>
-<td headers="mismatch_rate" class="gt_row gt_right">0.000000</td>
-<td headers="n" class="gt_row gt_right">27</td>
-<td headers="mismatch_count" class="gt_row gt_right">0</td></tr>
-    <tr><td headers="title_length_floor" class="gt_row gt_right">2</td>
-<td headers="mismatch_rate" class="gt_row gt_right">2.083333</td>
-<td headers="n" class="gt_row gt_right">48</td>
-<td headers="mismatch_count" class="gt_row gt_right">1</td></tr>
-    <tr><td headers="title_length_floor" class="gt_row gt_right">3</td>
-<td headers="mismatch_rate" class="gt_row gt_right">15.189873</td>
-<td headers="n" class="gt_row gt_right">79</td>
-<td headers="mismatch_count" class="gt_row gt_right">12</td></tr>
-    <tr><td headers="title_length_floor" class="gt_row gt_right">4</td>
-<td headers="mismatch_rate" class="gt_row gt_right">15.686275</td>
-<td headers="n" class="gt_row gt_right">51</td>
-<td headers="mismatch_count" class="gt_row gt_right">8</td></tr>
-    <tr><td headers="title_length_floor" class="gt_row gt_right">5</td>
-<td headers="mismatch_rate" class="gt_row gt_right">24.137931</td>
-<td headers="n" class="gt_row gt_right">29</td>
-<td headers="mismatch_count" class="gt_row gt_right">7</td></tr>
-    <tr><td headers="title_length_floor" class="gt_row gt_right">6</td>
-<td headers="mismatch_rate" class="gt_row gt_right">21.428571</td>
-<td headers="n" class="gt_row gt_right">14</td>
-<td headers="mismatch_count" class="gt_row gt_right">3</td></tr>
-    <tr><td headers="title_length_floor" class="gt_row gt_right">7</td>
-<td headers="mismatch_rate" class="gt_row gt_right">50.000000</td>
-<td headers="n" class="gt_row gt_right">2</td>
-<td headers="mismatch_count" class="gt_row gt_right">1</td></tr>
-    <tr><td headers="title_length_floor" class="gt_row gt_right">9</td>
-<td headers="mismatch_rate" class="gt_row gt_right">100.000000</td>
-<td headers="n" class="gt_row gt_right">1</td>
-<td headers="mismatch_count" class="gt_row gt_right">1</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="title_length_floor" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">title_length_floor</th>
+<th id="mismatch_rate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mismatch_rate</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+<th id="mismatch_count" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mismatch_count</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="title_length_floor">1</td>
+<td class="gt_row gt_right" headers="mismatch_rate">0.000000</td>
+<td class="gt_row gt_right" headers="n">27</td>
+<td class="gt_row gt_right" headers="mismatch_count">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="title_length_floor">2</td>
+<td class="gt_row gt_right" headers="mismatch_rate">2.083333</td>
+<td class="gt_row gt_right" headers="n">48</td>
+<td class="gt_row gt_right" headers="mismatch_count">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="title_length_floor">3</td>
+<td class="gt_row gt_right" headers="mismatch_rate">15.189873</td>
+<td class="gt_row gt_right" headers="n">79</td>
+<td class="gt_row gt_right" headers="mismatch_count">12</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="title_length_floor">4</td>
+<td class="gt_row gt_right" headers="mismatch_rate">15.686275</td>
+<td class="gt_row gt_right" headers="n">51</td>
+<td class="gt_row gt_right" headers="mismatch_count">8</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="title_length_floor">5</td>
+<td class="gt_row gt_right" headers="mismatch_rate">24.137931</td>
+<td class="gt_row gt_right" headers="n">29</td>
+<td class="gt_row gt_right" headers="mismatch_count">7</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="title_length_floor">6</td>
+<td class="gt_row gt_right" headers="mismatch_rate">21.428571</td>
+<td class="gt_row gt_right" headers="n">14</td>
+<td class="gt_row gt_right" headers="mismatch_count">3</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="title_length_floor">7</td>
+<td class="gt_row gt_right" headers="mismatch_rate">50.000000</td>
+<td class="gt_row gt_right" headers="n">2</td>
+<td class="gt_row gt_right" headers="mismatch_count">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="title_length_floor">9</td>
+<td class="gt_row gt_right" headers="mismatch_rate">100.000000</td>
+<td class="gt_row gt_right" headers="n">1</td>
+<td class="gt_row gt_right" headers="mismatch_count">1</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -3094,7 +3171,11 @@ cookieconsent.run({
 <span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">"Data from U.S. Copyright Office Fair Use Index"</span>)</span>
 <span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday35-fair-use_files/figure-html/dual-axis-plot-count-count-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday35-fair-use_files/figure-html/dual-axis-plot-count-count-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -3104,7 +3185,11 @@ cookieconsent.run({
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(p1, p2,  <span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="tidytuesday35-fair-use_files/figure-html/making-panel-plot-with-cowplot-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="tidytuesday35-fair-use_files/figure-html/making-panel-plot-with-cowplot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -3115,7 +3200,7 @@ cookieconsent.run({
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
   author = {Sinks, Louise E.},
   title = {TidyTuesday 35: {Exploring} {Fair} {Use} {Cases}},
   date = {2023-08-29},
@@ -3161,18 +3246,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3204,11 +3278,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/lsinks\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3218,8 +3329,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3231,7 +3351,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -3275,6 +3517,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3300,6 +3543,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -3367,12 +3636,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

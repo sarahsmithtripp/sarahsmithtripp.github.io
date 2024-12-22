@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Louise E. Sinks">
 <meta name="dcterms.date" content="2023-07-11">
 <meta name="description" content="Making an animated graph of global temperature change over time with gganimate.">
 
-<title>Louise E. Sinks - TidyTuesday Week 28: Global Surface Temperature</title>
+<title>TidyTuesday Week 28: Global Surface Temperature – Louise E. Sinks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -73,17 +74,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -118,6 +126,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -125,7 +135,7 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Louise E. Sinks - TidyTuesday Week 28: Global Surface Temperature">
+<meta name="twitter:title" content="TidyTuesday Week 28: Global Surface Temperature – Louise E. Sinks">
 <meta name="twitter:description" content="Making an animated graph of global temperature change over time with gganimate.">
 <meta name="twitter:image" content="https://lsinks.github.io/posts/2023-07-11-tidytuesday-temps/thumbnail.gif">
 <meta name="twitter:creator" content="@LouiseSinks">
@@ -136,52 +146,52 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Louise E. Sinks</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../portfolio.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About Me/ CV</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me/ CV</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Blog Entries</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Blog Entries</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../currentprojects.html" rel="" target="">
- <span class="menu-text">Current Projects</span></a>
+    <a class="nav-link" href="../../currentprojects.html"> 
+<span class="menu-text">Current Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blogroll.html" rel="" target="">
- <span class="menu-text">Blog Roll</span></a>
+    <a class="nav-link" href="../../blogroll.html"> 
+<span class="menu-text">Blog Roll</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../../posts.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../posts.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -224,7 +234,7 @@ cookieconsent.run({
     <div class="quarto-category">R</div>
     <div class="quarto-category">R-code</div>
     <div class="quarto-category">code-along</div>
-    <div class="quarto-category">TidyTuesday</div>
+    <div class="quarto-category">tidyTuesday</div>
     <div class="quarto-category">tidy</div>
     <div class="quarto-category">gganimate</div>
   </div>
@@ -256,14 +266,16 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 3, 2023</p>
+      <p class="date-modified">December 21, 2024</p>
     </div>
   </div>
     
   </div>
   
 
+
 </header>
+
 
 <section id="global-temperature-tidytuesday" class="level1">
 <h1>Global Temperature #TidyTuesday</h1>
@@ -313,7 +325,6 @@ cookieconsent.run({
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Global Temperatures by Year"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="pynbuiquom" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#pynbuiquom table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -754,180 +765,217 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Global Temperatures by Year</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="skim_variable">skim_variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# Missing"># Missing</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Completeness">Completeness</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean">Mean</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standard Deviation">Standard Deviation</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Min">Min</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Max">Max</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Histogram">Histogram</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="skim_variable" class="gt_row gt_left">Year</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.951500e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">41.7133072</td>
-<td headers="numeric.p0" class="gt_row gt_right">1880.00</td>
-<td headers="numeric.p100" class="gt_row gt_right">2023.00</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▇▇▇▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Jan</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">6.333333e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.4235976</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.81</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.18</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▆▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Feb</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">7.090278e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4285133</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.63</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.37</td>
-<td headers="numeric.hist" class="gt_row gt_left">▅▇▃▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Mar</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">8.888889e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.4337898</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.63</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.36</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▅▇▃▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Apr</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">6.368056e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3966093</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.58</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.13</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▅▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">May</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">5.291667e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3778942</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.55</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.02</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▆▇▅▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Jun</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">3.314685e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3673629</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.52</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.93</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▃▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Jul</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">5.587413e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3475312</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.51</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.94</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▅▇▂▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Aug</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">5.440559e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3633037</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.55</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.02</td>
-<td headers="numeric.hist" class="gt_row gt_left">▃▇▃▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Sep</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">5.818182e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3601988</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.58</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.99</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▃▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Oct</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">8.419580e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3692902</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.58</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.09</td>
-<td headers="numeric.hist" class="gt_row gt_left">▃▇▃▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Nov</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">7.776224e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3761975</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.55</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.11</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▃▇▃▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Dec</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">5.181818e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3931681</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.82</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.16</td>
-<td headers="numeric.hist" class="gt_row gt_left">▂▇▃▃▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">J-D</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">6.020979e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3698448</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.48</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.02</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▆▇▃▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">D-N</td>
-<td headers="n_missing" class="gt_row gt_right">2</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9861111</td>
-<td headers="numeric.mean" class="gt_row gt_right">6.077465e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3707192</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.49</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.04</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▃▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">DJF</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">6.356643e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.4049559</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.67</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.24</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▃▇▃▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">MAM</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">6.854167e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3983760</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.58</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.14</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▅▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">JJA</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">4.769231e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3555351</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.50</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.94</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▅▇▃▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">SON</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">7.286713e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3630672</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.52</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.00</td>
-<td headers="numeric.hist" class="gt_row gt_left">▅▇▃▂▂</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Global Temperatures by Year</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="skim_variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">skim_variable</th>
+<th id="# Missing" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"># Missing</th>
+<th id="Completeness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Completeness</th>
+<th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="Standard Deviation" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standard Deviation</th>
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Min</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Max</th>
+<th id="Histogram" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Histogram</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Year</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.951500e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">41.7133072</td>
+<td class="gt_row gt_right" headers="numeric.p0">1880.00</td>
+<td class="gt_row gt_right" headers="numeric.p100">2023.00</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Jan</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">6.333333e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.4235976</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.81</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.18</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▆▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Feb</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">7.090278e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4285133</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.63</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.37</td>
+<td class="gt_row gt_left" headers="numeric.hist">▅▇▃▂▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Mar</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">8.888889e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.4337898</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.63</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.36</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▅▇▃▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Apr</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">6.368056e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3966093</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.58</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.13</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▅▃▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">May</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">5.291667e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3778942</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.55</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.02</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▆▇▅▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Jun</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">3.314685e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3673629</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.52</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.93</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▃▂▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Jul</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">5.587413e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3475312</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.51</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.94</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▅▇▂▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Aug</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">5.440559e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3633037</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.55</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.02</td>
+<td class="gt_row gt_left" headers="numeric.hist">▃▇▃▂▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Sep</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">5.818182e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3601988</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.58</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.99</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▃▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Oct</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">8.419580e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3692902</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.58</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.09</td>
+<td class="gt_row gt_left" headers="numeric.hist">▃▇▃▂▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Nov</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">7.776224e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3761975</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.55</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.11</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▃▇▃▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Dec</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">5.181818e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3931681</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.82</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.16</td>
+<td class="gt_row gt_left" headers="numeric.hist">▂▇▃▃▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">J-D</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">6.020979e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3698448</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.48</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.02</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▆▇▃▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">D-N</td>
+<td class="gt_row gt_right" headers="n_missing">2</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9861111</td>
+<td class="gt_row gt_right" headers="numeric.mean">6.077465e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3707192</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.49</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.04</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▃▂▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">DJF</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">6.356643e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.4049559</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.67</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.24</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▃▇▃▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">MAM</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">6.854167e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3983760</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.58</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.14</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▅▂▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">JJA</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">4.769231e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3555351</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.50</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.94</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▅▇▃▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">SON</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">7.286713e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3630672</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.52</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.00</td>
+<td class="gt_row gt_left" headers="numeric.hist">▅▇▃▂▂</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -941,7 +989,6 @@ cookieconsent.run({
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Northern Hemisphere Temperatures by Year"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="tymvetcibg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#tymvetcibg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1382,180 +1429,217 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Northern Hemisphere Temperatures by Year</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="skim_variable">skim_variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# Missing"># Missing</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Completeness">Completeness</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean">Mean</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standard Deviation">Standard Deviation</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Min">Min</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Max">Max</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Histogram">Histogram</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="skim_variable" class="gt_row gt_left">Year</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.951500e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">41.7133072</td>
-<td headers="numeric.p0" class="gt_row gt_right">1880.00</td>
-<td headers="numeric.p100" class="gt_row gt_right">2023.00</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▇▇▇▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Jan</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">8.576389e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.5778724</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-1.52</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.59</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▁▅▇▅▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Feb</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.009722e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.5789589</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.98</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.94</td>
-<td headers="numeric.hist" class="gt_row gt_left">▅▇▆▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Mar</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">1.282639e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.5701347</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.80</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.91</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▅▇▃▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Apr</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">9.756944e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4845865</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.65</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.48</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▃▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">May</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">9.055556e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.4203525</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.73</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.28</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▅▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Jun</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">7.951049e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4080447</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.52</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.21</td>
-<td headers="numeric.hist" class="gt_row gt_left">▅▇▂▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Jul</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">7.811189e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3845263</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.59</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.10</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▃▇▃▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Aug</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">6.384615e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4130920</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.77</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.17</td>
-<td headers="numeric.hist" class="gt_row gt_left">▂▇▆▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Sep</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">8.013986e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.4194748</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.80</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.22</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▁▇▅▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Oct</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.309790e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4552020</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.84</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.32</td>
-<td headers="numeric.hist" class="gt_row gt_left">▂▇▆▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Nov</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">1.152448e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.4939320</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.83</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.61</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▃▇▅▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Dec</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">5.692308e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.5146409</td>
-<td headers="numeric.p0" class="gt_row gt_right">-1.14</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.53</td>
-<td headers="numeric.hist" class="gt_row gt_left">▁▇▇▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">J-D</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">8.888112e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.4444241</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.57</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.35</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▆▇▂▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">D-N</td>
-<td headers="n_missing" class="gt_row gt_right">2</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9861111</td>
-<td headers="numeric.mean" class="gt_row gt_right">9.042254e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4448506</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.58</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.37</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▂▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">DJF</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">8.377622e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.5291899</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-1.05</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.67</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▆▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">MAM</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.055556e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4791598</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.71</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.50</td>
-<td headers="numeric.hist" class="gt_row gt_left">▅▇▃▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">JJA</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">7.370629e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3969650</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.54</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.12</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▅▇▂▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">SON</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.086713e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4451210</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.72</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.34</td>
-<td headers="numeric.hist" class="gt_row gt_left">▃▇▅▂▁</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Northern Hemisphere Temperatures by Year</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="skim_variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">skim_variable</th>
+<th id="# Missing" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"># Missing</th>
+<th id="Completeness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Completeness</th>
+<th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="Standard Deviation" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standard Deviation</th>
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Min</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Max</th>
+<th id="Histogram" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Histogram</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Year</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.951500e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">41.7133072</td>
+<td class="gt_row gt_right" headers="numeric.p0">1880.00</td>
+<td class="gt_row gt_right" headers="numeric.p100">2023.00</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Jan</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">8.576389e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.5778724</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-1.52</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.59</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▁▅▇▅▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Feb</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.009722e-01</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.5789589</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.98</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.94</td>
+<td class="gt_row gt_left" headers="numeric.hist">▅▇▆▂▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Mar</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">1.282639e-01</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.5701347</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.80</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.91</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▅▇▃▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Apr</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">9.756944e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4845865</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.65</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.48</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▃▂▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">May</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">9.055556e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.4203525</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.73</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.28</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▅▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Jun</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">7.951049e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4080447</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.52</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.21</td>
+<td class="gt_row gt_left" headers="numeric.hist">▅▇▂▂▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Jul</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">7.811189e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3845263</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.59</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.10</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▃▇▃▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Aug</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">6.384615e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4130920</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.77</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.17</td>
+<td class="gt_row gt_left" headers="numeric.hist">▂▇▆▂▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Sep</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">8.013986e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.4194748</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.80</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.22</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▁▇▅▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Oct</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.309790e-01</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4552020</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.84</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.32</td>
+<td class="gt_row gt_left" headers="numeric.hist">▂▇▆▂▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Nov</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">1.152448e-01</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.4939320</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.83</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.61</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▃▇▅▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Dec</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">5.692308e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.5146409</td>
+<td class="gt_row gt_right" headers="numeric.p0">-1.14</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.53</td>
+<td class="gt_row gt_left" headers="numeric.hist">▁▇▇▂▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">J-D</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">8.888112e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.4444241</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.57</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.35</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▆▇▂▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">D-N</td>
+<td class="gt_row gt_right" headers="n_missing">2</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9861111</td>
+<td class="gt_row gt_right" headers="numeric.mean">9.042254e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4448506</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.58</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.37</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▂▂▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">DJF</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">8.377622e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.5291899</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-1.05</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.67</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▆▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">MAM</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.055556e-01</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4791598</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.71</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.50</td>
+<td class="gt_row gt_left" headers="numeric.hist">▅▇▃▂▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">JJA</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">7.370629e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3969650</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.54</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.12</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▅▇▂▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">SON</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.086713e-01</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4451210</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.72</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.34</td>
+<td class="gt_row gt_left" headers="numeric.hist">▃▇▅▂▁</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -1569,7 +1653,6 @@ cookieconsent.run({
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Southern Hemisphere Temperatures by Year"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="nqvdkmvxql" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#nqvdkmvxql table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -2010,180 +2093,217 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Southern Hemisphere Temperatures by Year</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="skim_variable">skim_variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# Missing"># Missing</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Completeness">Completeness</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean">Mean</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standard Deviation">Standard Deviation</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Min">Min</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Max">Max</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Histogram">Histogram</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="skim_variable" class="gt_row gt_left">Year</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">1951.50000000</td>
-<td headers="numeric.sd" class="gt_row gt_right">41.7133072</td>
-<td headers="numeric.p0" class="gt_row gt_right">1880.00</td>
-<td headers="numeric.p100" class="gt_row gt_right">2023.00</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▇▇▇▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Jan</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.03875000</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3165414</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.63</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.80</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▁▇▅▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Feb</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">0.03840278</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3154565</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.59</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.79</td>
-<td headers="numeric.hist" class="gt_row gt_left">▂▇▅▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Mar</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.04750000</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3274280</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.59</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.81</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▃▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Apr</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">0.02930556</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3421562</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.63</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.98</td>
-<td headers="numeric.hist" class="gt_row gt_left">▃▇▅▃▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">May</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.01631944</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3613025</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.60</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.91</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▅▇▅▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Jun</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">-0.01083916</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3535683</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.67</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.81</td>
-<td headers="numeric.hist" class="gt_row gt_left">▃▇▅▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Jul</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.03573427</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3354343</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.47</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.86</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▇▃▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Aug</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">0.04594406</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3448540</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.46</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.92</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▆▃▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Sep</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.03748252</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3357448</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.50</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.91</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▇▇▃▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Oct</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">0.03937063</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3242656</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.51</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.91</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▆▃▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Nov</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.04160839</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3082542</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.53</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.80</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▃▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">Dec</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">0.04713287</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3133837</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.55</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.80</td>
-<td headers="numeric.hist" class="gt_row gt_left">▃▇▃▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">J-D</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.03244755</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3138072</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.48</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.75</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▅▇▂▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">D-N</td>
-<td headers="n_missing" class="gt_row gt_right">2</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9861111</td>
-<td headers="numeric.mean" class="gt_row gt_right">0.03218310</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3153409</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.50</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.75</td>
-<td headers="numeric.hist" class="gt_row gt_left">▅▇▃▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">DJF</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.04153846</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3125887</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.58</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.80</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▃▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">MAM</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1.0000000</td>
-<td headers="numeric.mean" class="gt_row gt_right">0.03069444</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3380438</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.60</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.85</td>
-<td headers="numeric.hist" class="gt_row gt_left">▃▇▅▅▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">JJA</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">1</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">0.02440559</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3347516</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.53</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.77</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▆▇▃▅▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">SON</td>
-<td headers="n_missing" class="gt_row gt_right">1</td>
-<td headers="complete_rate" class="gt_row gt_right">0.9930556</td>
-<td headers="numeric.mean" class="gt_row gt_right">0.03965035</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3150909</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.47</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.74</td>
-<td headers="numeric.hist" class="gt_row gt_left">▅▇▃▃▂</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Southern Hemisphere Temperatures by Year</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="skim_variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">skim_variable</th>
+<th id="# Missing" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"># Missing</th>
+<th id="Completeness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Completeness</th>
+<th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="Standard Deviation" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standard Deviation</th>
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Min</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Max</th>
+<th id="Histogram" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Histogram</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Year</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">1951.50000000</td>
+<td class="gt_row gt_right" headers="numeric.sd">41.7133072</td>
+<td class="gt_row gt_right" headers="numeric.p0">1880.00</td>
+<td class="gt_row gt_right" headers="numeric.p100">2023.00</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Jan</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.03875000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3165414</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.63</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.80</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▁▇▅▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Feb</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">0.03840278</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3154565</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.59</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.79</td>
+<td class="gt_row gt_left" headers="numeric.hist">▂▇▅▃▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Mar</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.04750000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3274280</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.59</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.81</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▃▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Apr</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">0.02930556</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3421562</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.63</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.98</td>
+<td class="gt_row gt_left" headers="numeric.hist">▃▇▅▃▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">May</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.01631944</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3613025</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.60</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.91</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▅▇▅▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Jun</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">-0.01083916</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3535683</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.67</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.81</td>
+<td class="gt_row gt_left" headers="numeric.hist">▃▇▅▃▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Jul</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.03573427</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3354343</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.47</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.86</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▇▃▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Aug</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">0.04594406</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3448540</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.46</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.92</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▆▃▃▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Sep</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.03748252</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3357448</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.50</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.91</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▇▇▃▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Oct</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">0.03937063</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3242656</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.51</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.91</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▆▃▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Nov</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.04160839</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3082542</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.53</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.80</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▃▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Dec</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">0.04713287</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3133837</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.55</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.80</td>
+<td class="gt_row gt_left" headers="numeric.hist">▃▇▃▃▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">J-D</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.03244755</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3138072</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.48</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.75</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▅▇▂▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">D-N</td>
+<td class="gt_row gt_right" headers="n_missing">2</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9861111</td>
+<td class="gt_row gt_right" headers="numeric.mean">0.03218310</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3153409</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.50</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.75</td>
+<td class="gt_row gt_left" headers="numeric.hist">▅▇▃▃▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">DJF</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.04153846</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3125887</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.58</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.80</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▃▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">MAM</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1.0000000</td>
+<td class="gt_row gt_right" headers="numeric.mean">0.03069444</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3380438</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.60</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.85</td>
+<td class="gt_row gt_left" headers="numeric.hist">▃▇▅▅▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">JJA</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">1</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">0.02440559</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3347516</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.53</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.77</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▆▇▃▅▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">SON</td>
+<td class="gt_row gt_right" headers="n_missing">1</td>
+<td class="gt_row gt_right" headers="complete_rate">0.9930556</td>
+<td class="gt_row gt_right" headers="numeric.mean">0.03965035</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3150909</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.47</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.74</td>
+<td class="gt_row gt_left" headers="numeric.hist">▅▇▃▃▂</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2197,7 +2317,6 @@ cookieconsent.run({
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">add_row_striping =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Yearly Temperatures by Zone"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <div id="vetlebvgfs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#vetlebvgfs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -2638,148 +2757,177 @@ cookieconsent.run({
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Yearly Temperatures by Zone</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="skim_variable">skim_variable</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="# Missing"># Missing</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Completeness">Completeness</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Mean">Mean</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standard Deviation">Standard Deviation</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Min">Min</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Max">Max</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Histogram">Histogram</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="skim_variable" class="gt_row gt_left">Year</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.951000e+03</td>
-<td headers="numeric.sd" class="gt_row gt_right">41.4246304</td>
-<td headers="numeric.p0" class="gt_row gt_right">1880.00</td>
-<td headers="numeric.p100" class="gt_row gt_right">2022.00</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▇▇▇▇</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">Glob</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">6.020979e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3698448</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.48</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.02</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▆▇▃▂▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">NHem</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1</td>
-<td headers="numeric.mean" class="gt_row gt_right">8.888112e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.4444241</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.57</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.35</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▂▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">SHem</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">3.244755e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3138072</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.48</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.75</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▅▇▂▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">24N-90N</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.090210e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.5357058</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.67</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.67</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▂▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">24S-24N</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">7.041958e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3459949</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.63</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.01</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▅▃▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">90S-24S</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1</td>
-<td headers="numeric.mean" class="gt_row gt_right">-2.517483e-03</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3105594</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.48</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.71</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▃▅▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">64N-90N</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">2.502098e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">1.0028287</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-1.77</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">3.24</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▂▇▅▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">44N-64N</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1</td>
-<td headers="numeric.mean" class="gt_row gt_right">1.305594e-01</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.5884089</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.79</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.82</td>
-<td headers="numeric.hist" class="gt_row gt_left">▆▇▃▃▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">24N-44N</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">3.643357e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.4192891</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.63</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.27</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▃▇▂▂▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">EQU-24N</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1</td>
-<td headers="numeric.mean" class="gt_row gt_right">6.237762e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3467758</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.67</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.97</td>
-<td headers="numeric.hist" class="gt_row gt_left">▂▇▆▃▂</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">24S-EQU</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">7.818182e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.3520816</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.59</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">1.07</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▃▇▅▃▁</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">44S-24S</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1</td>
-<td headers="numeric.mean" class="gt_row gt_right">4.314685e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.3300329</td>
-<td headers="numeric.p0" class="gt_row gt_right">-0.44</td>
-<td headers="numeric.p100" class="gt_row gt_right">0.80</td>
-<td headers="numeric.hist" class="gt_row gt_left">▇▇▅▃▃</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left gt_striped">64S-44S</td>
-<td headers="n_missing" class="gt_row gt_right gt_striped">0</td>
-<td headers="complete_rate" class="gt_row gt_right gt_striped">1</td>
-<td headers="numeric.mean" class="gt_row gt_right gt_striped">-5.657343e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right gt_striped">0.2739233</td>
-<td headers="numeric.p0" class="gt_row gt_right gt_striped">-0.54</td>
-<td headers="numeric.p100" class="gt_row gt_right gt_striped">0.44</td>
-<td headers="numeric.hist" class="gt_row gt_left gt_striped">▆▇▆▆▆</td></tr>
-    <tr><td headers="skim_variable" class="gt_row gt_left">90S-64S</td>
-<td headers="n_missing" class="gt_row gt_right">0</td>
-<td headers="complete_rate" class="gt_row gt_right">1</td>
-<td headers="numeric.mean" class="gt_row gt_right">-8.265734e-02</td>
-<td headers="numeric.sd" class="gt_row gt_right">0.7609316</td>
-<td headers="numeric.p0" class="gt_row gt_right">-2.60</td>
-<td headers="numeric.p100" class="gt_row gt_right">1.22</td>
-<td headers="numeric.hist" class="gt_row gt_left">▁▂▃▇▅</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="8" class="gt_heading gt_title gt_font_normal gt_bottom_border">Yearly Temperatures by Zone</th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="skim_variable" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">skim_variable</th>
+<th id="# Missing" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"># Missing</th>
+<th id="Completeness" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Completeness</th>
+<th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mean</th>
+<th id="Standard Deviation" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standard Deviation</th>
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Min</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Max</th>
+<th id="Histogram" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Histogram</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">Year</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.951000e+03</td>
+<td class="gt_row gt_right" headers="numeric.sd">41.4246304</td>
+<td class="gt_row gt_right" headers="numeric.p0">1880.00</td>
+<td class="gt_row gt_right" headers="numeric.p100">2022.00</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▇▇▇▇</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">Glob</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">6.020979e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3698448</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.48</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.02</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▆▇▃▂▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">NHem</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1</td>
+<td class="gt_row gt_right" headers="numeric.mean">8.888112e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.4444241</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.57</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.35</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▂▂▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">SHem</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">3.244755e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3138072</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.48</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.75</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▅▇▂▃▂</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">24N-90N</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.090210e-01</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.5357058</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.67</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.67</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▂▂▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">24S-24N</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">7.041958e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3459949</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.63</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.01</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▅▃▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">90S-24S</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1</td>
+<td class="gt_row gt_right" headers="numeric.mean">-2.517483e-03</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3105594</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.48</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.71</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▃▅▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">64N-90N</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">2.502098e-01</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">1.0028287</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-1.77</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">3.24</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▂▇▅▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">44N-64N</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1</td>
+<td class="gt_row gt_right" headers="numeric.mean">1.305594e-01</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.5884089</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.79</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.82</td>
+<td class="gt_row gt_left" headers="numeric.hist">▆▇▃▃▁</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">24N-44N</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">3.643357e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.4192891</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.63</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.27</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▃▇▂▂▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">EQU-24N</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1</td>
+<td class="gt_row gt_right" headers="numeric.mean">6.237762e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3467758</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.67</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.97</td>
+<td class="gt_row gt_left" headers="numeric.hist">▂▇▆▃▂</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">24S-EQU</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">7.818182e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.3520816</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.59</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">1.07</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▃▇▅▃▁</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">44S-24S</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1</td>
+<td class="gt_row gt_right" headers="numeric.mean">4.314685e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.3300329</td>
+<td class="gt_row gt_right" headers="numeric.p0">-0.44</td>
+<td class="gt_row gt_right" headers="numeric.p100">0.80</td>
+<td class="gt_row gt_left" headers="numeric.hist">▇▇▅▃▃</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="skim_variable">64S-44S</td>
+<td class="gt_row gt_right gt_striped" headers="n_missing">0</td>
+<td class="gt_row gt_right gt_striped" headers="complete_rate">1</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.mean">-5.657343e-02</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.sd">0.2739233</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p0">-0.54</td>
+<td class="gt_row gt_right gt_striped" headers="numeric.p100">0.44</td>
+<td class="gt_row gt_left gt_striped" headers="numeric.hist">▆▇▆▆▆</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="skim_variable">90S-64S</td>
+<td class="gt_row gt_right" headers="n_missing">0</td>
+<td class="gt_row gt_right" headers="complete_rate">1</td>
+<td class="gt_row gt_right" headers="numeric.mean">-8.265734e-02</td>
+<td class="gt_row gt_right" headers="numeric.sd">0.7609316</td>
+<td class="gt_row gt_right" headers="numeric.p0">-2.60</td>
+<td class="gt_row gt_right" headers="numeric.p100">1.22</td>
+<td class="gt_row gt_left" headers="numeric.hist">▁▂▃▇▅</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -2830,7 +2978,7 @@ cookieconsent.run({
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(global_temps_reshaped) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
@@ -2872,7 +3020,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: character</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 13%">
@@ -2909,7 +3057,7 @@ cookieconsent.run({
 </tbody>
 </table>
 <p><strong>Variable type: numeric</strong></p>
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 14%">
 <col style="width: 10%">
@@ -2995,7 +3143,11 @@ cookieconsent.run({
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Year: {frame_time}"</span>, <span class="at">x =</span> <span class="st">"Month"</span>, <span class="at">y =</span> <span class="st">"Delta Temp"</span>) <span class="sc">+</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_time</span>(Year) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="temperatures_files/figure-html/first-draft-plot-1.gif" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="temperatures_files/figure-html/first-draft-plot-1.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -3015,7 +3167,11 @@ cookieconsent.run({
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">caption =</span>  <span class="st">"Data from: NASA GISTEMP v4 via #TidyTuesday"</span>) <span class="sc">+</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_pander</span>(<span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="temperatures_files/figure-html/tweaking-the-plot-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="temperatures_files/figure-html/tweaking-the-plot-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -3035,7 +3191,11 @@ cookieconsent.run({
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Global Deviations in Temperature"</span>, <span class="at">subtitle =</span> <span class="st">"Year: {frame_time}"</span>) <span class="sc">+</span></span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_time</span>(Year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="temperatures_files/figure-html/final-plot-1.gif" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="temperatures_files/figure-html/final-plot-1.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>And saving the figure.</p>
@@ -3047,7 +3207,7 @@ cookieconsent.run({
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{sinks2023,
   author = {Sinks, Louise E.},
   title = {TidyTuesday {Week} 28: {Global} {Surface} {Temperature}},
   date = {2023-07-11},
@@ -3093,18 +3253,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3136,11 +3285,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/lsinks\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3150,8 +3336,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3163,7 +3358,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -3207,6 +3524,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3232,6 +3550,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -3299,12 +3643,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
