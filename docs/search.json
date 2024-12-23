@@ -1446,7 +1446,7 @@
     "href": "research.html",
     "title": "Research",
     "section": "",
-    "text": "Nanowires at USNano LLC\n\n\n\n\n\nSynthesis of semiconducting nanowires, formulating nanowire inks, and creating various printed electronic devices using these inks\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhosphorescence Lifetime Imaging\n\n\n\n\n\nDevelopment of novel oxygen imaging technique based on two-photon excitation microscopy. Modeling kinetic events and simulation of excitation volume with Matlab.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStructural Forest Regeneration\n\n\n\n\n\nPhD research at UBC\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Microclimate after Fire\n\n\n\n\n\nModeling the impact of fire events and remaining forest canopy on microclimate conditions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNanowires at USNano LLC\n\n\n\n\n\nSynthesis of semiconducting nanowires, formulating nanowire inks, and creating various printed electronic devices using these inks\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStructural Forest Regeneration\n\n\n\n\n\nLeveraging the Landsat Legacy to Understand Early and Probably Future Recovery Post-High Severity Fire\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#passionate-about-cultivating-resilient-communities",
@@ -1461,5 +1461,12 @@
     "title": "Structural Forest Regeneration",
     "section": "",
     "text": "Recovering forest 7 years after fire.\n\n\nMy PhD work looks at structural forest regeneration following stand-replacing disturbances in interior British Columbia. In this work I use lidar derived forest structure to correlate to spectral measurements from satellite metrics. I capitalize on the rapid expansion of lidar technology to develop structural metrics. For satellite metrics, I look at annual and seasonal composites to understand when a disturbance occurred and the spectral trajectory since the disturbance. My work supports the use of early spectral responses capture longer-term forest succession.\n\n\n\nSarah holding the M300 drone before collecting some Lidar data in Revelstoke BC"
+  },
+  {
+    "objectID": "research/Microclimate_AfterFire/Microclimate_afterfire.html",
+    "href": "research/Microclimate_AfterFire/Microclimate_afterfire.html",
+    "title": "Microclimate after Fire",
+    "section": "",
+    "text": "My master research included a full field season measuring microclimate dynamics in Interior British Columbia. The fire severity in this forest was variable, and highly related to the extent of burned canopy. Outputs from this research help forest managers understand microclimate - which can control fuel moisture content, young forest regeneration, and general forest growth.\n\n\n\nDataloggers like the TOMST4 loggers have vastly expanded our ability to monitor microclimate across the world!\n\n\nForest canopies can buffer from regional climate, but the climate of disturbed forest canopies is less understood. To investigate the relationship between disturbed forest canopies and climate I measured canopy height using a remotely piloted aircraft (RPA) and monitored microclimate with low-cost temperature and soil moisture sensors. I found growing season temperatures at -8 cm (soil), 0 cm (surface), and 15 cm (near-surface) relative to the ground surface were higher under shorter more disturbed canopies. Soil temperature was most sensitive to canopy height differences: linear models for the observed data range predicted a 2.0 °C increase in mean growing season soil temperature with every 10 m decrease in canopy height. There was observed a weak negative relationship between canopy height and mean growing season soil moisture. Importantly, we show canopy height summarized at moderate resolution (15 m) better explained differences in temperature in our disturbed landscape. This work informs future methods to produce gridded microclimate datasets and outlines the impact of disturbed forest structure on microclimate variables. Our results show that the characteristics of the forest canopy remaining after a burn impact microclimates, which has important implications for post-fire ecosystems.\n\n\n\nOrthoimagery of the my Masters Field Set-up Including the 90 Microclimate Loggers\n\n\n\n\nNew data loggers like the TMS-4 dataloggers from TOMST have rapidly expanded our capacity for microclimate research"
   }
 ]

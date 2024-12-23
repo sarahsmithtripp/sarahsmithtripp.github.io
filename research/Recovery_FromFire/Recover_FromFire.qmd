@@ -1,9 +1,8 @@
 ---
 title: "Structural Forest Regeneration"
-description: "PhD research at UBC" 
-title-block-banner: banner.jpg
-title-block-banner-color: dark
-image: "thumbnail.jpg"
+description: "Leveraging the Landsat Legacy to Understand Early and Probably Future Recovery Post-High Severity Fire" 
+title-block-banner: darkgreen
+image: "12.jpg"
 draft: false
 ---
 
