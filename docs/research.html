@@ -80,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -159,8 +159,9 @@ window.Quarto = {
 
 <link rel="stylesheet" href="styles.css">
 <meta name="twitter:title" content="Research – Sarah Smith-Tripp">
+<meta name="twitter:image" content="https://sarahsmithtripp.github.io/research/Nanomaterials_USNano/thumbnail.jpg">
 <meta name="twitter:creator" content="@smithtripp21">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -185,9 +186,8 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">research.qmd</span>
-    </span>
+    <a class="nav-link active" href="./research.html" aria-current="page"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
@@ -195,7 +195,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./posts.html"> 
-<span class="menu-text">Blog Entries</span></a>
+<span class="menu-text">Blog Posts</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./currentprojects.html"> 
@@ -252,7 +252,72 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1734850384725" data-listing-reading-time-sort="3" data-listing-word-count-sort="529">
+<div class="thumbnail">
+<p><a href="./research/Nanomaterials_USNano/Nanomaterials_USNano.html" class="no-external"></a></p><a href="./research/Nanomaterials_USNano/Nanomaterials_USNano.html" class="no-external">
+<p><img loading="lazy" src="./research/Nanomaterials_USNano/thumbnail.jpg" class="thumbnail-image"></p>
+</a><p><a href="./research/Nanomaterials_USNano/Nanomaterials_USNano.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./research/Nanomaterials_USNano/Nanomaterials_USNano.html" class="no-external">Nanowires at USNano LLC</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./research/Nanomaterials_USNano/Nanomaterials_USNano.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./research/Nanomaterials_USNano/Nanomaterials_USNano.html" class="no-external">Synthesis of semiconducting nanowires, formulating nanowire inks, and creating various printed electronic devices using these inks</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./research/Nanomaterials_USNano/Nanomaterials_USNano.html" class="no-external"></a></p><a href="./research/Nanomaterials_USNano/Nanomaterials_USNano.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1734850384748" data-listing-reading-time-sort="6" data-listing-word-count-sort="1011">
+<div class="thumbnail">
+<p><a href="./research/Phosphorescence_Lifetime_Imaging/Phosphorescence_Lifetime_Imaging.html" class="no-external"></a></p><a href="./research/Phosphorescence_Lifetime_Imaging/Phosphorescence_Lifetime_Imaging.html" class="no-external">
+<p><img loading="lazy" src="./research/Phosphorescence_Lifetime_Imaging/one_photon_psf.jpg" class="thumbnail-image"></p>
+</a><p><a href="./research/Phosphorescence_Lifetime_Imaging/Phosphorescence_Lifetime_Imaging.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./research/Phosphorescence_Lifetime_Imaging/Phosphorescence_Lifetime_Imaging.html" class="no-external">Phosphorescence Lifetime Imaging</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./research/Phosphorescence_Lifetime_Imaging/Phosphorescence_Lifetime_Imaging.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./research/Phosphorescence_Lifetime_Imaging/Phosphorescence_Lifetime_Imaging.html" class="no-external">Development of novel oxygen imaging technique based on two-photon excitation microscopy. Modeling kinetic events and simulation of excitation volume with Matlab.</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./research/Phosphorescence_Lifetime_Imaging/Phosphorescence_Lifetime_Imaging.html" class="no-external"></a></p><a href="./research/Phosphorescence_Lifetime_Imaging/Phosphorescence_Lifetime_Imaging.html" class="no-external">
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1734935530048" data-listing-reading-time-sort="1" data-listing-word-count-sort="123">
+<div class="thumbnail">
+<p><a href="./research/Recovery_FromFire/Recover_FromFire.html" class="no-external"></a></p><a href="./research/Recovery_FromFire/Recover_FromFire.html" class="no-external">
+<p><img loading="lazy" src="./research/Recovery_FromFire/thumbnail.jpg" class="thumbnail-image"></p>
+</a><p><a href="./research/Recovery_FromFire/Recover_FromFire.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./research/Recovery_FromFire/Recover_FromFire.html" class="no-external">Structural Forest Regeneration</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./research/Recovery_FromFire/Recover_FromFire.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./research/Recovery_FromFire/Recover_FromFire.html" class="no-external">PhD research at UBC</a>
+</div>
+</div>
+<div class="metadata">
+<p><a href="./research/Recovery_FromFire/Recover_FromFire.html" class="no-external"></a></p><a href="./research/Recovery_FromFire/Recover_FromFire.html" class="no-external">
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items

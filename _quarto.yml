@@ -11,7 +11,8 @@ website:
     right:
       - href: index.qmd
         text: Home
-      - research.qmd
+      - href: research.qmd
+        text: "Research"
       - about.qmd
       - posts.qmd
       - currentprojects.qmd

@@ -1,6 +1,6 @@
 ---
-title: "Louise E. Sinks"
-image: images/headshot.jpg
+title: "Sarah Smith-Tripp"
+image: images/prof_pic.jpg
 page-layout: full
 about: 
   template: trestles
@@ -9,19 +9,16 @@ about:
   links:
     - icon: linkedin 
       text: LinkedIn
-      href: https://www.linkedin.com/in/louise-sinks/
-    - icon: twitter 
-      text: Twitter
-      href: https://twitter.com/LouiseSinks
+      href: https://www.linkedin.com/in/sarahsmithtripp/
     - icon: github 
       text: GitHub
-      href: https://github.com/lsinks
+      href: https://github.com/sarahsmithtripp
     - text: Google Scholar
-      href: https://scholar.google.com/citations?user=Os4ZVq8AAAAJ&hl=en
+      href: https://scholar.google.com/citations?user=Yqq-c1EAAAAJ&hl=en
 ---
 
-Hello! I'm Louise Sinks. Welcome to my website. I'm a chemist by training, and I've spent my career designing, running, and analyzing a variety of types of experiments.
+## Passionate about Cultivating Resilient Communities
 
-You'll find some of my projects for former employers in the [portfolio section](https://lsinks.github.io/portfolio.html). Most of my research was on advanced functional materials with novel photophysical properties. In addition to spectroscopy, I employed statistical learning/ fitting methods, as interpretability is of primary importance in the sciences. Of course, being in charge of the experimental design gives you a huge advantage if you are trying to develop an interpretable model, as you can make sure you thoroughly explore the relevant parameter space. Most of my modeling and simulation work was done in Matlab, which seems to be a more popular language in academia than in industry and business.
+I am an interdisciplinary ecosystem scientist interested in risk and resilience research. My PhD uses remote-sensing techniques, including satellite imagery and lidar (light detection and ranging) to model forest recovery (or lack of recovery) after large and high severity wildfire. In my work, I aim to provide decision makers with accessible and accurate tools so they can take proactive steps to protect people and forests. Starting in summer 2025, I am seeking a position working in risk and resilience research in academic, private, and governmental spaces. In particular, I want to work on research that prioritizes community disaster resilience, leveraging joint problem framing to highlight community needs.
 
-You'll also find [my blog](https://lsinks.github.io/posts.html), where I do small projects to master new languages (R and Python currently). These are generally written as tutorials; throughout my career, I've benefitted immensely from code chunks and explanations I've found online, so this is my way of paying it forward. The blog posts are written in Quarto, and the [raw .qmd files can be found in my GitHub repo](https://github.com/lsinks/lsinks.github.io/tree/main/posts). These can be downloaded and run in RStudio or another IDE that supports Quarto. The [current projects section](https://lsinks.github.io/currentprojects.html) includes upcoming topics for the blog.
+I am passionate about collaborative research and enthusiastic about science communication. Some of my most gratifying work has been restarting the UBC graduate student Wildfire Discussion Group and presenting to US Senators Merkeley's staff on the importance of systemic disaster resilience. Please reach out if you are interested in talks or demonstrations on drones, satellite science, or community resilience and response to disaster.
