@@ -14,7 +14,8 @@ website:
         text: Home
       - href: research.qmd
         text: "Research"
-      - about.qmd
+      - href: "CV"
+        text: about.qmd
       - posts.qmd
       - icon: rss
         href: posts.xml
