@@ -1,0 +1,34 @@
+---
+title: "UBC Wildfire Discussion Group"
+image: assets/WildfireDiscussionGroup.png
+page-layout: full
+about: 
+  template: trestles
+  image-shape: rounded
+  image-width: 16em
+  links:
+    - icon: device-ssd 
+      text: Google Drive
+      href: https://drive.google.com/drive/folders/1SraOapfMfjLsj0oznrKKkse-rTDpz16d?usp=drive_link
+    - icon: envelope-open-heart
+      text: Listserv Sign-Up
+      href: https://lists.ubc.ca/scripts/wa.exe?INDEX&X=
+    - icon: question-diamond-fill
+      text: Questions?
+      href: sarahsmith.tripp@gmail.com
+---
+
+## Open to All UBC Graduate Student & Post-Docs 
+### and really anyone - just send an email! {.unlisted}
+Through transdisciplinary interactions the UBC Wildfire discussion group **breaks down** research silos. We recognize that **wildfire resilience** in the 21st century that requires a **everyone** from the doctors to foresters.
+
+We host bi-monthly discussions where we:
+
+1.  Dicsuss academic papers and reports
+2.  Present our current research
+3.  Connect with fire research across North America
+
+### Welcome Back Beers Jan 13th {.unlisted}
+![Join us at Koerners Pub on January 13th for Welcome Back Beers!](images/2025WelcomeBeers.png)
+### Stay in the loop 
+email [sarahsmith.tripp@gmail.com\]<sarahsmith.tripp@gmail.com> (stay tuned for a UBC listserv)

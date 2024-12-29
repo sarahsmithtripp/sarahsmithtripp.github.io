@@ -15,8 +15,10 @@ website:
       - href: research.qmd
         text: "Research"
       - href: about.qmd
-        text: CV/About
+        text: "About"
       - posts.qmd
+      - href: WildfireDiscussionGroup.qmd
+        text: "UBC Wildfire\n Group"
       - icon: rss
         href: posts.xml
   google-analytics: "G-WR4VFC0MC2"
