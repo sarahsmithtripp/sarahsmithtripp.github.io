@@ -5,10 +5,12 @@ date: 12-28-2024
 date-modified: last-modified
 ---
 
-## Hello 2025 
+## Hello 2025
 
-It's been a long-time since the #ScantiquesRoadshow blog updates of 2022. In the time being, I've developed new collaborations and passions - all peppered in with more drone flights. As I roll out my new website I want to give a special thank you to the personal website page and post by Louse Sinks. [Checkout their webpage here - it's really inspiring!]<https://lsinks.github.io/posts/2023-11-01-website-building/website.html>. 
-2024 was a year for collaborative science, finding my voice, and realizing some of my greatests strengths is connecting the right people and the right ideas. As I move into 2025, I want to write up some thoughts on these great experiences - so stay tuned for thoughts on 
-    (1) My time as a guest student at ETH Zurich [as a member of the Forest Research Group]  <https://form.ethz.ch/the-group.html> 
-    (2) Revamping the UBC Wildfire Discussion Group [see a description of the page and join the email list here] <
+It's been a long-time since the #ScantiquesRoadshow blog updates of 2022. In the time being, I've developed new collaborations and passions - all peppered in with more drone flights. As I roll out my new website I want to give a special thank you to the personal website page and post by Louse Sinks. [Checkout their webpage here - it's really inspiring!](https://lsinks.github.io/posts/2023-11-01-website-building/website.html).
+
+2024 was a year for **collaborative science, finding my voice, and realizing my greatests strengths is connecting the right people and the right ideas.** As I move into 2025, I want to write up some thoughts on these experiences - so stay tuned for thoughts on:
+
+1.  My time as a guest student at ETH Zurich [as a member of the Forest Research Group](https://form.ethz.ch/the-group.html)
+2.   Revamping the UBC Wildfire Discussion Group [see a description of the page and join the email list here](../../WildfireDiscussionGroup.qmd)
 
