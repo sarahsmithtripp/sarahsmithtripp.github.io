@@ -1,6 +1,6 @@
 ---
 title: "Sarah Smith-Tripp"
-image: images/prof_pic.jpg
+image: assets/prof_pic.png
 page-layout: full
 about: 
   template: trestles
