@@ -1,7 +1,8 @@
 ---
 title: "Microclimate after Fire"
 description: "Modeling the impact of fire events and remaining forest canopy on microclimate conditions" 
-title-block-banner: blue
+title-block-banner: darkblue
+title-block-banner-color: white
 image: microclimate.jpg
 draft: false
 ---
