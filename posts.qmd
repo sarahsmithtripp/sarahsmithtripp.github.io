@@ -1,0 +1,15 @@
+---
+title: "Blog Posts"
+listing:
+  contents: posts/**/*.qmd
+  sort: "date desc"
+  type: default
+  categories: numbered
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, reading-time, description, categories, image]
+  feed: 
+    categories: [R-code]
+page-layout: full
+title-block-banner: false
+---

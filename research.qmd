@@ -1,0 +1,8 @@
+---
+title: "Research"
+listing:
+  contents: research/**/*.qmd
+  type: default
+page-layout: full
+title-block-banner: false
+---
