@@ -1,4 +1,1 @@
-User-agent: *
-Disallow:
-
 Sitemap: https://sarahsmithtripp.github.io/sitemap.xml
