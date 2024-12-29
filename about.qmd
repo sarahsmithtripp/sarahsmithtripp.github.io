@@ -10,6 +10,6 @@ cv:
   pdf: "assets/SmithTripp_CV_LongDecember2024.pdf"
 ---
 
-[download my latest CV here](assets/SmithTripp_CV_LongDecember2024.pdf).
+## Click on the image to view my lastest CV
 
 [![](images/paste-1.png)](assets/SmithTripp_CV_LongDecember2024.pdf)
