@@ -1,7 +1,8 @@
 ---
 title: "Place Based Research"
 description: "Transdisciplinary Place Based Research at\nSmall Undergraduate Campus" 
-title-block-banner: darkgreen
+title-block-banner: darkblue
 image: "12.jpg"
 draft: false
+title-block-banner-color: white
 ---
