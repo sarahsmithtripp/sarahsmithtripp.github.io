@@ -12,5 +12,5 @@ It's been a long-time since the #ScantiquesRoadshow blog updates of 2022. In the
 2024 was a year for **collaborative science, finding my voice, and realizing my greatests strengths is connecting the right people and the right ideas.** As I move into 2025, I want to write up some thoughts on these experiences - so stay tuned for thoughts on:
 
 1.  My time as a guest student at ETH Zurich [as a member of the Forest Research Group](https://form.ethz.ch/the-group.html)
-2.   Revamping the UBC Wildfire Discussion Group [see a description of the page and join the email list here](../../WildfireDiscussionGroup.qmd)
+2.   Revamping the UBC Wildfire Discussion Group [see a description of the page and join the email list here](https://sarahsmithtripp.github.io/WildfireDiscussionGroup.html)
 
