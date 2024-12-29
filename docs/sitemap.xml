@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sarahsmithtripp.github.io/index.html</loc>
-    <lastmod>2024-12-29T06:07:12.829Z</lastmod>
+    <lastmod>2024-12-29T06:16:32.662Z</lastmod>
   </url>
   <url>
     <loc>https://sarahsmithtripp.github.io/research.html</loc>
@@ -35,5 +35,9 @@
   <url>
     <loc>https://sarahsmithtripp.github.io/research/Place_BasedResearch/Place_BasedResearch.html</loc>
     <lastmod>2024-12-29T04:10:52.050Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sarahsmithtripp.github.io/posts/2024-12-28/Updating.html</loc>
+    <lastmod>2024-12-29T06:15:25.117Z</lastmod>
   </url>
 </urlset>

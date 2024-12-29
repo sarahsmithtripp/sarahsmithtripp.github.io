@@ -16,9 +16,6 @@ website:
         text: "Research"
       - about.qmd
       - posts.qmd
-      - currentprojects.qmd
-      - href: blogroll.qmd
-        text: "Blog Roll"
       - icon: rss
         href: posts.xml
   google-analytics: "G-WR4VFC0MC2"
