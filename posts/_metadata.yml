@@ -14,10 +14,10 @@ page-layout: article
 
 author:
 - name:
-    given: Louise E.
-    family: Sinks
-  url: https://lsinks.github.io/
+    given: Sarah M.
+    family: Smith-Tripp
+  url: https://sarahsmithtripp.github.io/
   
 comments: 
   utterances: 
-    repo:  lsinks/blog-comments
+    repo:  sarahsmithtripp/blog-comments
