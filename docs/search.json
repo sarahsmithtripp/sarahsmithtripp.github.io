@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Sarah Smith-Tripp",
+    "section": "",
+    "text": "I am an interdisciplinary ecosystem scientist interested in risk and resilience research. My PhD uses remote-sensing techniques, including satellite imagery and lidar (light detection and ranging) to model forest recovery (or lack of recovery) after large and high severity wildfire. In my work, I aim to provide decision makers with accessible and accurate tools so they can take proactive steps to protect people and forests. Starting in summer 2025, I am seeking a position working in risk and resilience research in academic, private, and governmental spaces. In particular, I want to work on research that prioritizes community disaster resilience, leveraging joint problem framing to highlight community needs.\nI am passionate about collaborative research and enthusiastic about science communication. Some of my most gratifying work has been restarting the UBC graduate student Wildfire Discussion Group and presenting to US Senators Merkeley’s staff on the importance of systemic disaster resilience. Please reach out if you are interested in talks or demonstrations on drones, satellite science, or community resilience and response to disaster."
+  },
+  {
+    "objectID": "index.html#passionate-about-cultivating-resilient-communities",
+    "href": "index.html#passionate-about-cultivating-resilient-communities",
+    "title": "Sarah Smith-Tripp",
+    "section": "",
+    "text": "I am an interdisciplinary ecosystem scientist interested in risk and resilience research. My PhD uses remote-sensing techniques, including satellite imagery and lidar (light detection and ranging) to model forest recovery (or lack of recovery) after large and high severity wildfire. In my work, I aim to provide decision makers with accessible and accurate tools so they can take proactive steps to protect people and forests. Starting in summer 2025, I am seeking a position working in risk and resilience research in academic, private, and governmental spaces. In particular, I want to work on research that prioritizes community disaster resilience, leveraging joint problem framing to highlight community needs.\nI am passionate about collaborative research and enthusiastic about science communication. Some of my most gratifying work has been restarting the UBC graduate student Wildfire Discussion Group and presenting to US Senators Merkeley’s staff on the importance of systemic disaster resilience. Please reach out if you are interested in talks or demonstrations on drones, satellite science, or community resilience and response to disaster."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "Early Recovery Post-Fire From Landsat Satellites\n\n\n\n\n\nLeveraging the Landsat Legacy to Understand Early and Probably Future Recovery Post-High Severity Fire\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMicroclimate after Fire\n\n\n\n\n\nModeling the impact of fire events and remaining forest canopy on microclimate conditions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlace Based Research\n\n\n\n\n\nTransdisciplinary Place Based Research at Small Undergraduate Campus\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "research/Microclimate_AfterFire/Microclimate_afterfire.html",
+    "href": "research/Microclimate_AfterFire/Microclimate_afterfire.html",
+    "title": "Microclimate after Fire",
+    "section": "",
+    "text": "My master research included a full field season measuring microclimate dynamics in Interior British Columbia. The fire severity in this forest was variable, and highly related to the extent of burned canopy. Outputs from this research help forest managers understand microclimate - which can control fuel moisture content, young forest regeneration, and general forest growth."
+  },
+  {
+    "objectID": "research/Microclimate_AfterFire/Microclimate_afterfire.html#check-out-more-on-soil-temperature-researchsoil-temp",
+    "href": "research/Microclimate_AfterFire/Microclimate_afterfire.html#check-out-more-on-soil-temperature-researchsoil-temp",
+    "title": "Microclimate after Fire",
+    "section": "Check out more on Soil Temperature researchSoil Temp:",
+    "text": "Check out more on Soil Temperature researchSoil Temp:\n\n\n\nElephant\n\n\n\nResearch at Alex Fraser Research Forest\nForest canopies can buffer from regional climate, but the climate of disturbed forest canopies is less understood. To investigate the relationship between disturbed forest canopies and climate I measured canopy height using a remotely piloted aircraft (RPA) and monitored microclimate with low-cost temperature and soil moisture sensors. I found growing season temperatures at -8 cm (soil), 0 cm (surface), and 15 cm (near-surface) relative to the ground surface were higher under shorter more disturbed canopies. Soil temperature was most sensitive to canopy height differences: linear models for the observed data range predicted a 2.0 °C increase in mean growing season soil temperature with every 10 m decrease in canopy height. There was observed a weak negative relationship between canopy height and mean growing season soil moisture. Importantly, we show canopy height summarized at moderate resolution (15 m) better explained differences in temperature in our disturbed landscape. This work informs future methods to produce gridded microclimate datasets and outlines the impact of disturbed forest structure on microclimate variables. Our results show that the characteristics of the forest canopy remaining after a burn impact microclimates, which has important implications for post-fire ecosystems.\n\n\n\nOrthoimagery of the my Masters Field Set-up Including the 90 Microclimate Loggers"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Blog Posts",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blogroll.html",
+    "href": "blogroll.html",
+    "title": "Blog Roll",
+    "section": "",
+    "text": "Blogs:\nR Bloggers\nTutorials I’ve followed:\nWord Games Project:\nr letter frequency in R packages via R-Bloggers\nSetting Up Webpage:\nCreating Quarto Websites by Sam Csik\nAlbert Rapp: The ultimate guide to starting a Quarto blog"
+  },
+  {
+    "objectID": "currentprojects.html",
+    "href": "currentprojects.html",
+    "title": "Current Projects",
+    "section": "",
+    "text": "I generally have a couple of big projects I’m working on that are “works in progress” and haven’t made it to a blog post yet. Links to the drafts are included, but they are just drafts.\nWhat I’m working on now:"
+  },
+  {
+    "objectID": "currentprojects.html#family-history-project",
+    "href": "currentprojects.html#family-history-project",
+    "title": "Current Projects",
+    "section": "Family History Project",
+    "text": "Family History Project\nTombstones (in R)- I’m working on a project for my father that will culminate in a website for his genealogy research. There are a couple of different parts that I’m working on independently.\n\nLinking photos of family gravestones to an Excel sheet that records the GPS location of the tombstones. This combined dataset will be used to generate a leaflet map (and is currently called leaflet_tester). I will probably separate this into two or three portions, though.\n\nthe data cleanup and the actual matching (done and posted)\nleaflet styling (done and posted)\nweb scraping portion to add more information about some of the ancestors (done and posted)\nMy father also gave me several papers he’s written about family members. I want to write code to determine which family members are mentioned in each document and match them to his Excel sheet. (not started)\n\n\nI’ve spent a surprising large amount of time today learning how to handle “large” files. The photos are added to the tombstone repo using git’s lfs if anyone wanted to run my code. There are about 2 GB of photos, compressed to ~300 MB. The map with photos is about 500 MB, which is also too large for github pages. That’s okay, since I plan to host it on a different website devoted entirely to my father’s family history research."
+  },
+  {
+    "objectID": "currentprojects.html#credit-card-fraud",
+    "href": "currentprojects.html#credit-card-fraud",
+    "title": "Current Projects",
+    "section": "Credit Card Fraud",
+    "text": "Credit Card Fraud\nI’m also exploring the credit card fraud project in other languages. I previously wrote two R Tidymodels tutorials using this data. They can be found here and here.\nBy using the same dataset, I can focus on learning the new language instead of thinking the higher level aspects. And I’m able to spot errors and mistakes much more easily.\nCredit Card Fraud (Tableau)- I’ve been working on replicating the credit card fraud EDA in Tableau. I have an adequate draft, but I need to go back and fix the tooltips. There were some interesting results concerning the geographic variables. I made some assumptions when I did the modeling in R that weren’t correct. I will write up some lessons I learned while working in Tableau, but I also want to see how I could have caught that while working in R.\nCredit Card Fraud (Python)- I am rebuilding my credit card fraud project in Python to improve my skills. I’m also learning how to use Python within R Studio and the ins and outs of the reticulate package."
+  },
+  {
+    "objectID": "research/Forest_RecoveryafterFire/Forest_RecoveryafterFire.html",
+    "href": "research/Forest_RecoveryafterFire/Forest_RecoveryafterFire.html",
+    "title": "Early Recovery Post-Fire From Landsat Satellites",
+    "section": "",
+    "text": "Recovering forest 7 years after fire.\n\n\nMy PhD work looks at structural forest regeneration following stand-replacing disturbances in interior British Columbia. In this work I use lidar derived forest structure to correlate to spectral measurements from satellite metrics. I capitalize on the rapid expansion of lidar technology to develop structural metrics. For satellite metrics, I look at annual and seasonal composites to understand when a disturbance occurred and the spectral trajectory since the disturbance. My work supports the use of early spectral responses capture longer-term forest succession.\n\n\n\nSarah holding the M300 drone before collecting some Lidar data in Revelstoke BC"
+  },
+  {
+    "objectID": "research/Place_BasedResearch/Place_BasedResearch.html",
+    "href": "research/Place_BasedResearch/Place_BasedResearch.html",
+    "title": "Place Based Research",
+    "section": "",
+    "text": "While my PhD is large-scale, covering over 500,000 ha (that’s bigger than PEI and Connecticut), this large-scale research is antithetical to some of my undergraduate research projects on the 500 acre campus at Wellesley College. As the first interdisciplinary research assistant for the Wendy Paulon ’69 “Ecology of Place” https://www1.wellesley.edu/paulson initiative, facilitated research among Campus Administrators, Academics, and grounds staff. My work investigated sediment and water flux into a local, and adored, on-campus pond (Paramecium pond for my fellow Wellesley humans). The pond, fed by drinking water since built in the earth 20th century, is finally changing water sources in 2025 (a great example of slow-research!).\n\n\n\nInstalling the Thermistor Chain at Paramecium Pond\n\n\nAlongside my undergraduate research on Paramecium Pond I was also luck enough to conduct other on-campus work that fueled my fire passions. Below is a photo of me completing an experiment investigating the interaction between invasive species (Brome) and drought on early fire response\n\n\n\nBurning fire experiment at Wellesley College"
+  }
+]
