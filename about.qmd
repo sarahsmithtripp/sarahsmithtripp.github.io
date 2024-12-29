@@ -1,3 +1,15 @@
 ---
-title: "About Me/ CV"
+title: Curriculum vitæ
+description: "Sarah Smith-Tripp's CV"
+date: 2024-12-28
+title-block-banner: "darkblue"
+title-block-banner-color: "white"
+published-title: CV last updated
+freeze: false
+cv:
+  pdf: "assets/SmithTripp_CV_LongDecember2024.pdf"
 ---
+
+[download my latest CV here](assets/SmithTripp_CV_LongDecember2024.pdf).
+
+[![](images/paste-1.png)](assets/SmithTripp_CV_LongDecember2024.pdf)

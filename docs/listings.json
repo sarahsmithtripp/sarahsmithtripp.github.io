@@ -16,9 +16,9 @@
   {
     "listing": "/research.html",
     "items": [
+      "/research/Forest_RecoveryafterFire/Forest_RecoveryafterFire.html",
       "/research/Microclimate_AfterFire/Microclimate_afterfire.html",
-      "/research/Place_BasedResearch/Place_BasedResearch.html",
-      "/research/Recovery_FromFire/Recover_FromFire.html"
+      "/research/Place_BasedResearch/Place_BasedResearch.html"
     ]
   }
 ]
