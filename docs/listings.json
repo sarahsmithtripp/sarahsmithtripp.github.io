@@ -2,11 +2,6 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/2024-01-05-using-my-code/using_quarto_code.html",
-      "/posts/2024-01-03-geocoding/geocoding_mistakes.html",
-      "/posts/2024-01-01-tableau/tableau.html",
-      "/posts/2023-11-01-website-building/website.html",
-      "/posts/2023-09-08-web-scraping-tombstone/web-scraping.html",
       "/posts/2023-09-05-TidyTuesday-Labor/labor.html",
       "/posts/2023-08-29-TidyTuesday-fair-use/tidytuesday35-fair-use.html",
       "/posts/2023-08-28-TidyTuesday-Refugees/TidyTuesday34-refugees.html",
@@ -21,9 +16,9 @@
   {
     "listing": "/research.html",
     "items": [
+      "/research/Forest_RecoveryafterFire/Forest_RecoveryafterFire.html",
       "/research/Microclimate_AfterFire/Microclimate_afterfire.html",
-      "/research/Nanomaterials_USNano/Nanomaterials_USNano.html",
-      "/research/Recovery_FromFire/Recover_FromFire.html"
+      "/research/Place_BasedResearch/Place_BasedResearch.html"
     ]
   }
 ]

@@ -1,7 +1,8 @@
 ---
 title: "Microclimate after Fire"
 description: "Modeling the impact of fire events and remaining forest canopy on microclimate conditions" 
-title-block-banner: blue
+title-block-banner: darkblue
+title-block-banner-color: white
 image: microclimate.jpg
 draft: false
 ---
@@ -10,9 +11,10 @@ My master research included a full field season measuring microclimate dynamics 
 
 ![Dataloggers like the TOMST4 loggers have vastly expanded our ability to monitor microclimate across the world!](images/microclimate_profil.JPG)
 
+## Check out more on Soil Temperature research\at Soil Temp: 
+[![Elephant](soiltemp.png)](https://www.soiltempproject.com/)
+
+### Research at Alex Fraser Research Forest
 Forest canopies can buffer from regional climate, but the climate of disturbed forest canopies is less understood. To investigate the relationship between disturbed forest canopies and climate I measured canopy height using a remotely piloted aircraft (RPA) and monitored microclimate with low-cost temperature and soil moisture sensors. I found growing season temperatures at -8 cm (soil), 0 cm (surface), and 15 cm (near-surface) relative to the ground surface were higher under shorter more disturbed canopies. Soil temperature was most sensitive to canopy height differences: linear models for the observed data range predicted a 2.0 °C increase in mean growing season soil temperature with every 10 m decrease in canopy height. There was observed a weak negative relationship between canopy height and mean growing season soil moisture. Importantly, we show canopy height summarized at moderate resolution (15 m) better explained differences in temperature in our disturbed landscape. This work informs future methods to produce gridded microclimate datasets and outlines the impact of disturbed forest structure on microclimate variables. Our results show that the characteristics of the forest canopy remaining after a burn impact microclimates, which has important implications for post-fire ecosystems.
 
 ![Orthoimagery of the my Masters Field Set-up Including the 90 Microclimate Loggers](images/field_site.jpg){fig-align="center"}
-
-```         
-```
