@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Sarah Smith-Tripp"
-  favicon: assets/Phd_Logo.png
+  favicon: Phd_Logo.png
   site-url: https://sarahsmithtripp.github.io
   description: "Personal Website for Sarah Smith-Tripp"
   navbar:
