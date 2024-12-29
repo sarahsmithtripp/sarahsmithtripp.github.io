@@ -1,0 +1,16 @@
+---
+title: "Place Based Research"
+description: "Transdisciplinary Place Based Research at\nSmall Undergraduate Campus" 
+title-block-banner: darkblue
+image: "pond_research.jpg"
+draft: false
+title-block-banner-color: white
+---
+
+While my PhD is large-scale, covering over **500,000 ha** (that's bigger than PEI and Connecticut), this large-scale research is antithetical to some of my undergraduate research projects on the **500 acre** campus at Wellesley College. As the first interdisciplinary research assistant for the Wendy Paulon '69 "Ecology of Place" <https://www1.wellesley.edu/paulson> initiative, facilitated research among Campus Administrators, Academics, and grounds staff. My work investigated sediment and water flux into a local, and adored, on-campus pond (Paramecium pond for my fellow Wellesley humans). The pond, fed by drinking water since built in the earth 20th century, is **finally changing water sources in 2025 (a great example of slow-research!).**
+
+![Installing the Thermistor Chain at Paramecium Pond](images/pond_research.JPG)
+
+Alongside my undergraduate research on Paramecium Pond I was also luck enough to conduct other on-campus work that fueled my fire passions. Below is a photo of me completing an experiment investigating the interaction between invasive species (Brome) and drought on early fire response
+
+![Burning fire experiment at Wellesley College](images/fire_babies.JPG)
