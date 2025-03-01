@@ -1,0 +1,32 @@
+---
+title: "2024: A year for Collaboration"
+description: "Transcontinental Transdisciplinarity"
+date: 12-28-2024
+date-modified: last-modified
+---
+
+## Transcontinental Transdisciplinarity
+
+I first approached my supervisor on the idea to spend a summer as a visiting graduate researcher ETH Zurich [as a member of the Forest Research Group](https://form.ethz.ch/the-group.html) in October of 2023. A large proportion of international forest policy is shaped by Swiss (or Swiss based) institutions. Since I'd like to better understand these policies, their origins, and how they impact policy development at a local level, going to Switzerland was my opportunity to explore how Switzerland, and people within Switzerland, research and manage their forests.
+
+![Sarah on a hike in the Alps](SarahInZurich.jpg)
+
+I was stoked when dreams manifested to reality and I was booked for a round trip to Zurich in May 2024 - August 2024. Having never spent time at another University, particularly a European University, I did not know what to expect. It came alongside finding a place to live, realizing when people say Switzerland is expensive **they mean it** (I spent \$8 CAD on a starbucks coffee at an Airport...), and learning that in Switzerland wilderness is nowhere - but forests are everywhere.
+
+When I first arrived in Switzerland it was a whirlwind of learning some important things:
+
+1.  Switzerland has a lot (a LOT) of open-data (check-out [Swiss Maps](https://map.geo.admin.ch/#/map?lang=en&center=2660000,1190000&z=1&topic=ech&layers=ch.swisstopo.zeitreihen@year=1864,f;ch.bfs.gebaeude_wohnungs_register,f;ch.bav.haltestellen-oev,f;ch.swisstopo.swisstlm3d-wanderwege,f;ch.vbs.schiessanzeigen,f;ch.astra.wanderland-sperrungen_umleitungen,f&bgLayer=ch.swisstopo.pixelkarte-farbe)). There are so many questions that could be investigated with the open data available (including repeat lidar acquisitions!)
+
+2.  Forests in Switzerland serve mostly a protective function, which mean they limit erosion off the steep mountainous slopes. Real-time monitoring of tree health is important, because if a group of trees falls in the woods, it could dramatically impact the slope stability. *Some might say that you if a tree fell in Switzerland you might not hear, but you WOULD hear the landslide after it...*
+
+3.  Opportunities for collaboration are everywhere when cities are densely packed and universities are close-by! It was fascinating to learn how many people would transit across the city to go from their office at ETH to a talk at University of Zurich and then off to dinner at a regional university in the next town over. It meant that the types of conversations you had at talks were extremely cross-cutting and interdisciplinary - reminding me of my days as a undergraduate :)
+
+4.  Stores close on Sundays. Don't go shopping on Sundays.
+
+5.  STORES CLOSE ON SUNDAYS. DO NOT ATTEMPT TO GO TO THE TRAIN STATION AND GO SHOPPING ON A SUNDAY
+
+While at ETH Zurich I made connections with many researchers working on a myriad of remote-sensing techniques. I helped "get the drone of the ground" (link to Silva21 post) for a new project looking at near-real time forest monitoring. Field in Switzerland was particularly pleasant because when you wanted to take a break you could buy an ice cream
+
+Perhaps the most fruitful science conversations I had were in the casual interactions that are cherished by the Swiss. Coming back to UBC I learned how much I (and I would argue) others gain by taking a break from their keyboard and chatting with their colleagues. Some of my favorite experiences were floating down the Limmat in Zurich during lunch chatting about the need to integrate social science in our research.
+
+Returning back to UBC I became more invested in collaborative science, inspiring me to restart the wildfire discussion group. I am also still learning how we can quantify the value of different forest attributes including their protective functions, cultural resourcing, and even their value in local food systems. If you have papers or sources to share - please reach out!

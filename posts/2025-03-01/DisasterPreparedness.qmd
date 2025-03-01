@@ -1,0 +1,221 @@
+---
+title: "Exploring Remote Sensing Data for Disaster Preparedness"
+description: "Landcover Mapping in Kelowna"
+date: 12-28-2024
+date-modified: last-modified
+---
+
+## Exploring Google Collab and To Develop Disaster Resilience
+
+Recently, I have been developing course content on disaster prep and mitigation. I wanted to share a small assignment that I made using Google Earth Engine and ESA landcover data. It's a fairly simple data manipulation that aims to prioritize neighborhoods for fuel risk mitigation. All of this data is free and available on GEE and I processed in python using Google Collab. Cool!
+
+I want to thank Eliceo Ruiz Guzman for doing the final step to convert my python file to a quarto markdown I can share here!
+
+::: {#Assignment}
+# Developing Wildfire Disaster Resilience through Mitigation
+:::
+
+## Scenario
+
+Congratulations, you are a newly elected council member in West Kelowna. As part of your election you highlighted that you would West Kelowna become a "FireSmart Community." This is a high-priority for West Kelowna because of the recent McDougall Creek Wildfire that burned **189 structures**
+
+```{=html}
+<iframe src="https://www.kelownacapnews.com/local-news/august-2023-mcdougall-creek-wildfire-causes-devastation-in-west-kelowna-7290246" width="750" height="400" style="border: none;"> </iframe>
+```
+
+## West Kelowna - A Path Towards "FireSmart"
+
+A "FireSmart Community" is a community that has been evaluated by FireSmart Canada and, in response, developed a "FireSmart Neighbourhood Plan." Click the link to learn more about [FireSmart](https://www.google.com/url?q=https%3A%2F%2Ffiresmartbc.ca%2F)
+
+When FireSmart visited West Kelowna they noticed a high proportion of homes with forested areas near by. Trees, particularly coniferous trees, within 30m of a building dramatically [increase the risk that a wildfire will reach a building](https://www.google.com/url?q=https%3A%2F%2Fwww.fs.usda.gov%2Fnac%2Fbuffers%2Fguidelines%2F5_protection%2F11.html).
+
+To develop the "FireSmart Neigbourhood Plan" you need to prioritize neighborhoods that have the most structures with forests nearby. In your plan, you will prioritize funding for these neighbourhoods that promotes firesafe landscaping.
+
+## Task : Identify Priority Areas for Firesafe Landscaping Interventions
+
+We will use open datasets to show how we can find areas most at risk, leveraging the power of remote-sensing dataset to effect real policy action. In this activity, the analyses have been done for you, the goal is to show what *can* be done with the right tools and the right questions!
+
+### Overview
+
+In the following sections we will:
+
+1.  Explore a global landcover dataset to see how we can apply it to our region
+
+2.  Conduct a simple GIS analysis to see which buildings are within the "danger" zone of a forest
+
+3.  Prioritize a list of neighbourhoods for firesmart landscaping.
+
+# ---
+
+## Landcover of West Kelowna
+
+In this activity, we will use the global landcover dataset that is calculated from a combination of sentinel-1 (radar) and sentinel-2 (visible to SWIR) bands. Since we use sentinel the dataset has a resolution of 10 m. You can learn more about the ESA landcover dataset [here](https://www.google.com/url?q=https%3A%2F%2Fesa-worldcover.org%2Fen%2Fdata-access). For this lab, we accessed the 2021 landcover layer hosted on [Google Earth Engine](https://developers.google.com/earth-engine/datasets/catalog/ESA_WorldCover_v200)
+
+### Question 1
+
+What is the spectral resolution of the ESA landcover dataset? Which types of landcover classes does it include?
+
+### Landcover Map
+
+The map below shows the landcover types for your region - West Kelowna (congrats again for becoming an elected official! such an honor)
+
+The **green areas** are identified as forests and the **red areas** are areas that are 'built-up' regions. Feel free to explore the dataset.
+
+```{r leaflet, include = FALSE}
+library(pacman)
+p_load(dplyr, leaflet, leaflet.extras, htmlwidgets, terra, sf, tidyverse)
+# Load the raster
+raster_path <- "posts/2025-03-01/ESA_landcover_clip.tif"
+r <- rast(raster_path)  # Load as SpatRaster
+
+# Extract unique values from the raster 
+unique_classes <- sort(unique(values(r)))
+# print("Unique classes detected in the raster:")
+# print(unique_classes) 
+
+# Define the exact mapping between values and land cover class names
+esa_classes <- c(10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100)
+categories <- c("Tree cover", "Shrubland", "Grassland", "Cropland", "Built-up",
+                "Bare / sparse vegetation", "Snow and Ice", "Permanent water bodies",
+                "Herbaceous wetland", "Mangroves", "Moss and lichen")
+
+# Define ESA colors (RGB converted to HEX)-- These are the ESA official colors
+colors <- c("#006400", "#FFBB22", "#FFFF4C", "#F096FF", "#FA0000",
+            "#B4B4B4", "#F0F0F0", "#0064C8", "#0096A0", "#00CF75", "#FAE6A0")
+
+# Create a categorical color palette (mapping exact values)
+pal <- colorFactor(palette = colors, domain = esa_classes, na.color = "transparent")
+
+# Create the map with the raster layer and the correct legend
+m <- leaflet() %>%
+  addProviderTiles("Esri.WorldImagery", group = "Satellite Imagery") %>%
+  addRasterImage(r, colors = pal, opacity = 0.8, maxBytes = 10 * 1024 * 1024, group = "ESA Land Cover") %>%
+  addLegend(position = "bottomright",
+            colors = colors,   
+            labels = categories,  
+            opacity = 1,
+            title = "ESA Land Cover") %>%
+  addScaleBar(position = "bottomleft") %>%
+  addLayersControl(
+    baseGroups = c("Satellite Imagery"),
+    overlayGroups = c("ESA Land Cover"),
+    options = layersControlOptions(collapsed = TRUE)
+  )
+
+# Display the map in RStudio
+m
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE} m}
+```
+
+### Identifying areas "At Risk"
+
+We will now identify which forested areas are within 30 m of our 'built' up regions. By doing so, we can identify which regions are most at risk, and which neighborhoods we should prioritize in the future.
+
+The map below shows the built up regions and the forested areas that are within 30 meters of built up areas. There are definitely some areas of concern!
+
+### Question 2
+
+Global landcover datasets can have variable accuracy at a local level. Additionally, this landcover dataset is from 2021. Identify three locations on the map below that you think the landcover dataset is "missing" for each location, note the type of building (residential, commercial, industrial) and the distance to the nearest set of trees. You might notice that some areas actually already burned! For these areas, you can estimate the location of the structure and the distance to the nearest forested area.
+
+You can use the map to measure distance by clicking on the line feature at the left of the map
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(pacman)
+p_load(dplyr, leaflet, leaflet.extras, htmlwidgets, terra, sf, tidyverse)
+ #  Load the Trees Raster  
+trees_raster_path <- "posts/2025-03-01/trees_close_tohomes.tif"
+r_trees <- rast(trees_raster_path)  # Load as SpatRaster   
+# Prevent metadata output  
+#  Create an Ultra-Bright Fluorescent Green Color Palette for Trees Raster  
+super_neon_green_palette <- colorNumeric(   palette = c("#00FF00", "#33FF00", "#66FF33", "#99FF00", "#CCFF00"),    domain = values(r_trees),   na.color = "transparent") 
+#  Create an Interactive Leaflet Map with Measurement & Drawing Tools 
+m <- leaflet() %>%   # Base map options   
+addProviderTiles("Esri.WorldImagery", group = "Satellite Imagery") %>%    # Add Trees Raster First with Ultra Neon Green**   
+addRasterImage(r_trees, colors = super_neon_green_palette, 
+               opacity = 1.0,maxBytes = 10 * 1024 * 1024, group =
+               "Trees Close to Homes") %>%  
+addMeasure(
+    position = "topleft",
+    primaryLengthUnit = "meters",
+    primaryAreaUnit = "sqmeters",
+    activeColor = "red",
+    completedColor = "blue"
+  ) %>%
+
+  # Add Drawing Tools (Classic Pin Marker, No Circle Marker) 
+  addDrawToolbar(
+    position = "topleft",
+    polylineOptions = TRUE,  
+    polygonOptions = TRUE,   
+    rectangleOptions = FALSE, 
+    circleOptions = TRUE,    
+    circleMarkerOptions = FALSE,  
+    markerOptions = TRUE,    
+    editOptions = editToolbarOptions(
+      edit = TRUE,  
+      remove = TRUE,  
+      selectedPathOptions = selectedPathOptions(color = "red", weight = 3)  # ✅ Allows selecting individual features for deletion
+    )
+  ) %>%
+
+  # Allow Both the Raster and the Shapefile to be Toggled
+  addLayersControl(
+    baseGroups = c("Satellite Imagery"),
+    overlayGroups = c("Trees Close to Homes"),  # Renamed layer here
+    options = layersControlOptions(collapsed = TRUE)
+  )
+
+# Display the map
+m
+```
+
+### Prioritizing Neighbourhoods
+
+Using our knowledge of which built up areas in West Kelowna are the closests to different forested areas we will now sum the total area at risk for each neighborhood of West Kelowna. We can access the neighbourhoods of Kelowna from the city's open GIS portal here
+
+For each neighbourhood we calculated the total land area that is forest within 30 m of a built up area. Use the map below to answer the question.
+
+### Question 3
+
+Which neighbourhoods of West Kelowna does our map suggest to prioritize for more firesmart landscaping initiatives? List the top three neighbourhoods
+
+```{r}
+ #  Load the Trees Raster  
+neighborhoods <- "posts/2025-03-01/forest_risk_stats_zonal.shp"
+v_neighborhoods <- vect(neighborhoods)  %>% project(r_trees) %>% st_as_sf()
+binpal <- colorBin("Reds", v_neighborhoods$sum, 9, pretty = FALSE)
+S
+#  Create an Interactive Leaflet Map with Measurement & Drawing Tools 
+# Create an Interactive Leaflet Map with Measurement & Drawing Tools 
+m2 <- leaflet(v_neighborhoods) %>%   # Base map options   
+  addProviderTiles("Esri.WorldImagery", group = "Satellite Imagery") %>%   
+  addPolygons(
+    fillOpacity = 0.4, 
+    group = "Trees Close to Homes",
+    color = ~binpal(sum),
+    popup = ~paste("Sum Treed Areas Near Homes  (km^2): ", round(sum/10000,2))  # Add popup with the sum value
+  ) %>% 
+  addMeasure(
+    position = "topleft",
+    primaryLengthUnit = "meters",
+    primaryAreaUnit = "sqmeters",
+    activeColor = "red",
+    completedColor = "blue"
+  ) %>%
+  # Allow Both the Raster and the Shapefile to be Toggled
+  addLayersControl(
+    baseGroups = c("Satellite Imagery"),
+    overlayGroups = c("westKelownaNeighborhoods"),  # Use the same group name as in addPolygons
+    options = layersControlOptions(collapsed = TRUE)
+  )
+
+# Display the map
+m2
+
+```
+
+```{=html}
+<iframe src="https://eliceorg.github.io/CONS-327-Test/" width="100%" height="800px"></iframe>
+```
