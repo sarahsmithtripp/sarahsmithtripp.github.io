@@ -1,7 +1,7 @@
 ---
 title: "2024: A year for Collaboration"
 description: "Transcontinental Transdisciplinarity"
-date: 12-28-2024
+date: 01-17-2025
 date-modified: last-modified
 ---
 

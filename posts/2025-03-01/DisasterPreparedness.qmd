@@ -1,7 +1,7 @@
 ---
 title: "Exploring Remote Sensing Data for Disaster Preparedness"
 description: "Landcover Mapping in Kelowna"
-date: 12-28-2024
+date: 03-01-2025
 date-modified: last-modified
 ---
 
@@ -61,11 +61,11 @@ The map below shows the landcover types for your region - West Kelowna (congrats
 
 The **green areas** are identified as forests and the **red areas** are areas that are 'built-up' regions. Feel free to explore the dataset.
 
-```{r leaflet, include = FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(pacman)
 p_load(dplyr, leaflet, leaflet.extras, htmlwidgets, terra, sf, tidyverse)
 # Load the raster
-raster_path <- "posts/2025-03-01/ESA_landcover_clip.tif"
+raster_path <- "ESA_landcover_clip.tif"
 r <- rast(raster_path)  # Load as SpatRaster
 
 # Extract unique values from the raster 
@@ -106,9 +106,6 @@ m <- leaflet() %>%
 m
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE} m}
-```
-
 ### Identifying areas "At Risk"
 
 We will now identify which forested areas are within 30 m of our 'built' up regions. By doing so, we can identify which regions are most at risk, and which neighborhoods we should prioritize in the future.
@@ -125,7 +122,7 @@ You can use the map to measure distance by clicking on the line feature at the l
 library(pacman)
 p_load(dplyr, leaflet, leaflet.extras, htmlwidgets, terra, sf, tidyverse)
  #  Load the Trees Raster  
-trees_raster_path <- "posts/2025-03-01/trees_close_tohomes.tif"
+trees_raster_path <- "trees_close_tohomes.tif"
 r_trees <- rast(trees_raster_path)  # Load as SpatRaster   
 # Prevent metadata output  
 #  Create an Ultra-Bright Fluorescent Green Color Palette for Trees Raster  
@@ -181,12 +178,12 @@ For each neighbourhood we calculated the total land area that is forest within 3
 
 Which neighbourhoods of West Kelowna does our map suggest to prioritize for more firesmart landscaping initiatives? List the top three neighbourhoods
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
  #  Load the Trees Raster  
-neighborhoods <- "posts/2025-03-01/forest_risk_stats_zonal.shp"
+neighborhoods <- "forest_risk_stats_zonal.shp"
 v_neighborhoods <- vect(neighborhoods)  %>% project(r_trees) %>% st_as_sf()
 binpal <- colorBin("Reds", v_neighborhoods$sum, 9, pretty = FALSE)
-S
+
 #  Create an Interactive Leaflet Map with Measurement & Drawing Tools 
 # Create an Interactive Leaflet Map with Measurement & Drawing Tools 
 m2 <- leaflet(v_neighborhoods) %>%   # Base map options   
@@ -214,8 +211,4 @@ m2 <- leaflet(v_neighborhoods) %>%   # Base map options
 # Display the map
 m2
 
-```
-
-```{=html}
-<iframe src="https://eliceorg.github.io/CONS-327-Test/" width="100%" height="800px"></iframe>
 ```
