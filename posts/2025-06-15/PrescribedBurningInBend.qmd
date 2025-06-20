@@ -44,9 +44,9 @@ The State of Oregon and individual counties capitalized on the fuel management f
 ![Example of a Wildfire Meeeting a Burn Prescription - right is the wildfire, which burned into the canopy, left is the prescription where the fire burned on the surface](images/Image%20from%20iOS%20(1).jpg){width="382"}
 
 Perhaps more powerful than the science behind prescribed burning is talking to the wildland firefighters who have worked on burns near prescriptions. We visited multiple recent wildfires where fire managers described how they used the locations with fuel treatments (also called treated) to control the wildfire spread. When they talked about these treatments you could tell how knowing their was a treatment they could use in their attack brought them relief and confidence to limit the impact of catastrophic fire on communities they love. Check out the video below for more information:
-
-```{=html}
-<iframe src="https://www.youtube.com/watch?v=nFbyOe-DmbU" width="750" height="400" style="border: none;"> </iframe>
+<html>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nFbyOe-DmbU?si=va1WZ6thmiO26nx9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</html>
 ```
 
 ### Management Methods in Oregon
