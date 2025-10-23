@@ -1,7 +1,7 @@
 ---
 title: Curriculum vitæ
 description: "Sarah Smith-Tripp's CV"
-date: 2024-12-28
+date: 2025-10-23
 title-block-banner: "darkblue"
 title-block-banner-color: "white"
 published-title: CV last updated
@@ -12,4 +12,4 @@ cv:
 
 ## Click on the image to view my latest CV
 
-[![](images/paste-1.png)](assets/SmithTripp_CV_LongDecember2024.pdf)
+[![](images/clipboard-2087135647.png)](assets/SmithTripp_CV_LongDecember2024.pdf)

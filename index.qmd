@@ -1,5 +1,6 @@
 ---
 title: "Sarah Smith-Tripp"
+subtitle: "_rooted in community - near and far_"
 image: assets/prof_pic.png
 page-layout: full
 about: 
@@ -19,6 +20,24 @@ about:
 
 ## Passionate about Cultivating Resilient Communities
 
-I am an interdisciplinary ecosystem scientist interested in risk and resilience research. My PhD uses remote-sensing techniques, including satellite imagery and lidar (light detection and ranging) to model forest recovery (or lack of recovery) after large and high severity wildfire. In my work, I aim to provide decision makers with accessible and accurate tools so they can take proactive steps to protect people and forests. Starting in summer 2025, I am seeking a position working in risk and resilience research in academic, private, and governmental spaces. In particular, I want to work on research that prioritizes community disaster resilience, leveraging joint problem framing to highlight community needs.
+I am an interdisciplinary ecosystem scientist interested in risk and resilience research. I recently defended my PhD where I used remote-sensing techniques, including satellite imagery and lidar (light detection and ranging) to model forest recovery (or lack of recovery) after large and high severity wildfire. Currently, I am post-doctoral researcher with the [Center for Wildfire Coexistence](https://cwc.ubc.ca/) working to quantify the impact of fuel mitigation on reduction to catastrophic fire.
 
-I am passionate about collaborative research and enthusiastic about science communication. Some of my most gratifying work has been restarting the UBC graduate student Wildfire Discussion Group and presenting to US Senator Merkeley's staff on the importance of systemic disaster resilience. Please reach out if you are interested in talks or demonstrations on drones, satellite science, or community resilience and response to disaster.
+:::: {.columns}
+
+::: {.column width="40%"}
+In my work, I aim to provide decision makers with accessible and accurate tools so they can take proactive steps to protect people and forests. In particular, my research and collaborations prioritize community disaster resilience, leveraging joint problem framing to highlight community needs.
+
+
+:::
+
+::: {.column width="60%"}
+![View on mop-up after prescribed burning in Central Oregon](images/IMG_7613.jpg)
+:::
+## Contact Me
+I am passionate about collaborative research and enthusiastic about science communication. Some of my most gratifying work has been restarting the UBC graduate student Wildfire Discussion Group. Please reach out if you are interested in collaborations on landscape level fire resilience or systematic literature reviews
+
+### My Details
+
+Email: sarahsmith.tripp@gmail.com
+Whatsapp: +1-503-990-5072
+
