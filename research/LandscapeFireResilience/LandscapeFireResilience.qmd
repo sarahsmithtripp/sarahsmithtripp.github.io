@@ -1,0 +1,13 @@
+---
+title: "Capturing Reduced Risk to Wildfire Across the Landscape"
+description: "Priotizing indigenous values in risk reduction to catalyze landscape level fuel reduction " 
+title-block-banner: darkblue
+title-block-banner-color: white
+image: 'paste-2.png'
+---
+
+## Fire Resilience at Scale: Building Capacity
+
+I am excited to be starting this exciting work with the center for wildfire coexistence. Check back soon for more information! For now - check out our poster presented at the **International Association of Wildfire Coexistence** in October of 2025
+
+![IAWF Poster Presentation 2025](images/paste-1.png)

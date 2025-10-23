@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sarahsmithtripp.github.io/research.html</loc>
-    <lastmod>2024-12-29T17:22:28.112Z</lastmod>
+    <lastmod>2025-10-21T23:03:04.639Z</lastmod>
   </url>
   <url>
     <loc>https://sarahsmithtripp.github.io/research/Microclimate_AfterFire/Microclimate_afterfire.html</loc>
@@ -14,11 +14,11 @@
   </url>
   <url>
     <loc>https://sarahsmithtripp.github.io/index.html</loc>
-    <lastmod>2025-06-20T22:11:19.083Z</lastmod>
+    <lastmod>2025-10-23T19:00:05.568Z</lastmod>
   </url>
   <url>
     <loc>https://sarahsmithtripp.github.io/about.html</loc>
-    <lastmod>2025-03-01T22:41:35.163Z</lastmod>
+    <lastmod>2025-10-23T19:23:00.401Z</lastmod>
   </url>
   <url>
     <loc>https://sarahsmithtripp.github.io/posts/2024-12-28/Updating.html</loc>
@@ -51,5 +51,9 @@
   <url>
     <loc>https://sarahsmithtripp.github.io/posts/2025-06-15/PrescribedBurningInBend.html</loc>
     <lastmod>2025-06-20T22:09:37.044Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sarahsmithtripp.github.io/research/LandscapeFireResilience/LandscapeFireResilience.html</loc>
+    <lastmod>2025-10-21T23:17:45.347Z</lastmod>
   </url>
 </urlset>
