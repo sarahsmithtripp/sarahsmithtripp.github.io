@@ -1,7 +1,7 @@
 ---
 title: "Sarah Smith-Tripp"
 subtitle: "_rooted in community - near and far_"
-image: assets/prof_pic.png
+image: assets/image.png
 page-layout: full
 about: 
   template: trestles
@@ -20,24 +20,22 @@ about:
 
 ## Passionate about Cultivating Resilient Communities
 
-I am an interdisciplinary ecosystem scientist interested in risk and resilience research. I recently defended my PhD where I used remote-sensing techniques, including satellite imagery and lidar (light detection and ranging) to model forest recovery (or lack of recovery) after large and high severity wildfire. Currently, I am post-doctoral researcher with the [Center for Wildfire Coexistence](https://cwc.ubc.ca/) working to quantify the impact of fuel mitigation on reduction to catastrophic fire.
+I am a landscape-level thinker that prioritizes collaborative work putting research into action. I specialize in integrating fire research in forest management planning over large-extents. My work builds on my history using remote-sensing techniques, including satellite imagery and drone-based lidar (light detection and ranging) to model forest recovery (or lack of recovery) after large and high severity wildfire. Importantly, I have always prioritized collaborative decision making - recognizing the inherent disconnect between what is measured by satellites and what is observed and experienced on the ground.
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="40%"}
-In my work, I aim to provide decision makers with accessible and accurate tools so they can take proactive steps to protect people and forests. In particular, my research and collaborations prioritize community disaster resilience, leveraging joint problem framing to highlight community needs.
-
-
+My work aims to proactively manage forest for resilience - both for human communities and forest ecosystems. In my current role, as the TNC forest restoration project manager, I build resilience combining effective collaborative on-the-ground work, comprehensive documentation and monitoring, and clear, consistent communication. I believe that when everyone has seat at the table, and we understand what is on the table, we can make better decisions together.
 :::
 
 ::: {.column width="60%"}
 ![View on mop-up after prescribed burning in Central Oregon](images/IMG_7613.jpg)
 :::
+
 ## Contact Me
-I am passionate about collaborative research and enthusiastic about science communication. Some of my most gratifying work has been restarting the UBC graduate student Wildfire Discussion Group. Please reach out if you are interested in collaborations on landscape level fire resilience or systematic literature reviews
+
+I am passionate about collaborative research and enthusiastic about science communication. Please reach out if you are interested in collaborations on landscape level fire resilience or systematic literature reviews
 
 ### My Details
 
-Email: sarahsmith.tripp@gmail.com
-Whatsapp: +1-503-990-5072
-
+Email: sarahsmith.tripp\@gmail.com Whatsapp: +1-503-990-5072
+:::::

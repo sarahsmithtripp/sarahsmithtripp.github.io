@@ -1,14 +1,5 @@
 [
   {
-    "listing": "/research.html",
-    "items": [
-      "/research/LandscapeFireResilience/LandscapeFireResilience.html",
-      "/research/Forest_RecoveryafterFire/Forest_RecoveryafterFire.html",
-      "/research/Microclimate_AfterFire/Microclimate_afterfire.html",
-      "/research/Place_BasedResearch/Place_BasedResearch.html"
-    ]
-  },
-  {
     "listing": "/posts.html",
     "items": [
       "/posts/2025-07-11/LidarProcessingAlgorithsm.html",
@@ -16,6 +7,15 @@
       "/posts/2025-03-01/DisasterPreparedness.html",
       "/posts/2025-01-17/Transcontinental_Transdiscipinarity.html",
       "/posts/2024-12-28/Updating.html"
+    ]
+  },
+  {
+    "listing": "/research.html",
+    "items": [
+      "/research/LandscapeFireResilience/LandscapeFireResilience.html",
+      "/research/Forest_RecoveryafterFire/Forest_RecoveryafterFire.html",
+      "/research/Microclimate_AfterFire/Microclimate_afterfire.html",
+      "/research/Place_BasedResearch/Place_BasedResearch.html"
     ]
   }
 ]
